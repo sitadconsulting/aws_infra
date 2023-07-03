@@ -7,7 +7,7 @@ Thanks to the innovative work by the folks at Hashi, we have leveraged both loca
 allows for a more expressive way in defining highly complex cloud infrastructure solutions from composable micro-modules.
 
 We have provided a usage example of this idea in which we have deployed a secure containerized NGINX Web Server instance. You will find this example under the directory "projects/proj12".
-You will find a companion document that captures the implementation details in the same directory.
+You will find a companion document that captures the implementation details in the docs directory.
 
 We love for you to engage and explore the set of currently available modules and provided example. We would also love to here from you, so please feel free to provide any 
 feedback of observations, comments and any errors you encounter. You can reach us at this holding email address: gbkehinde@gmail.com. If you are also in a position to
