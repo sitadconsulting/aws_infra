@@ -1,3 +1,7 @@
+#################################################################
+# PLEASE DO NOT USE THIS MODULE AS IT IS UNDER CONSTRUCTION
+#
+#################################################################
 resource "aws_quicksight_template" "quicksight_template" {
   aws_account_id      = var.quicksight_template_aws_account_id
   name                = var.quicksight_template_name
