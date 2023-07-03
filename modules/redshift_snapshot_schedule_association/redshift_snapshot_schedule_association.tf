@@ -1,0 +1,4 @@
+resource "aws_redshift_snapshot_schedule_association" "redshift_snapshot_schedule_association" {
+  cluster_identifier  = var.redshift_snapshot_schedule_association_cluster_identifier
+  schedule_identifier = var.redshift_snapshot_schedule_association_schedule_identifier
+}

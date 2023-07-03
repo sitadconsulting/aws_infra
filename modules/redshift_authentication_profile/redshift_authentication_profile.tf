@@ -1,0 +1,4 @@
+resource "aws_redshift_authentication_profile" "redshift_authentication_profile" {
+  authentication_profile_name    = var.redshift_authentication_profile_authentication_profile_name
+  authentication_profile_content = var.redshift_authentication_profile_authentication_profile_content
+}
