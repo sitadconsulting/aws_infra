@@ -17,7 +17,7 @@ Our goal for making this available to the public is to help businesses seeking t
 have provided to accelerate thier journey. As a company, we are committed to seeing enterprises thrive and succeed in the shift to adopting or modernizing in the cloud.
 We are here to help. Please feel free to reach out to us at the holding email address above if you like to engage our service.
 
-We would love to continue to make more of this work available for public use, if you share our ideals and would love to help, we would like to here from you.
+We would love to continue to make more of this work available for public use, if you share our ideals and would love to help, we would like to hear from you.
 please reach out to us at the same email address above.
 
 Thank you and fare well.
