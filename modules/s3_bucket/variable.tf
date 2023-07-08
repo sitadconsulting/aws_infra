@@ -1,29 +1,3 @@
-variable "environment" {
-  description = "The name of the environment"
-  default     = "DEV"
-}
-variable "aws_region" {
-  description = "The name of the region"
-  type        = string
-  default     = "us-east-1"
-}
-variable "create_s3_bucket" {
-  description = "Create s3 bucket"
-  type        = bool
-  default     = true
-}
-variable "tags" {
-  description = "A map of tags to add to all resources"
-  type        = map(any)
-  default     = {}
-}
-############################
-# S3 bucket
-############################
-variable "bucket_name" {
-  description = "The name of the bucket to create"
-  type        = string
-}
 variable "s3_bucket_bucket" {
   description = "Name of the bucket. If omitted, Terraform will assign a random, unique name"
   type        = string
