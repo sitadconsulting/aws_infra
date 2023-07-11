@@ -3,7 +3,7 @@ output "s3_object_etag" {
   value       = element(concat(aws_s3_object.s3_object.*.etag, [""]), 0)
 }
 output "s3_object_id" {
-  description = "key of the resource supplied above"
+  description = "key of the resource"
   value       = element(concat(aws_s3_object.s3_object.*.id, [""]), 0)
 }
 output "s3_object_version_id" {
