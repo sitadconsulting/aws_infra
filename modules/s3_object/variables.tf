@@ -48,7 +48,7 @@ variable "s3_object_content_type" {
   default     = ""
 }
 variable "s3_object_etag" {
-  description = "Triggers updates when the value changes. The only meaningful value is filemd5("path/to/file") (Terraform 0.11.12 or later) or ${md5(file("path/to/file"))} (Terraform 0.11.11 or earlier). This attribute is not compatible with KMS encryption, kms_key_id or server_side_encryption = "aws:kms" (see source_hash instead)"
+  description = "Triggers updates when the value changes. The only meaningful value is filemd5(\"path/to/file\") (Terraform 0.11.12 or later). This attribute is not compatible with KMS encryption, kms_key_id or server_side_encryption = \"aws:kms\" (see source_hash instead)"
   type        = string
   default     = ""
 }
@@ -64,7 +64,7 @@ variable "s3_object_key" {
 variable "s3_object_kms_key_id" {
   description = "ARN of the KMS Key to use for object encryption. If the S3 Bucket has server-side encryption enabled, that value will automatically be used. If referencing the aws_kms_key resource, use the arn attribute. If referencing the aws_kms_alias data source or resource, use the target_key_arn attribute. Terraform will only perform drift detection if a configuration value is provided"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_metadata" {
   description = "Map of keys/values to provision metadata (will be automatically prefixed by x-amz-meta-, note that only lowercase label are currently supported by the AWS Go API)"
@@ -87,7 +87,7 @@ variable "s3_object_object_lock_retain_until_date" {
   default     = null
 }
 variable "s3_object_server_side_encryption" {
-  description = "Server-side encryption of the object in S3. Valid values are "AES256" and \"aws\:kms\""
+  description = "Server-side encryption of the object in S3. Valid values are \"AES256\" and \"aws:kms\""
   type        = string
   default     = ""
 }
