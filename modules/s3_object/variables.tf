@@ -20,12 +20,12 @@ variable "s3_object_cache_control" {
 variable "s3_object_content" {
   description = "Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_content_base64" {
   description = "Base64-encoded data that will be decoded and uploaded as raw bytes for the object content"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_content_disposition" {
   description = "Presentational information for the object"
