@@ -6,7 +6,7 @@ variable "s3_bucket_bucket" {
 variable "s3_bucket_bucket_prefix" {
   description = "Creates a unique bucket name beginning with the specified prefix. Conflicts with bucket"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_force_destroy" {
   description = "Whether all objects (including any locked objects) should be deleted from the bucket when the bucket is destroyed so that the bucket can be destroyed without error"
