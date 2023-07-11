@@ -74,12 +74,12 @@ variable "s3_object_metadata" {
 variable "s3_object_object_lock_legal_hold_status" {
   description = "Legal hold status that you want to apply to the specified object. Valid values are ON and OFF"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_object_lock_mode" {
   description = "Object lock retention mode that you want to apply to this object. Valid values are GOVERNANCE and COMPLIANCE"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_object_lock_retain_until_date" {
   description = "Date and time, in RFC3339 format, when this object's object lock will expire"
@@ -89,7 +89,7 @@ variable "s3_object_object_lock_retain_until_date" {
 variable "s3_object_server_side_encryption" {
   description = "Server-side encryption of the object in S3. Valid values are \"AES256\" and \"aws:kms\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_source" {
   description = "Path to a file that will be read and uploaded as raw bytes for the object content - conflicts with content and content_base64"
@@ -104,7 +104,7 @@ variable "s3_object_source_hash" {
 variable "s3_object_storage_class" {
   description = "Storage Class for the object. Defaults to \"STANDARD\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_tags" {
   description = "Map of tags to assign to the object "
