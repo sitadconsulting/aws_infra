@@ -6,7 +6,7 @@ variable "athena_workgroup_description" {
 variable "athena_workgroup_force_destroy" {
   description = "Option to delete the workgroup and its contents even if the workgroup contains any named queries"
   type        = string
-  default     = ""
+  default     = false
 }
 variable "athena_workgroup_name" {
   description = "Name of the workgroup"
