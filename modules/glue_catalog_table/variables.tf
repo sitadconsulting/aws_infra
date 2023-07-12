@@ -24,8 +24,8 @@ variable "glue_catalog_table_owner" {
 }
 variable "glue_catalog_table_parameters" {
   description = "Properties associated with this table, as a list of key-value pairs"
-  type        = list(string)
-  default     = []
+  type        = map(string)
+  default     = {}
 }
 variable "glue_catalog_table_retention" {
   description = "Retention time for this table"
