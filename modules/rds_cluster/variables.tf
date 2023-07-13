@@ -256,5 +256,4 @@ variable "rds_cluster_serverlessv2_scaling_configuration" {
     min_capacity = number
   }))
   default     = []
-
 }
