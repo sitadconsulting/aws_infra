@@ -283,7 +283,7 @@ variable "autoscaling_group_warm_pool" {
     pool_state                  = optional(string)
     instance_reuse_policy = optional(list(object({
       reuse_on_scale_in = optional(bool)
-    })))
+    })), [])
   }))
   default     = []
 }
