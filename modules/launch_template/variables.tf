@@ -93,7 +93,7 @@ variable "launch_template_block_device_mappings" {
       throughput            = optional(number)
       volume_size           = optional(number)
       volume_type           = optional(string)
-    })))
+    })), [])
   }))
   default     = []
 }
@@ -104,7 +104,7 @@ variable "launch_template_capacity_reservation_specification" {
     capacity_reservation_target = optional(list(object({
       capacity_reservation_id                 = optional(string)
       capacity_reservation_resource_group_arn = optional(string)
-    })))
+    })), [])
   }))
   default     = []
 }
@@ -170,7 +170,7 @@ variable "launch_template_instance_market_options" {
       max_price                      = optional(string)
       spot_instance_type             = optional(string)
       valid_until                    = optional(string)
-    })))
+    })), [])
   }))
   default     = []
 }
@@ -194,19 +194,19 @@ variable "launch_template_instance_requirements" {
     accelerator_count = optional(list(object({
       max = optional(number)
       min = optional(number)
-    })))
+    })), [])
     accelerator_total_memory_mib = optional(list(object({
       max = optional(number)
       min = optional(number)
-    })))
+    })), [])
     baseline_ebs_bandwidth_mbps = optional(list(object({
       max = optional(number)
       min = optional(number)
-    })))
+    })), [])
     memory_gib_per_vcpu = optional(list(object({
       max = optional(number)
       min = optional(number)
-    })))
+    })), [])
     memory_mib = list(object({
       max = optional(number)
       min = number
@@ -214,15 +214,15 @@ variable "launch_template_instance_requirements" {
     network_bandwidth_gbps = optional(list(object({
       max = optional(number)
       min = optional(number)
-    })))
+    })), [])
     network_interface_count = optional(list(object({
       max = optional(number)
       min = optional(number)
-    })))
+    })), [])
     total_local_storage_gb = optional(list(object({
       max = optional(number)
       min = optional(number)
-    })))
+    })), [])
     vcpu_count = list(object({
       max = optional(number)
       min = number
