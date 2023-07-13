@@ -33,7 +33,7 @@ variable "glue_catalog_database_create_table_default_permission" {
     permissions = optional(list(string))
     principal   = optional(list(object({
       data_lake_principal_identifier = optional(string)
-    })))
+    })), [])
   }))
   default     = []
 }
