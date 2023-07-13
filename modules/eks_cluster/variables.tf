@@ -45,7 +45,7 @@ variable "eks_cluster_outpost_config" {
     outpost_arns                = list(string)
     control_plane_placement     = optional(list(object({
       group_name = string
-    })))
+    })), [])
   }))
   default     = []
 }
