@@ -7,7 +7,6 @@ resource "aws_glue_catalog_table" "glue_catalog_table" {
   parameters         = var.glue_catalog_table_parameters
   retention          = var.glue_catalog_table_retention
   table_type         = var.glue_catalog_table_table_type
-  target_table       = var.glue_catalog_table_target_table
   view_expanded_text = var.glue_catalog_table_view_expanded_text
   view_original_text = var.glue_catalog_table_view_original_text
 
@@ -63,7 +62,7 @@ resource "aws_glue_catalog_table" "glue_catalog_table" {
         }
         dynamic "ser_de_info" {
           for_each = storage_descriptor.value.ser_de_info
-            contemt {
+            content {
               name                  = ser_de_info.value["name"]
               parameters            = ser_de_info.value["parameters"]
               serialization_library = ser_de_info.value["serialization_library"]
