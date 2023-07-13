@@ -22,8 +22,8 @@ variable "s3_bucket_acl_access_control_policy" {
         id            = optional(string)
         type          = string
         uri           = optional(string)   
-      })))
-    })))
+      })), [])
+    })), [])
     owner     = list(object({
       display_name = optional(string)
       id           = string
