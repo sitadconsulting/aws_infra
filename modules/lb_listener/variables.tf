@@ -44,7 +44,7 @@ variable "lb_listener_default_action" {
       user_pool_arn                       = string
       user_pool_client_id                 = string
       user_pool_domain                    = string
-    })))
+    })), [])
     authenticate_oidc   = optional(list(object({
       authentication_request_extra_params = map(string)
       authorization_endpoint              = string
@@ -57,12 +57,12 @@ variable "lb_listener_default_action" {
       session_timeout                     = optional(string)
       token_endpoint                      = string
       user_info_endpoint                  = string
-    })))
+    })), [])
     fixed_response     = optional(list(object({
       content_type     = string
       message_body     = optional(string)
       status_code      = optional(string)
-    })))
+    })), [])
     forward            = optional(list(object({
       target_group     = list(object({
         arn            = string
@@ -71,8 +71,8 @@ variable "lb_listener_default_action" {
       stickiness       = optional(list(object({
         duration       = number
         enabled        = bool
-      })))
-    })))
+      })), [])
+    })), [])
     order              = optional(number)
     redirect           = optional(list(object({
       host             = optional(string)
@@ -81,7 +81,7 @@ variable "lb_listener_default_action" {
       protocol         = optional(string)
       query            = optional(string)
       status_code      = string
-    })))
+    })), [])
     target_group_arn   = optional(string)
     type               = string
   }))
