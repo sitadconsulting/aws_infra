@@ -67,7 +67,7 @@ variable "deployment_spec_selector" {
       key          = string
       operator     = string
       values       = list(string)
-    })))
+    })), [])
   }))
   default = {}
 }
@@ -394,7 +394,7 @@ variable "deployment_spec_template_spec_container" {
       host_port                    = optional(number)
       name                         = optional(string)
       protocol                     = optional(string)
-    })))
+    })), [])
     readiness_probe                  = optional(list(object({
       failure_threshold              = optional(number)
       initial_delay_seconds          = optional(number)
@@ -617,7 +617,7 @@ variable "deployment_spec_template_spec_init_container" {
       host_port                    = optional(number)
       name                         = optional(string)
       protocol                     = optional(string)
-    })))
+    })), [])
     readiness_probe                  = optional(list(object({
       failure_threshold              = optional(number)
       initial_delay_seconds          = optional(number)
@@ -721,7 +721,7 @@ variable "deployment_spec_template_spec_dns_config" {
     option      = optional(list(object({
       name  = string
       value = optional(string)
-    })))
+    })), [])
   }))
   default     = []
 }
@@ -762,7 +762,7 @@ variable "deployment_spec_template_spec_security_context" {
     sysctl                 = optional(list(object({
       name  = string
       value = string
-    })))
+    })), [])
   }))
   default     = []
 }
@@ -789,8 +789,8 @@ variable "deployment_spec_template_spec_topology_spread_constraint" {
         key      = optional(string)
         operator = optional(string)
         values   = optional(list(string))
-      }))) 
-    })))
+      })), []) 
+    })), [])
   }))
   default     = []
 }
@@ -882,7 +882,7 @@ variable "deployment_spec_template_spec_volume" {
          container_name = optional(string)
          divisor        = optional(string)
          resource       = string
-       })))
+       })), [])
      })), [])
    })),[])
    empty_dir = optional(list(object({
