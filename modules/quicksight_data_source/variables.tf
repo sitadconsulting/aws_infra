@@ -30,93 +30,93 @@ variable "quicksight_data_source_parameters" {
   type        = list(object({
     amazon_elasticsearch  = optional(list(object({
       domain      = string
-    })))
+    })), [])
     athena                = optional(list(object({
       work_group  = optional(string) 
-    })))
+    })), [])
     aurora                = optional(list(object({
       database    = string
       host        = string
       port        = number
-    })))
+    })), [])
     aurora_postgresql     = optional(list(object({
       database    = string
       host        = string
       port        = number
-    })))
+    })), [])
     aws_iot_analytics     = optional(list(object({
       data_set_name = string
-    })))
+    })), [])
     jira                  = optional(list(object({
       site_base_url = string
-    })))
+    })), [])
     maria_db              = optional(list(object({
       database    = string
       host        = string
       port        = number
-    })))
+    })), [])
     mysql                 = optional(list(object({
       database    = string
       host        = string
       port        = number
-    })))
+    })), [])
     oracle                = optional(list(object({
       database    = string
       host        = string
       port        = number
-    })))
+    })), [])
     postgresql            = optional(list(object({
       database    = string
       host        = string
       port        = number
-    })))
+    })), [])
     presto                = optional(list(object({
       catalog     = string
       host        = string
       port        = number
-    })))
+    })), [])
     rds                   = optional(list(object({
       database    = string
       instance_id = string
-    })))
+    })), [])
     redshift              = optional(list(object({
       cluster_id  = optional(string)
       database    = string
       host        = optional(string)
       port        = optional(number)
-    })))
+    })), [])
     s3                    = optional(list(object({
       manifest_file_location = list(object({
         bucket = string
         key    = string
       }))
-    })))
+    })), [])
     service_now           = optional(list(object({
       site_base_url = string
-    })))
+    })), [])
     snowflake             = optional(list(object({
       database  = string
       host      = string
       warehouse = string
-    })))
+    })), [])
     spark                 = optional(list(object({
       host      = string
       port      = number
-    })))
+    })), [])
     sql_server            = optional(list(object({
       database = string
       host     = string
       port     = number
-    })))
+    })), [])
     teradata              = optional(list(object({
       database = string
       host     = string
       port     = number
-    })))
+    })), [])
     twitter               = optional(list(object({
       max_rows = number
       query    = string
-    })))
+    })), [])
   }))
 }
 variable "quicksight_data_source_permission" {
