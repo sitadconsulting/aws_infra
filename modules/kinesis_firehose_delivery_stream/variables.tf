@@ -28,7 +28,7 @@ variable "kinesis_firehose_delivery_stream_elasticsearch_configuration" {
       enabled         = optional(bool)
       log_group_name  = optional(string)
       log_stream_name = optional(string)
-    })))
+    })), [])
     processing_configuration = optional(list(object({
       enabled    = optional(bool)
       processors = optional(list(object({
@@ -36,9 +36,9 @@ variable "kinesis_firehose_delivery_stream_elasticsearch_configuration" {
         parameters = optional(list(object({
           parameter_name  = string
           parameter_value = string
-        })))
-      })))
-    })))
+        })), [])
+      })), [])
+    })), [])
     s3_configuration = list(object({
       bucket_arn          = string
       buffering_interval  = optional(number)
@@ -52,13 +52,13 @@ variable "kinesis_firehose_delivery_stream_elasticsearch_configuration" {
         enabled         = optional(bool)
         log_group_name  = optional(string)
         log_stream_name = optional(string)
-      })))
+      })), [])
     }))
     vpc_config = optional(list(object({
       subnet_ids         = list(string)
       security_group_ids = list(string)
       role_arn           = string
-    })))
+    })), [])
   }))
   default     = []
 }
@@ -80,12 +80,12 @@ variable "kinesis_firehose_delivery_stream_extended_s3_configuration" {
         deserializer = list(object({
           hive_json_ser_de   = optional(list(object({
             timestamp_format = optional(list(string))
-          })))
+          })), [])
           open_x_json_ser_de = optional(list(object({
             case_insensitive                         = optional(bool)
             column_to_json_key_mappings              = optional(map(string))
             convert_dots_in_json_keys_to_underscores = optional(bool)
-          }))) 
+          })), []) 
         }))
       }))
       output_format_configuration = list(object({
@@ -101,7 +101,7 @@ variable "kinesis_firehose_delivery_stream_extended_s3_configuration" {
             padding_tolerance                       = optional(number)
             row_index_stride                        = optional(number)
             stripe_size_bytes                       = optional(number)
-          })))
+          })), [])
           parquet_ser_de = optional(list(object({
             block_size_bytes              = optional(number)
             compression                   = optional(string)
@@ -109,7 +109,7 @@ variable "kinesis_firehose_delivery_stream_extended_s3_configuration" {
             max_padding_bytes             = optional(number)
             page_size_bytes               = optional(number)
             writer_version                = optional(string)
-          })))
+          })), [])
         }))
       }))
       schema_configuration = list(object({
@@ -120,16 +120,16 @@ variable "kinesis_firehose_delivery_stream_extended_s3_configuration" {
         table_name    = string
         version_id    = optional(string)
       }))
-    }))) 
+    })), []) 
     cloudwatch_logging_option = optional(list(object({
        enabled         = optional(bool)
        log_group_name  = optional(string)
        log_stream_name = optional(string)
-    })))
+    })), [])
     dynamic_partitioning_configuration = optional(list(object({
       enabled        = optional(bool)
       retry_duration = optional(number)
-    })))
+    })), [])
     processing_configuration = optional(list(object({
       enabled    = optional(bool)
       processors = optional(list(object({
@@ -137,9 +137,9 @@ variable "kinesis_firehose_delivery_stream_extended_s3_configuration" {
         parameters = optional(list(object({
           parameter_name  = string
           parameter_value = string
-        })))
-      })))
-    })))
+        })), [])
+      })), [])
+    })), [])
   }))
   default     =  []
 }
@@ -158,7 +158,7 @@ variable "kinesis_firehose_delivery_stream_http_endpoint_configuration" {
       enabled         = optional(bool)
       log_group_name  = optional(string)
       log_stream_name = optional(string)
-    })))
+    })), [])
     processing_configuration = optional(list(object({
       enabled    = optional(bool)
       processors = optional(list(object({
@@ -166,16 +166,16 @@ variable "kinesis_firehose_delivery_stream_http_endpoint_configuration" {
         parameters = optional(list(object({
           parameter_name  = string
           parameter_value = string
-        })))
-      })))
-    })))
+        })), [])
+      })), [])
+    })), [])
     request_configuration = optional(list(object({
       content_encoding = optional(string)
       common_attributes = optional(list(object({
         name  = string
         value = string
-      })))
-    })))
+      })), [])
+    })), [])
     s3_configuration = list(object({
       bucket_arn          = string
       buffering_interval  = optional(number)
@@ -189,7 +189,7 @@ variable "kinesis_firehose_delivery_stream_http_endpoint_configuration" {
         enabled         = optional(bool)
         log_group_name  = optional(string)
         log_stream_name = optional(string)
-      })))
+      })), [])
     }))
   }))
   default     = []
@@ -219,7 +219,7 @@ variable "kinesis_firehose_delivery_stream_opensearch_configuration" {
       enabled         = optional(bool)
       log_group_name  = optional(string)
       log_stream_name = optional(string)
-    })))
+    })), [])
     processing_configuration = optional(list(object({
       enabled    = optional(bool)
       processors = optional(list(object({
@@ -227,9 +227,9 @@ variable "kinesis_firehose_delivery_stream_opensearch_configuration" {
         parameters = optional(list(object({
           parameter_name  = string
           parameter_value = string
-        })))
-      })))
-    })))
+        })), [])
+      })), [])
+    })), [])
     s3_configuration = list(object({
       bucket_arn          = string
       buffering_interval  = optional(number)
@@ -243,13 +243,13 @@ variable "kinesis_firehose_delivery_stream_opensearch_configuration" {
         enabled         = optional(bool)
         log_group_name  = optional(string)
         log_stream_name = optional(string)
-      })))
+      })), [])
     }))
     vpc_config = optional(list(object({
       subnet_ids         = list(string)
       security_group_ids = list(string)
       role_arn           = string
-    })))
+    })), [])
   }))
   default     = []
 }
@@ -269,7 +269,7 @@ variable "kinesis_firehose_delivery_stream_redshift_configuration" {
       enabled         = optional(bool)
       log_group_name  = optional(string)
       log_stream_name = optional(string)
-    })))
+    })), [])
     processing_configuration = optional(list(object({
       enabled    = optional(bool)
       processors = optional(list(object({
@@ -277,9 +277,9 @@ variable "kinesis_firehose_delivery_stream_redshift_configuration" {
         parameters = optional(list(object({
           parameter_name  = string
           parameter_value = string
-        })))
-      })))
-    })))
+        })), [])
+      })), [])
+    })), [])
     s3_backup_configuration = optional(list(object({
       bucket_arn          = string
       buffering_interval  = optional(number)
@@ -293,8 +293,8 @@ variable "kinesis_firehose_delivery_stream_redshift_configuration" {
         enabled         = optional(bool)
         log_group_name  = optional(string)
         log_stream_name = optional(string)
-      })))
-    })))
+      })), [])
+    })), [])
   }))
   default     = []
 }
@@ -313,7 +313,7 @@ variable "kinesis_firehose_delivery_stream_s3_configuration" {
       enabled         = optional(bool)
       log_group_name  = optional(string)
       log_stream_name = optional(string)
-    })))
+    })), [])
   }))
   default     = []
 }
@@ -339,7 +339,7 @@ variable "kinesis_firehose_delivery_stream_splunk_configuration" {
       enabled         = optional(bool)
       log_group_name  = optional(string)
       log_stream_name = optional(string)
-    })))
+    })), [])
     processing_configuration = optional(list(object({
       enabled    = optional(bool)
       processors = optional(list(object({
@@ -347,9 +347,9 @@ variable "kinesis_firehose_delivery_stream_splunk_configuration" {
         parameters = optional(list(object({
           parameter_name  = string
           parameter_value = string
-        })))
-      })))
-    })))
+        })), [])
+      })), [])
+    })), [])
     s3_configuration = list(object({
       bucket_arn          = string
       buffering_interval  = optional(number)
@@ -363,7 +363,7 @@ variable "kinesis_firehose_delivery_stream_splunk_configuration" {
         enabled         = optional(bool)
         log_group_name  = optional(string)
         log_stream_name = optional(string)
-      })))
+      })), [])
     }))
   }))
   default     = []
