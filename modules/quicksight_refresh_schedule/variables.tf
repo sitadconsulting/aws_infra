@@ -23,7 +23,7 @@ variable "quicksight_refresh_schedule_schedule" {
       refresh_on_day      = optional(list(object({
         day_of_month = optional(string)
         day_of_week  = optional(string)
-      })))
+      })), [])
     }))
   }))
 }
