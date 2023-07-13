@@ -170,7 +170,7 @@ variable "instance_capacity_reservation_specification" {
     capacity_reservation_target = optional(list(object({
       capacity_reservation_id                 = optional(string)
       capacity_reservation_resource_group_arn = optional(string)
-    })))
+    })), [])
   }))
   default     = []
 }
