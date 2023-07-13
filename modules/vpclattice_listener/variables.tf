@@ -31,13 +31,13 @@ variable "vpcvpclattice_listener_default_action" {
   type        = list(object({
     fixed_response = optional(list(object({
       status_code = number
-    })))
+    })), [])
     forward         = optional(list(object({
       target_groups = optional(list(object({
         target_group_identifier = optional(strinhg)
         weight                  = optional(number)
-      })))
-    })))
+      })), [])
+    })), [])
   }))
   default     = []
 }
