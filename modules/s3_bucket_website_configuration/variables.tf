@@ -40,7 +40,7 @@ variable "s3_bucket_website_configuration_routing_rule" {
     condition = optional(list(object({
       http_error_code_returned_equals = optional(string)
       key_prefix_equals               = optional(string)
-    })))
+    })), [])
     redirect  = list(object({
       host_name               = optional(string)
       http_redirect_code      = optional(string)
