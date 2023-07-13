@@ -32,8 +32,8 @@ variable "s3_bucket_inventory_destination" {
         sse_s3   = optional(list(string))
         sse_kms  = optional(list(object({
           key_id = string
-        })))
-      })))
+        })), [])
+      })), [])
     }))
   }))
   default     = []
