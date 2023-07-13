@@ -32,7 +32,7 @@ variable "opensearch_domain_advanced_security_options" {
       master_user_arn      = optional(string)
       master_user_name     = optional(string)
       master_user_password = optional(string)
-    })))
+    })), [])
   }))
   default     = []
 }
@@ -48,7 +48,7 @@ variable "opensearch_domain_auto_tune_options" {
         unit  = string
         value = number
       }))
-    })))
+    })), [])
   }))
   default     = []
 }
@@ -66,10 +66,10 @@ variable "opensearch_domain_cluster_config" {
     zone_awareness_enabled   = optional(bool)
     cold_storage_options = optional(list(object({
       enabled = optional(bool)
-    })))
+    })), [])
     zone_awareness_config    = optional(list(object({
       availability_zone_count = optional(number)
-    })))
+    })), [])
   }))
   default     = []
 }
@@ -137,8 +137,8 @@ variable "opensearch_domain_off_peak_window_options" {
       window_start_time = optional(list(object({
         hours   = optional(number)
         minutes = optional(number)
-      })))
-    }))) 
+      })), [])
+    })), []) 
   }))
   default     = []
 }
