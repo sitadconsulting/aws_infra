@@ -65,11 +65,11 @@ variable "autoscaling_policy_predictive_scaling_configuration" {
               dimensions = optional(list(object({
                 name  = string
                 value = string
-              })))
+              })), [])
             }))
-          })))
+          })), [])
         }))
-      })))
+      })), [])
       customized_load_metric_specification = optional(list(object({
         metric_data_queries = list(object({
           expression  = optional(string)
@@ -85,11 +85,11 @@ variable "autoscaling_policy_predictive_scaling_configuration" {
               dimensions = optional(list(object({
                 name  = string
                 value = string
-              })))
+              })), [])
             }))
-          })))
+          })), [])
         }))
-      })))
+      })), [])
       customized_scaling_metric_specification = optional(list(object({
         metric_data_queries = list(object({
           expression  = optional(string)
@@ -105,23 +105,23 @@ variable "autoscaling_policy_predictive_scaling_configuration" {
               dimensions = optional(list(object({
                 name  = string
                 value = string
-              })))
+              })), [])
             }))
-          })))
+          })), [])
         }))
-      })))
+      })), [])
       predefined_load_metric_specification = optional(list(object({
         predefined_metric_type = string
         resource_label         = optional(string)
-      })))
+      })), [])
       predefined_metric_pair_specification = optional(list(object({
         predefined_metric_type = string
         resource_label         = optional(string)
-      })))
+      })), [])
       predefined_scaling_metric_specification = optional(list(object({
         predefined_metric_type = string
         resource_label         = optional(string)
-      })))
+      })), [])
     }))
   }))
   default     = []
@@ -132,7 +132,6 @@ variable "autoscaling_policy_step_adjustment" {
     metric_interval_lower_bound = optional(string)
     metric_interval_upper_bound = optional(string)
     scaling_adjustment          = number
-
   }))
   default     = []
 }
@@ -149,7 +148,7 @@ variable "autoscaling_policy_target_tracking_configuration" {
       metric_dimension = optional(list(object({
          name  = string
          value = string
-      })))
+      })), [])
       metrics         = optional(list(object({
         expression  = optional(string)
         id          = string
@@ -164,15 +163,15 @@ variable "autoscaling_policy_target_tracking_configuration" {
             dimensions = optional(list(object({
               name  = string
               value = string
-            })))
+            })), [])
           }))
-        })))
-      })))
-    })))
+        })), [])
+      })), [])
+    })), [])
     predefined_metric_specification = optional(list(object({
       predefined_metric_type = string
       resource_label         = optional(string)
-    })))
+    })), [])
   }))
   default     = []
 }
