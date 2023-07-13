@@ -25,13 +25,13 @@ variable "vpclattice_listener_rule_action" {
   type        = list(object({
     fixed_response = optional(list(object({
       status_code  = number
-    })))
+    })), [])
     forward        = optional(list(object({
       target_groups = list(object({
         target_group_identifier = string
         weight                  = optional(number)
       }))
-    }))) 
+    })), []) 
   }))
   default     = []
 }
@@ -48,15 +48,15 @@ variable "vpclattice_listener_rule_match" {
           exact    = optional(string)
           prefix   = optional(string)
         }))
-      })))
+      })), [])
       path_match = optional(list(object({
         case_sensitive = bool
         match          = list(object({
           exact  = optional(string)
           prefix = optional(string)
         }))
-      })))
-    })))
+      })), [])
+    })), [])
   }))
   default     = []
 }
