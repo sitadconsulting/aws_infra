@@ -37,7 +37,7 @@ variable "db_option_group_option" {
     option_settings                = optional(list(object({
       name  = string
       value = string
-    })))
+    })), [])
   }))
   default  = []
 }
