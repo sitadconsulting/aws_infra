@@ -46,7 +46,7 @@ variable "glue_trigger_actions" {
     security_configuration = optional(string)
     notification_property = optional(list(object({
       notify_delay_after = optional(number)
-    })))
+    })), [])
   }))
 }
 variable "glue_trigger_event_batching_condition" {
