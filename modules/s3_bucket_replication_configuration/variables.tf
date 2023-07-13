@@ -19,52 +19,52 @@ variable "s3_bucket_replication_configuration_rule" {
     status   = string
     delete_marker_replication = optional(list(object({
       status = string
-    })))
+    })), [])
     destination               = list(object({
       account       = optional(string)
       bucket        = string
       storage_class = optional(string)
       access_control_translation = optional(list(object({
         owner = string
-      })))
+      })), [])
       encryption_configuration = optional(list(object({
         replica_kms_key_id =string
-      })))
+      })), [])
       metrics                  = optional(list(object({
         status = string
         event_threshold = optional(list(object({
           minutes = number
-        })))
-      })))
+        })), [])
+      })), [])
       replication_time         = optional(list(object({
         status  = string
         time    = list(object({
           minutes = number
         }))
-      })))
+      })), [])
     }))
     existing_object_replication = optional(list(object({
       status = string
-    })))
+    })), [])
     filter = optional(list(object({
       prefix = optional(string)
       and  = optional(list(object({
         prefix = optional(string)
         tags   = map(string)
-      })))
+      })), [])
       tag  = optional(list(object({
         key   = string
         value = string
-      })))
-    })))
+      })), [])
+    })), [])
     source_selection_criteria = optional(list(object({
       replica_modifications = optional(list(object({
         status = string 
-      })))
+      })), [])
       sse_kms_encrypted_objects = optional(list(object({
         status = string
-      })))
-    })))
+      })), [])
+    })), [])
   }))
   default     = []
 }
