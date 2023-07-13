@@ -35,21 +35,21 @@ variable "glue_partition_storage_descriptor" {
       comment = optional(string)
       name    = string
       type    = optional(string)
-    })))
+    })), [])
     ser_de_info = optional(list(object({
       name                  = optional(string)
       parameters            = optional(map(string))
       serialization_library = optional(string)
-    })))
+    })), [])
     skewed_info = optional(list(object({
       skewed_column_names               = optional(list(string))
       skewed_column_values              = optional(list(string))
       skewed_column_value_location_maps = optional(map(string))
-    })))
+    })), [])
     sort_columns = optional(list(object({
       column     = string
       sort_order = number
-    })))
+    })), [])
   }))
   default     = []
 }
