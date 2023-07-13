@@ -37,20 +37,20 @@ variable "kinesis_analytics_application_inputs" {
     kinesis_firehose = optional(list(object({
       resource_arn = string
       role_arn     = string
-    })))
+    })), [])
     kinesis_stream   = optional(list(object({
       resource_arn = string
       role_arn     = string
-    })))
+    })), [])
     parallelism      = optional(list(object({
       count        = number
-    })))
+    })), [])
     processing_configuration = optional(list(object({
       lambda         = list(object({
         resource_arn = string
         role_arn     = string
       }))
-    })))
+    })), [])
     schema           = list(object({
       record_encoding = optional(string)
       record_columns = list(object({
@@ -64,16 +64,16 @@ variable "kinesis_analytics_application_inputs" {
           csv              = optional(list(object({
             record_column_delimiter = string
             record_row_delimiter    = string
-          })))
+          })), [])
           json             = optional(list(object({
             record_row_path = string
-          })))
-        })))
+          })), [])
+        })), [])
       }))
     }))
     starting_position_configuration = optional(list(object({
       starting_position = optional(string)
-    })))
+    })), [])
   }))
   default     = []
 }
@@ -84,15 +84,15 @@ variable "kinesis_analytics_application_outputs" {
     kinesis_firehose = optional(list(object({
       resource_arn = string
       role_arn     = string
-    })))
+    })), [])
     kinesis_stream   = optional(list(object({
       resource_arn = string
       role_arn     = string
-    })))
+    })), [])
     lambda           = optional(list(object({
       resource_arn = string
       role_arn     = string
-    })))
+    })), [])
     schema           = list(object({
       record_format_type = string
     }))
@@ -121,11 +121,11 @@ variable "kinesis_analytics_application_reference_data_sources" {
           csv  = optional(list(object({
             record_column_delimiter = string
             record_row_delimiter    = string
-          })))
+          })), [])
           json = optional(list(object({
             record_row_path = string 
-          })))
-        })))
+          })), [])
+        })), [])
       }))
     }))
   }))
