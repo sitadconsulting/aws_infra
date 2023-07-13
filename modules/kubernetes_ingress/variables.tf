@@ -32,7 +32,7 @@ variable "ingress_spec_default_backend" {
         name   = optional(string)
         number = optional(number)
       }))
-    })))
+    })), [])
   }))
   default  = []
 }
@@ -62,9 +62,9 @@ variable "ingress_spec_rule" {
               number = optional(number)
             }))
           })),[])
-        })))
+        })), [])
       }))
-    })))
+    })), [])
   }))
   default = []
 }
