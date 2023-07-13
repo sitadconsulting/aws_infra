@@ -26,13 +26,13 @@ variable "vpclattice_target_group_config" {
       healthy_threshold_count       = optional(number, 5)
       matcher                       = optional(list(object({
         value        = optional(string)
-      })))
+      })), [])
       path                      = optional(string)
       port                      = optional(number)
       protocol                  = optional(string)
       protocol_version          = optional(string) 
       unhealthy_threshold_count = optional(number)
-    })))
+    })), [])
   }))
   default     = []
 }
