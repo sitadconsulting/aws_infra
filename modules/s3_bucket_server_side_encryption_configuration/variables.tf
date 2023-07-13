@@ -14,7 +14,7 @@ variable "s3_bucket_server_side_encryption_configuration_rule" {
     apply_server_side_encryption_by_default = optional(list(object({
       kms_master_key_id = optional(string)
       sse_algorithm     = string
-    })))
+    })), [])
   }))
   default     = []
 }
