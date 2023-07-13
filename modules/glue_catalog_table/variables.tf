@@ -29,8 +29,8 @@ variable "glue_catalog_table_parameters" {
 }
 variable "glue_catalog_table_retention" {
   description = "Retention time for this table"
-  type        = string
-  default     = ""
+  type        = number
+  default     = null
 }
 variable "glue_catalog_table_table_type" {
   description = "Type of this table (EXTERNAL_TABLE, VIRTUAL_VIEW, etc.). While optional, some Athena DDL queries such as ALTER TABLE and SHOW CREATE TABLE will fail if this argument is empty"
@@ -80,7 +80,7 @@ variable "glue_catalog_table_storage_descriptor" {
       name       = string
       parameters = optional(map(string))
       type       = optional(string)
-    })))
+    })), [])
     schema_reference = optional(list(object({
       schema_version_id     = optional(string)
       schema_version_number = number
@@ -88,22 +88,22 @@ variable "glue_catalog_table_storage_descriptor" {
         registry_name = optional(string)
         schema_arn    = optional(string)
         schema_name   = optional(string)
-      })))
-    })))
+      })), [])
+    })), [])
     ser_de_info = optional(list(object({
       name                  = optional(string)
       parameters            = optional(map(string))
       serialization_library = optional(string) 
-    })))
+    })), [])
     skewed_info = optional(list(object({
       skewed_column_names               = optional(list(string))
       skewed_column_values              = optional(list(string))
       skewed_column_value_location_maps = optional(map(string)) 
-    })))
+    })), [])
     sort_columns = optional(list(object({
       column     = string
       sort_order = number
-    })))
+    })), [])
   }))
   default     = []
 }
