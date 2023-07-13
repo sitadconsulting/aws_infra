@@ -28,15 +28,15 @@ variable "mskconnect_connector_capacity" {
       min_worker_count = number
       scale_in_policy  = optional(list(object({
         cpu_utilization_percentage = optional(number)
-      })))
+      })), [])
       scale_out_policy = optional(list(object({
         cpu_utilization_percentage = optional(number)
-      })))
-    })))
+      })), [])
+    })), [])
     provisioned_capacity = optional(list(object({
       mcu_count    = optional(number)
       worker_count = number
-    })))
+    })), [])
   }))
 }
 variable "mskconnect_connector_kafka_cluster" {
@@ -70,16 +70,16 @@ variable "mskconnect_connector_log_delivery" {
       cloudwatch_logs = optional(list(object({
         enabled   = bool
         log_group = optional(string)
-      })))
+      })), [])
       firehose        = optional(list(object({
         delivery_stream = optional(string)
         enabled         = bool
-      })))
+      })), [])
       s3              = optional(list(object({
         bucket  = optional(string)
         enabled = bool
         prefix  = optional(string)
-      })))
+      })), [])
     }))
   }))
   default     = []
