@@ -35,17 +35,17 @@ variable "redshift_scheduled_action_target_action" {
   type        = list(object({
     pause_cluster = optional(list(object({
       cluster_identifier = string
-    })))
+    })), [])
     resize_cluster = optional(list(object({
       classic            = optional(bool)
       cluster_identifier = string
       cluster_type       = optional(string)
       node_type          = optional(string)
       number_of_nodes    = optional(number)  
-    })))
+    })), [])
     resume_cluster = optional(list(object({
       cluster_identifier = string
-    })))
+    })), [])
   }))
   default     = []
 }
