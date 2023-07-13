@@ -111,6 +111,4 @@ variable "subnet_mapping" {
     subnet_id            = string
   }))
   default     = []
-
-
 }
