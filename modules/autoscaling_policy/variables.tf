@@ -34,7 +34,7 @@ variable "autoscaling_policy_name" {
 variable "autoscaling_policy_policy_type" {
   description = "Policy type, either \"SimpleScaling\", \"StepScaling\", \"TargetTrackingScaling\", or \"PredictiveScaling\". If this value isn't provided, AWS will default to \"SimpleScaling.\" "
   type        = string
-  default     = ""
+  default     = null
 }
 variable "autoscaling_policy_scaling_adjustment" {
   description = "Number of instances by which to scale. adjustment_type determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity"
