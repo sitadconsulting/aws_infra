@@ -32,18 +32,18 @@ variable "athena_workgroup_configuration" {
     requester_pays_enabled             = optional(bool)
     engine_version = optional(list(object({
       selected_engine_version = optional(string)
-    })))
+    })), [])
     result_configuration = optional(list(object({
       expected_bucket_owner = optional(string)
       output_location       = optional(string)
       acl_configuration = optional(list(object({
         s3_acl_option = string
-      })))
+      })), [])
       encryption_configuration = optional(list(object({
         encryption_option = optional(string)
         kms_key_arn       = optional(string)
-      })))
-    })))
+      })), [])
+    })), [])
   }))
   default     = []
 }
