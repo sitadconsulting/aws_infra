@@ -21,3 +21,11 @@ We would love to continue to make more of this work available for public use, if
 please reach out to us at the same email address above.
 
 Thank you and fare well.
+
+# **License Summary**
+
+The documentation is made available under the Creative Commons Attribution-ShareAlike 4.0 International License. See the LICENSE file.
+
+The sample code within this documentation is made available under a modified MIT license. See the LICENSE-SAMPLECODE file.
+
+
