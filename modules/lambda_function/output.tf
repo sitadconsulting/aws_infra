@@ -10,10 +10,6 @@ output "lambda_function_last_modified" {
   description = "Date this resource was last modified"
   value       = element(concat(aws_lambda_function.lambda_function.*.last_modified, [""]), 0)
 }
-output "lambda_function_arn" {
-  description = "ARN identifying your Lambda Function"
-  value       = element(concat(aws_lambda_function.lambda_function.*.arn, [""]), 0)
-}
 output "lambda_function_qualified_arn" {
   description = "ARN identifying your Lambda Function Version (if versioning is enabled via publish = true)"
   value       = element(concat(aws_lambda_function.lambda_function.*.qualified_arn, [""]), 0)
