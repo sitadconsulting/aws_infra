@@ -53,7 +53,7 @@ variable "lambda_function_package_type" {
   default     = "Zip"
 }
 variable "lambda_function_publish" {
-  description = " Whether to publish creation/change as new Lambda Function Version. Defaults to false"
+  description = "Whether to publish creation/change as new Lambda Function Version. Defaults to false"
   type        = bool
   default     = false
 }
