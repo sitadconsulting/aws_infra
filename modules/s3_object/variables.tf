@@ -97,7 +97,7 @@ variable "s3_object_source" {
   default     = ""
 }
 variable "s3_object_source_hash" {
-  description = "Triggers updates like etag but useful to address etag encryption limitations. Set using filemd5("path/to/source") (Terraform 0.11.12 or later)"
+  description = "Triggers updates like etag but useful to address etag encryption limitations. Set using filemd5(\"path/to/source\") (Terraform 0.11.12 or later)"
   type        = string
   default     = ""
 }
