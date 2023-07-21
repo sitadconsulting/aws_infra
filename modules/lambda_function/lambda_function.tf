@@ -37,7 +37,7 @@ resource "aws_lambda_function" "lambda_function" {
   dynamic "ephemeral_storage" {
     for_each = var.lambda_function_ephemeral_storage
       content {
-        size = ephemeral_storage["size"]
+        size = ephemeral_storage.value["size"]
       }
   }
   dynamic "file_system_config" {
