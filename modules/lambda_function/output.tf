@@ -28,7 +28,7 @@ output "lambda_function_signing_profile_version_arn" {
 }
 output "lambda_function_snap_start_optimization_status" {
   description = "Optimization status of the snap start configuration. Valid values are On and Off"
-  value       = element(concat(aws_lambda_function.lambda_function.*.snap_start.optimization_status, [""]), 0)
+  value        = element(concat([ for v in aws_lambda_function.lambda_function.snap_start: v.optimization_status ], [""]), 0)
 }
 output "lambda_function_source_code_size" {
   description = "Size in bytes of the function .zip file"
@@ -40,5 +40,5 @@ output "lambda_function_version" {
 }
 output "lambda_function_vpc_config_vpc_id" {
   description = "ID of the VPC"
-  value       = element(concat(aws_lambda_function.lambda_function.*.vpc_config.vpc_id, [""]), 0)
+  value        = element(concat([ for v in aws_lambda_function.lambda_function.vpc_config: v.vpc_id ], [""]), 0)
 }
