@@ -1,7 +1,7 @@
 variable "lambda_function_architectures" {
   description = "Instruction set architecture for your Lambda function. Valid values are [\"x86_64\"] and [\"arm64\"]. Default is [\"x86_64\"]. Removing this attribute, function's architecture stay the same"
   type        = string
-  default     = "x86_64"
+  default     = [ "x86_64", ]
 }
 variable "lambda_function_code_signing_config_arn" {
   description = "To enable code signing for this function, specify the ARN of a code-signing configuration. A code-signing configuration includes a set of signing profiles, which define the trusted publishers for this function"
