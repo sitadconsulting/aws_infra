@@ -23,4 +23,8 @@ resource "aws_s3_object" "s3_object" {
   storage_class                 = var.s3_object_storage_class
   tags                          = var.s3_object_tags
   website_redirect              = var.s3_object_website_redirect
+
+  lifecycle {
+    ignore_changes = all
+  }
 }
