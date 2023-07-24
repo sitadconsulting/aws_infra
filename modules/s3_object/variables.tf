@@ -94,7 +94,7 @@ variable "s3_object_server_side_encryption" {
 variable "s3_object_source" {
   description = "Path to a file that will be read and uploaded as raw bytes for the object content - conflicts with content and content_base64"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_source_hash" {
   description = "Triggers updates like etag but useful to address etag encryption limitations. Set using filemd5(\"path/to/source\") (Terraform 0.11.12 or later)"
