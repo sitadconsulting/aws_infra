@@ -4,5 +4,5 @@ output "glue_catalog_database_arn" {
 }
 output "glue_catalog_database_id" {
   description = "Catalog ID and name of the database"
-  value       = element(concat(aws_glue_catalog_database.glue_catalog_database.*.id, [""]), 0)
+  value       = element(split(":", aws_glue_catalog_database.glue_catalog_database.id), 1)
 }
