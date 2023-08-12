@@ -1,0 +1,26 @@
+{
+  "name": "PopulateTransactionsHistory",
+  "displayName": "Populate Transactions History",
+  "description": "This transform will populate the transactions history (type2 CDC table)",
+  "functionName": "populate_transactions_history",
+  "parameters": [
+    {
+      "name": "db_name",
+      "displayName": "Database Name",
+      "type": "list",
+      "listOptions": "gsw_iceberg",
+      "description": "Enter the name of the database. Select gsw_iceberg.",
+      "listType": "str"
+      
+    },
+    {
+        "name": "tbl_name",
+        "displayName": "Table Name",
+        "type": "list",
+        "listOptions": "transactions_history",
+        "description": "Enter the name of the table. Select transactions_history.",
+        "listType": "str"
+        
+    }
+  ]
+}       
