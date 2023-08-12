@@ -4,7 +4,7 @@ In this repository, you will find a series of Terraform modules particularly for
 These modules are based around the concept we coined Terraform "micro-module". With this approach we set the basic unit of a Terraform module to a resource object.
 
 Thanks to the innovative work by the folks at Hashi, we have leveraged both locals and the for_each constructs as core part of this Terraform micro-module idea. This we believe
-allows for a more expressive way in defining highly complex cloud infrastructure solutions from composable micro-modules.
+allows for a more expressive way in defining highly complex cloud infrastructure solutions from composable micro-modules. furthermore, it allowed us to decouple the code base from the configuration required to build out the infrastructure
 
 We have provided a usage example of this idea in which we have deployed a secure containerized NGINX Web Server instance. You will find this example under the directory "projects/proj12".
 You will find a companion document that captures the implementation details in the docs directory.
