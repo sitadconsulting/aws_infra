@@ -69,7 +69,7 @@ variable "glue_job_timeout" {
 variable "glue_job_worker_type" {
   description = "The type of predefined worker that is allocated when a job runs. Accepts a value of Standard, G.1X, or G.2X"
   type        = string
-  default     = "G.1X"
+  default     = null
 }
 variable "glue_job_command" {
   description = "The command of the job"
