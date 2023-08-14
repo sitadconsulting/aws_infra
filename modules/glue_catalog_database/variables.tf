@@ -19,8 +19,8 @@ variable "glue_catalog_database_name" {
 }
 variable "glue_catalog_database_parameters" {
   description = "List of key-value pairs that define parameters and properties of the database"
-  type        = list(string)
-  default     = []
+  type        = map(string)
+  default     = {}
 }
 variable "glue_catalog_database_tags" {
   description = "Key-value map of resource tags"
