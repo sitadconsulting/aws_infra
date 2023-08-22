@@ -1,16 +1,6 @@
-variable "name" {
-  description = "Name to be used on all the resources as identifier"
-  type        = string
-  default     = "sitadinfra"
-}
-variable "environment" {
-  description = "The name of the environment"
-  type        = string
-  default     = "DEV"
-}
 variable "security_group_rule_cidr_blocks" {
   description = "List of CIDR blocks"
-  type        = list
+  type        = list(string)
   default     = null
 }
 variable "security_group_rule_description" {
@@ -30,12 +20,10 @@ variable "security_group_rule_prefix_list_ids" {
 variable "security_group_rule_protocol" {
   description = "The PROTOCOL to set for this security group rule"
   type        = string
-  default     = ""
 }
 variable "security_group_rule_security_group_id" {
   description = "The SECURITY GROUP ID to associate with this security group rule"
   type        = string
-  default     = ""
 }
 variable "security_group_rule_source_security_group_id" {
   description = "Security group id to allow access to/from, depending on the type"
@@ -49,5 +37,4 @@ variable "security_group_rule_to_port" {
 variable "security_group_rule_type" {
   description = "The RULE TYPE to set for this security group rule"
   type        = string
-  default     = ""
 }
