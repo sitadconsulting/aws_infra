@@ -21,7 +21,6 @@ variable "vpc_security_group_egress_rule_from_port" {
 variable "vpc_security_group_egress_rule_ip_protocol" {
   description = "The IP protocol name or number. Use -1 to specify all protocols"
   type        = string
-  default     = ""
 }
 variable "vpc_security_group_egress_rule_prefix_list_id" {
   description = "The ID of the source prefix list"
