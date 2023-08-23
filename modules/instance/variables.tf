@@ -1,7 +1,7 @@
 variable "instance_ami" {
   description = "AMI to use for the instance. Required unless launch_template is specified and the Launch Template specifes an AMI. If an AMI is specified in the Launch Template, setting ami will override the AMI specified in the Launch Template"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_associate_public_ip_address" {
   description = "Whether to associate a public IP address with an instance in a VPC"
@@ -51,27 +51,27 @@ variable "instance_hibernation" {
 variable "instance_host_id" {
   description = "ID of a dedicated host that the instance will be assigned to. Use when an instance is to be launched on a specific dedicated host"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_host_resource_group_arn" {
   description = "ARN of the host resource group in which to launch the instances. If you specify an ARN, omit the tenancy parameter or set it to host"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_iam_instance_profile" {
   description = "IAM Instance Profile to launch the instance with. Specified as the name of the Instance Profile. Ensure your credentials have the correct permission to assign the instance profile according to the EC2 documentation, notably iam:PassRole"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_instance_initiated_shutdown_behavior" {
   description = "Shutdown behavior for the instance. Amazon defaults this to stop for EBS-backed instances and terminate for instance-store instances. Cannot be set on instance-store instances"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_instance_type" {
   description = "Instance type to use for the instance. Required unless launch_template is specified and the Launch Template specifies an instance type. If an instance type is specified in the Launch Template, setting instance_type will override the instance type specified in the Launch Template. Updates to this field will trigger a stop/start of the EC2 instance"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_ipv6_address_count" {
   description = "Number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet"
@@ -86,7 +86,7 @@ variable "instance_ipv6_addresses" {
 variable "instance_key_name" {
   description = "Key name of the Key Pair to use for the instance; which can be managed using the aws_key_pair resource"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_monitoring" {
   description = "If true, the launched EC2 instance will have detailed monitoring enabled"
@@ -95,18 +95,18 @@ variable "instance_monitoring" {
 }
 variable "instance_placement_group" {
   description = "Placement Group to start the instance in"
-  type        =
-  default     =
+  type        = string
+  default     = null
 }
 variable "instance_placement_partition_number" {
   description = "Number of the partition the instance is in. Valid only if the aws_placement_group resource's strategy argument is set to \"partition\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_private_ip" {
   description = "Private IP address to associate with the instance in a VPC"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_secondary_private_ips" {
   description = "List of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e., referenced in a network_interface block"
@@ -126,7 +126,7 @@ variable "instance_source_dest_check" {
 variable "instance_subnet_id" {
   description = "VPC Subnet ID to launch in"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_tags" {
   description = "Map of tags to assign to the resource"
@@ -136,17 +136,17 @@ variable "instance_tags" {
 variable "instance_tenancy" {
   description = "Tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the import-instance command. Valid values are default, dedicated, and host"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_user_data" {
   description = "User data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see user_data_base64 instead. Updates to this field will trigger a stop/start of the EC2 instance by default. If the user_data_replace_on_change is set then updates to this field will trigger a destroy and recreate"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_user_data_base64" {
   description = "Can be used instead of user_data to pass base64-encoded binary data directly. Use this instead of user_data whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption. Updates to this field will trigger a stop/start of the EC2 instance by default. If the user_data_replace_on_change is set then updates to this field will trigger a destroy and recreate"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_user_data_replace_on_change" {
   description = "When used in combination with user_data or user_data_base64 will trigger a destroy and recreate when set to true. Defaults to false if not set"
