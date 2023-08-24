@@ -1,6 +1,6 @@
 kinesis_stream_name                 = "gsw_stream-dev"
-athena_query_result_s3_bucket_name  = "aws-glue-xxxxxxxxxxxx-dev"
-s3_assets_bucket_name               = "aws-glue-assets-xxxxxxxxxxxx-us-east-1"
+athena_query_result_s3_bucket_name  = "aws-glue-<aws account id>-dev"
+s3_assets_bucket_name               = "aws-glue-assets-<aws account id>-us-east-1"
 glue_service_iam_role_name          = "AWSGlueServiceRole-sitadinfra-dev"
 glue_developer_iam_group_name       = "gluedeveloper"
 glue_service_notebook_iam_role_name = "AWSGlueServiceNotebookRole-sitadinfra-dev"
