@@ -209,7 +209,7 @@ variable "instance_ebs_block_device" {
 variable "instance_enclave_options" {
   description = "Enable Nitro Enclaves on launched instances"
   type        = list(object({
-    enabled = false
+    enabled = optional(bool)
   }))
   default     = []
 }
