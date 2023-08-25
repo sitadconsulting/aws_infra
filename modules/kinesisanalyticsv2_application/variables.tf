@@ -15,7 +15,7 @@ variable "kinesisanalyticsv2_application_name" {
 variable "kinesisanalyticsv2_application_runtime_environment" {
   description = "The runtime environment for the application. Valid values: SQL-1_0, FLINK-1_6, FLINK-1_8, FLINK-1_11, FLINK-1_13, FLINK-1_15"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kinesisanalyticsv2_application_service_execution_role" {
   description = "The ARN of the IAM role used by the application to access Kinesis data streams, Kinesis Data Firehose delivery streams, Amazon S3 objects, and other external resources"
