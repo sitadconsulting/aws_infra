@@ -25,7 +25,7 @@ variable "lambda_layer_version_layer_name" {
 variable "lambda_layer_version_license_info" {
   description = "License info for your Lambda Layer"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_layer_version_s3_bucket" {
   description = "S3 bucket location containing the function's deployment package. Conflicts with filename. This bucket must reside in the same AWS region where you are creating the Lambda function"
