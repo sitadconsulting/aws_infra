@@ -9,7 +9,7 @@ variable "dynamodb_table_item_item" {
 variable "dynamodb_table_item_range_key" {
   description = "Range key to use for lookups and identification of the item. Required if there is range key defined in the table"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "dynamodb_table_item_table_name" {
   description = "Name of the table to contain the item"
