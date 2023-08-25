@@ -11,7 +11,7 @@ variable "instance_associate_public_ip_address" {
 variable "instance_availability_zone" {
   description = "AZ to start the instance in"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "instance_cpu_core_count" {
   description = "Sets the number of CPU cores for an instance. This option is only supported on creation of instance type that support CPU Options CPU Cores and Threads Per CPU Core Per Instance Type - specifying this option for unsupported instance types will return an error from the EC2 API"
