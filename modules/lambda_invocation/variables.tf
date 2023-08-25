@@ -9,7 +9,7 @@ variable "lambda_invocation_input" {
 variable "lambda_invocation_lifecycle_scope" {
   description = "Lifecycle scope of the resource to manage. Valid values are CREATE_ONLY and CRUD. Defaults to CREATE_ONLY. CREATE_ONLY will invoke the function only on creation or replacement. CRUD will invoke the function on each lifecycle event, and augment the input JSON payload with additional lifecycle information"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_invocation_qualifier" {
   description = "Qualifier (i.e., version) of the lambda function. Defaults to $LATEST"
