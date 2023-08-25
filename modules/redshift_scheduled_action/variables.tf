@@ -11,7 +11,7 @@ variable "redshift_scheduled_action_enabled" {
 variable "redshift_scheduled_action_end_time" {
   description = "The end time in UTC when the schedule is active, in UTC RFC3339 format(for example, YYYY-MM-DDTHH:MM:SSZ)"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_scheduled_action_name" {
   description = "The scheduled action name"
@@ -28,7 +28,7 @@ variable "redshift_scheduled_action_schedule" {
 variable "redshift_scheduled_action_start_time" {
   description = "The start time in UTC when the schedule is active, in UTC RFC3339 format(for example, YYYY-MM-DDTHH:MM:SSZ)"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_scheduled_action_target_action" {
   description = "Target action"
