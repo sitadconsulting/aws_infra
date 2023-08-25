@@ -28,7 +28,7 @@ variable "kms_grant_retire_on_delete" {
 variable "kms_grant_retiring_principal" {
   description = "The principal that is given permission to retire the grant by using RetireGrant operation in ARN format"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kms_grant_constraints" {
   description = "A structure that you can use to allow certain operations in the grant only when the desired encryption context is present"
