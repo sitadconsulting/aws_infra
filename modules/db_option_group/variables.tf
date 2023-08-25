@@ -1,12 +1,12 @@
 variable "db_option_group_name" {
   description = "The name of the option group. If omitted, Terraform will assign a random, unique name. Must be lowercase, to match as it is stored in AWS"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "db_option_group_name_prefix" {
   description = "Creates a unique name beginning with the specified prefix. Conflicts with name. Must be lowercase, to match as it is stored in AWS"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "db_option_group_option_group_description" {
   description = "The description of the option group. Defaults to \"Managed by Terraform\""
