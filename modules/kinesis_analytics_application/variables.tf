@@ -1,7 +1,7 @@
 variable "kinesis_analytics_application_code" {
   description = "SQL Code to transform input data, and generate output"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kinesis_analytics_application_description" {
   description = "Description of the application"
@@ -28,7 +28,7 @@ variable "kinesis_analytics_application_cloudwatch_logging_options" {
     log_stream_arn = string
     role_arn       = string
   }))
-  default     =
+  default     = []
 }
 variable "kinesis_analytics_application_inputs" {
   description = "Application input configuration"
