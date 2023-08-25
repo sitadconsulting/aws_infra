@@ -1,7 +1,7 @@
 variable "quicksight_folder_aws_account_id" {
   description = "AWS account ID"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_folder_folder_id" {
   description = "Identifier for the folder"
@@ -10,7 +10,7 @@ variable "quicksight_folder_folder_id" {
 variable "quicksight_folder_folder_type" {
   description = "The type of folder. By default, it is SHARED. Valid values are: SHARED"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_folder_name" {
   description = "Display name for the folder"
@@ -19,7 +19,7 @@ variable "quicksight_folder_name" {
 variable "quicksight_folder_parent_folder_arn" {
   description = "ARN for the parent folder. If not set, creates a root-level folder"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_folder_tags" {
   description = "Key-value map of resource tags"
