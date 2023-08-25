@@ -11,7 +11,7 @@ variable "dynamodb_table_deletion_protection_enabled" {
 variable "dynamodb_table_hash_key" {
   description = "Attribute to use as the hash (partition) key. Must also be defined as an attribute"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "dynamodb_table_name" {
   description = "Name of the table. Must be unique within a region"
@@ -20,7 +20,7 @@ variable "dynamodb_table_name" {
 variable "dynamodb_table_range_key" {
   description = "Attribute to use as the range (sort) key. Must also be defined as an attribute"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "dynamodb_table_read_capacity" {
   description = "Number of read units for this table. If the billing_mode is PROVISIONED, this field is required"
@@ -30,12 +30,12 @@ variable "dynamodb_table_read_capacity" {
 variable "dynamodb_table_restore_date_time" {
   description = "Time of the point-in-time recovery point to restore"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "dynamodb_table_restore_source_name" {
   description = "Name of the table to restore. Must match the name of an existing table"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "dynamodb_table_restore_to_latest_time" {
   description = "If set, restores table to the most recent point-in-time recovery point"
@@ -50,7 +50,7 @@ variable "dynamodb_table_stream_enabled" {
 variable "dynamodb_table_stream_view_type" {
   description = "When an item in the table is modified, StreamViewType determines what information is written to the table's stream. Valid values are KEYS_ONLY, NEW_IMAGE, OLD_IMAGE, NEW_AND_OLD_IMAGES"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "dynamodb_table_table_class" {
   description = "Storage class of the table. Valid values are STANDARD and STANDARD_INFREQUENT_ACCESS. Default value is STANDARD"
