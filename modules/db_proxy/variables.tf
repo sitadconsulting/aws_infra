@@ -28,7 +28,7 @@ variable "db_proxy_role_arn" {
 variable "db_proxy_vpc_security_group_ids" {
   description = "One or more VPC security group IDs to associate with the new proxy"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "db_proxy_vpc_subnet_ids" {
   description = "One or more VPC subnet IDs to associate with the new proxy"
