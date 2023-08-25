@@ -20,7 +20,7 @@ variable "autoscaling_policy_estimated_instance_warmup" {
 variable "autoscaling_policy_metric_aggregation_type" {
   description = "Aggregation type for the policy's metrics. Valid values are \"Minimum\", \"Maximum\", and \"Average\". Without a value, AWS will treat the aggregation type as \"Average\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "autoscaling_policy_min_adjustment_magnitude" {
   description = "Minimum value to scale by when adjustment_type is set to PercentChangeInCapacity"
