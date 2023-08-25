@@ -6,7 +6,7 @@ variable "glue_ml_transform_description" {
 variable "glue_ml_transform_glue_version" {
   description = "The version of glue to use"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_ml_transform_max_capacity" {
   description = "The number of AWS Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from 2 to 100 DPUs; the default is 10. max_capacity is a mutually exclusive option with number_of_workers and worker_type"
@@ -44,7 +44,7 @@ variable "glue_ml_transform_timeout" {
 variable "glue_ml_transform_worker_type" {
   description = "The type of predefined worker that is allocated when an ML Transform runs. Accepts a value of Standard, G.1X, or G.2X. Required with number_of_workers"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_ml_transform_input_record_tables" {
   description = "A list of AWS Glue table definitions used by the transform"
