@@ -16,12 +16,12 @@ variable "redshift_snapshot_schedule_force_destroy" {
 variable "redshift_snapshot_schedule_identifier" {
   description = "The snapshot schedule identifier. If omitted, Terraform will assign a random, unique identifier"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_snapshot_schedule_identifier_prefix" {
   description = "Creates a unique identifier beginning with the specified prefix. Conflicts with identifier"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_snapshot_schedule_tags" {
   description = "A map of tags to assign to the resource"
