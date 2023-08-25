@@ -9,7 +9,7 @@ variable "redshift_endpoint_access_endpoint_name" {
 variable "redshift_endpoint_access_resource_owner" {
   description = "The Amazon Web Services account ID of the owner of the cluster. This is only required if the cluster is in another Amazon Web Services account"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_endpoint_access_subnet_group_name" {
   description = "The subnet group from which Amazon Redshift chooses the subnet to deploy the endpoint"
@@ -18,5 +18,5 @@ variable "redshift_endpoint_access_subnet_group_name" {
 variable "redshift_endpoint_access_vpc_security_group_ids" {
   description = "The security group that defines the ports, protocols, and sources for inbound traffic that you are authorizing into your endpoint"
   type        = string
-  default     = ""
+  default     = null
 }
