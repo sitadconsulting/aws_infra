@@ -1,7 +1,7 @@
 variable "lb_customer_owned_ipv4_pool" {
   description = "The ID of the customer owned ipv4 pool to use for this load balancer"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lb_desync_mitigation_mode" {
   description = "Determines how the load balancer handles requests that might pose a security risk to an application due to HTTP desync. Valid values are monitor, defensive, strictest"
@@ -66,7 +66,7 @@ variable "lb_load_balancer_type" {
 variable "lb_name" {
   description = "The name of the LB"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lb_security_groups" {
   description = "A list of security group IDs to assign to the LB. Only valid for Load Balancers of type application"
