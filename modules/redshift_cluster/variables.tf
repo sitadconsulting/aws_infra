@@ -11,7 +11,7 @@ variable "redshift_cluster_apply_immediately" {
 variable "redshift_cluster_aqua_configuration_status" {
   description = " The value represents how the cluster is configured to use AQUA (Advanced Query Accelerator) after the cluster is restored. Possible values are enabled, disabled, and auto. Requires Cluster reboot"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_automated_snapshot_retention_period" {
   description = "The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with create-cluster-snapshot. Default is 1"
@@ -21,7 +21,7 @@ variable "redshift_cluster_automated_snapshot_retention_period" {
 variable "redshift_cluster_availability_zone" {
   description = "The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_availability_zone_relocation_enabled" {
   description = "Whether he cluster can be relocated to another availabity zone, either automatically by AWS or when requested. Default is false. Available for use on clusters from the RA3 instance family"
@@ -35,7 +35,7 @@ variable "redshift_cluster_cluster_identifier" {
 variable "redshift_cluster_cluster_parameter_group_name" {
   description = "The name of the parameter group to be associated with this cluster"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_cluster_security_groups" {
   description = "A list of security groups to be associated with this cluster"
@@ -45,32 +45,32 @@ variable "redshift_cluster_cluster_security_groups" {
 variable "redshift_cluster_cluster_subnet_group_name" {
   description = "The name of a cluster subnet group to be associated with this cluster. If this parameter is not provided the resulting cluster will be deployed outside virtual private cloud (VPC)"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_cluster_type" {
   description = "The cluster type to use. Either single-node or multi-node"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_cluster_version" {
   description = "The version of the Amazon Redshift engine software that you want to deploy on the cluster. The version selected runs on all the nodes in the cluster"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_database_name" {
   description = "The name of the first database to be created when the cluster is created. If you do not provide a name, Amazon Redshift will create a default database called dev"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_default_iam_role_arn" {
   description = "ARN for the IAM role that was set as default for the cluster when the cluster was created"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_elastic_ip" {
   description = "The Elastic IP (EIP) address for the cluster"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_encrypted" {
   description = "Whether the data in the cluster is encrypted at rest"
@@ -85,7 +85,7 @@ variable "redshift_cluster_enhanced_vpc_routing" {
 variable "redshift_cluster_final_snapshot_identifier" {
   description = "The identifier of the final snapshot that is to be created immediately before deleting the cluster. If this parameter is provided, skip_final_snapshot must be false"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_iam_roles" {
   description = "A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time"
@@ -95,7 +95,7 @@ variable "redshift_cluster_iam_roles" {
 variable "redshift_cluster_kms_key_id" {
   description = "ARN for the KMS encryption key. When specifying kms_key_id, encrypted needs to be set to true"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_maintenance_track_name" {
   description = " The name of the maintenance track for the restored cluster. Default: current"
@@ -127,7 +127,7 @@ variable "redshift_cluster_number_of_nodes" {
 variable "redshift_cluster_owner_account" {
   description = "The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you do not own, optional if you own the snapshot"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_port" {
   description = "The port number on which the cluster accepts incoming connections. Valid values are between 1115 and 65535. The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections. Default port is 5439. "
@@ -137,7 +137,7 @@ variable "redshift_cluster_port" {
 variable "redshift_cluster_preferred_maintenance_window" {
   description = "The weekly time range (in UTC) during which automated cluster maintenance can occur. Format: ddd:hh24:mi-ddd:hh24:mi"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_publicly_accessible" {
   description = "Whether the cluster can be accessed from a public network. Default is true"
@@ -152,12 +152,12 @@ variable "redshift_cluster_skip_final_snapshot" {
 variable "redshift_cluster_snapshot_cluster_identifier" {
   description = "The name of the cluster the source snapshot was created from"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_snapshot_identifier" {
   description = "The name of the snapshot from which to create the new cluster"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_cluster_vpc_security_group_ids" {
   description = "A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster"
