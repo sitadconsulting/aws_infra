@@ -1,7 +1,7 @@
 variable "opensearch_domain_access_policies" {
   description = "IAM policy document specifying the access policies for the domain"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "opensearch_domain_advanced_options" {
   description = "Key-value string pairs to specify advanced configuration options. Note that the values for these configuration options must be strings (wrapped in quotes) or they may be wrong and cause a perpetual diff, causing Terraform to want to recreate your OpenSearch domain on every apply"
@@ -15,7 +15,7 @@ variable "opensearch_domain_domain_name" {
 variable "opensearch_domain_engine_version" {
   description = "Either Elasticsearch_X.Y or OpenSearch_X.Y to specify the engine version for the Amazon OpenSearch Service domain. For example, OpenSearch_1.0 or Elasticsearch_7.9. See Creating and managing Amazon OpenSearch Service domains. Defaults to the lastest version of OpenSearch"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "opensearch_domain_tags" {
   description = "Map of tags to assign to the resource"
