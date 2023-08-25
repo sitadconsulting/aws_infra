@@ -14,7 +14,7 @@ variable "lambda_function_url_invoke_mode" {
 variable "lambda_function_url_qualifier" {
   description = "The alias name or \"$LATEST\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_function_url_cors" {
   description = "The cross-origin resource sharing (CORS) settings for the function URL"
