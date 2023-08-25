@@ -22,7 +22,7 @@ variable "redshift_usage_limit_limit_type" {
 variable "redshift_usage_limit_period" {
   description = "The time period that the amount applies to. A weekly period begins on Sunday. The default is monthly. Valid values are daily, weekly, and monthly"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_usage_limit_tags" {
   description = "A map of tags to assign to the resource"
