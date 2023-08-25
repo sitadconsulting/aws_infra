@@ -11,7 +11,7 @@ variable "kinesis_stream_enforce_consumer_deletion" {
 variable "kinesis_stream_kms_key_id" {
   description = "The GUID for the customer-managed KMS key to use for encryption. You can also use a Kinesis-owned master key by specifying the alias alias/aws/kinesis"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kinesis_stream_name" {
   description = "A name to identify the stream. This is unique to the AWS account and region the Stream is created in"
