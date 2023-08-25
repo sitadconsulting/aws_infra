@@ -4,9 +4,9 @@ variable "kms_key_bypass_policy_lockout_safety_check" {
   default     = false
 }
 variable "kms_key_custom_key_store_id" {
-  description = " ID of the KMS Custom Key Store where the key will be stored instead of KMS (eg CloudHSM)"
+  description = "ID of the KMS Custom Key Store where the key will be stored instead of KMS (eg CloudHSM)"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kms_key_customer_master_key_spec" {
   description = "Specifies whether the key contains a symmetric key or an asymmetric key pair and the encryption algorithms or signing algorithms that the key supports. Valid values: SYMMETRIC_DEFAULT, RSA_2048, RSA_3072, RSA_4096, HMAC_256, ECC_NIST_P256, ECC_NIST_P384, ECC_NIST_P521, or ECC_SECG_P256K1. Defaults to SYMMETRIC_DEFAULT"
@@ -16,7 +16,7 @@ variable "kms_key_customer_master_key_spec" {
 variable "kms_key_deletion_window_in_days" {
   description = "The waiting period, specified in number of days. After the waiting period ends, AWS KMS deletes the KMS key. If you specify a value, it must be between 7 and 30, inclusive. If you do not specify a value, it defaults to 30"
   type        = number
-  default     = 30
+  default     = 7
 }
 variable "kms_key_description" {
   description = "The description of the key as viewed in AWS console"
@@ -39,14 +39,14 @@ variable "kms_key_key_usage" {
   default     = "ENCRYPT_DECRYPT"
 }
 variable "kms_key_multi_region" {
-  description = "ndicates whether the KMS key is a multi-Region (true) or regional (false) key. Defaults to false"
+  description = "Indicates whether the KMS key is a multi-Region (true) or regional (false) key. Defaults to false"
   type        = bool
   default     = false
 }
 variable "kms_key_policy" {
   description = "A valid policy JSON document. Although this is a key policy, not an IAM policy, an aws_iam_policy_document, in the form that designates a principal, can be used"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kms_key_tags" {
   description = "A map of tags to assign to the object"
