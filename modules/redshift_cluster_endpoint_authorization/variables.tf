@@ -14,5 +14,5 @@ variable "redshift_endpoint_authorization_force_delete" {
 variable "redshift_endpoint_authorization_vpc_ids" {
   description = "The virtual private cloud (VPC) identifiers to grant access to. If none are specified all VPCs in shared account are allowed"
   type        = string
-  default     = ""
+  default     = null
 }
