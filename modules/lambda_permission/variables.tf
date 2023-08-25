@@ -5,7 +5,7 @@ variable "lambda_permission_action" {
 variable "lambda_permission_event_source_token" {
   description = "The Event Source Token to validate. Used with Alexa Skills"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_permission_function_name" {
   description = "Name of the Lambda function whose resource policy you are updating"
@@ -24,7 +24,7 @@ variable "lambda_permission_principal" {
 variable "lambda_permission_qualifier" {
   description = "Query parameter to specify function version or alias name. The permission will then apply to the specific qualified ARN e.g., arn:aws:lambda:aws-region:acct-id:function:function-name:2"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_permission_source_account" {
   description = "This parameter is used when allowing cross-account access, or for S3 and SES. The AWS account ID (without a hyphen) of the source owner"
@@ -49,5 +49,5 @@ variable "lambda_permission_statement_id_prefix" {
 variable "lambda_permission_principal_org_id" {
   description = "The identifier for your organization in AWS Organizations. Use this to grant permissions to all the AWS accounts under this organization"
   type        = string
-  default     = ""
+  default     = null
 }
