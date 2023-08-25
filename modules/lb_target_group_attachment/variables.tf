@@ -14,5 +14,5 @@ variable "lb_target_group_attachment_port" {
 variable "lb_target_group_attachment_availability_zone" {
   description = "The Availability Zone where the IP address of the target is to be registered. If the private ip address is outside of the VPC scope, this value must be set to 'all'"
   type        = string
-  default     = ""
+  default     = null
 }
