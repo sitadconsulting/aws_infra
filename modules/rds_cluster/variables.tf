@@ -31,12 +31,12 @@ variable "rds_cluster_backup_retention_period" {
 variable "rds_cluster_cluster_identifier_prefix" {
   description = "Creates a unique cluster identifier beginning with the specified prefix. Conflicts with cluster_identifier"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_cluster_identifier" {
   description = "The cluster identifier. If omitted, Terraform will assign a random, unique identifier"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_copy_tags_to_snapshot" {
   description = "Copy all Cluster tags to snapshots. Default is false"
@@ -46,22 +46,22 @@ variable "rds_cluster_copy_tags_to_snapshot" {
 variable "rds_cluster_database_name" {
   description = "Name for an automatically created database on cluster creation"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_db_cluster_parameter_group_name" {
   description = "A cluster parameter group to associate with the cluster"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_db_instance_parameter_group_name" {
   description = "Instance parameter group to associate with all instances of the DB cluster. The db_instance_parameter_group_name parameter is only valid in combination with the allow_major_version_upgrade parameter"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_db_subnet_group_name" {
   description = "A DB subnet group to associate with this DB instance. NOTE: This must match the db_subnet_group_name specified on every aws_rds_cluster_instance in the cluster"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_delete_protection" {
   description = "If the DB instance should have deletion protection enabled. The database can't be deleted when this value is set to true. The default is false"
@@ -81,7 +81,7 @@ variable "rds_cluster_enabled_cloudwatch_logs_exports" {
 variable "rds_cluster_engine" {
   description = "The name of the database engine to be used for this DB cluster. Defaults to aurora. Valid Values: aurora, aurora-mysql, aurora-postgresql, mysql, postgres. (Note that mysql and postgres are Multi-AZ RDS clusters)"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_engine_mode" {
   description = "The database engine mode. Valid values: global (only valid for Aurora MySQL 1.21 and earlier), multimaster, parallelquery, provisioned, serverless. Defaults to: provisioned "
@@ -91,22 +91,22 @@ variable "rds_cluster_engine_mode" {
 variable "rds_cluster_engine_version" {
   description = "The database engine version. Updating this argument results in an outage"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_db_cluster_instance_class" {
   description = "The compute and memory capacity of each DB instance in the Multi-AZ DB cluster, for example db.m6g.xlarge"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_final_snapshot_identifier" {
   description = "The name of your final DB snapshot when this DB cluster is deleted. If omitted, no final snapshot will be made"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_global_cluster_identifier" {
   description = "The global cluster identifier specified on aws_rds_global_cluster"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_enable_global_write_forwarding" {
   description = "Whether cluster should forward writes to an associated global cluster. Applied to secondary clusters to enable them to forward writes to an aws_rds_global_cluster's primary cluster"
@@ -126,7 +126,7 @@ variable "rds_cluster_iam_roles" {
 variable "rds_cluster_kms_key_id" {
   description = "ARN for the KMS encryption key. When specifying kms_key_id, storage_encrypted needs to be set to true"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_manage_master_user_password" {
   description = "Set to true to allow RDS to manage the master user password in Secrets Manager. Cannot be set if master_password is provided"
@@ -136,17 +136,17 @@ variable "rds_cluster_manage_master_user_password" {
 variable "rds_cluster_master_user_secret_kms_key_id" {
   description = "The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_master_password" {
   description = "Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file - Cannot be set if manage_master_user_password is set to true"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_master_username" {
   description = "Username for the master DB user - This argument does not support in-place updates and cannot be changed during a restore from snapshot"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_port" {
   description = "The port on which the DB accepts connections"
@@ -156,17 +156,17 @@ variable "rds_cluster_port" {
 variable "rds_cluster_preferred_backup_window" {
   description = "The daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter.Time in UTC. Default: A 30-minute window selected at random from an 8-hour block of time per regionE.g., 04:00-09:00"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_preferred_maintenance_window" {
   description = "The weekly time range during which system maintenance can occur, in (UTC) e.g., wed:04:00-wed:04:30"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_replication_source_identifier" {
   description = "ARN of a source DB cluster or DB instance if this DB cluster is to be created as a Read Replica"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_network_type" {
   description = "The network type of the cluster. Valid values: IPV4, DUAL"
@@ -181,17 +181,17 @@ variable "rds_cluster_skip_final_snapshot" {
 variable "rds_cluster_snapshot_identifier" {
   description = "Specifies whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a DB cluster snapshot, or the ARN when specifying a DB snapshot"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_source_region" {
   description = "The source region for an encrypted replica DB cluster"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_storage_type" {
   description = "Specifies the storage type to be associated with the DB cluster. (This setting is required to create a Multi-AZ DB cluster). Valid values: io1, Default: io1"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_iops" {
   description = "The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for each DB instance in the Multi-AZ DB cluster"
