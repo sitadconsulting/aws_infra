@@ -56,7 +56,7 @@ variable "autoscaling_group_health_check_grace_period" {
 variable "autoscaling_group_health_check_type" {
   description = "\"EC2\" or \"ELB\". Controls how health checking is done"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "autoscaling_group_launch_configuration" {
   description = "Name of the launch configuration to use"
@@ -80,7 +80,7 @@ variable "autoscaling_group_max_size" {
 variable "autoscaling_group_metrics_granularity" {
   description = "Granularity to associate with the metrics to collect. The only valid value is 1Minute. Default is 1Minute"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "autoscaling_group_min_elb_capacity" {
   description = "Setting this causes Terraform to wait for this number of instances from this Auto Scaling Group to show up healthy in the ELB only on creation. Updates will not wait on ELB instance number changes"
@@ -104,7 +104,7 @@ variable "autoscaling_group_name_prefix" {
 variable "autoscaling_group_placement_group" {
   description = "Name of the placement group into which you'll launch your instances, if any"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "autoscaling_group_protect_from_scale_in" {
   description = "Whether newly launched instances are automatically protected from termination by Amazon EC2 Auto Scaling when scaling in"
@@ -114,7 +114,7 @@ variable "autoscaling_group_protect_from_scale_in" {
 variable "autoscaling_group_service_linked_role_arn" {
   description = "ARN of the service-linked role that the ASG will use to call other AWS services"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "autoscaling_group_suspended_processes" {
   description = "List of processes to suspend for the Auto Scaling Group. The allowed values are Launch, Terminate, HealthCheck, ReplaceUnhealthy, AZRebalance, AlarmNotification, ScheduledActions, AddToLoadBalancer, InstanceRefresh. Note that if you suspend either the Launch or Terminate process types, it can prevent your Auto Scaling Group from functioning properly"
