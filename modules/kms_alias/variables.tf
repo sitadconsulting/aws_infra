@@ -5,7 +5,7 @@ variable "kms_alias_name" {
 variable "kms_alias_name_prefix" {
   description = "Creates an unique alias beginning with the specified prefix"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kms_alias_target_key_id" {
   description = "Identifier for the key for which the alias is for, can be either an ARN or key_id"
