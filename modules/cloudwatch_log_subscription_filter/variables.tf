@@ -5,7 +5,7 @@ variable "cloudwatch_log_subscription_filter_destination_arn" {
 variable "cloudwatch_log_subscription_filter_distribution" {
   description = "The method used to distribute log data to the destination. By default log data is grouped by log stream, but the grouping can be set to random for a more even distribution. This property is only applicable when the destination is an Amazon Kinesis stream. Valid values are \"Random\" and \"ByLogStream\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "cloudwatch_log_subscription_filter_filter_pattern" {
   description = "A valid CloudWatch Logs filter pattern for subscribing to a filtered stream of log events. Use empty string \"\" to match everything"
@@ -22,5 +22,5 @@ variable "cloudwatch_log_subscription_filter_name" {
 variable "cloudwatch_log_subscription_filter_role_arn" {
   description = "The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to deliver ingested log events to the destination. If you use Lambda as a destination, you should skip this argument and use aws_lambda_permission resource for granting access from CloudWatch logs to the destination Lambda function"
   type        = string
-  default     = ""
+  default     = null
 }
