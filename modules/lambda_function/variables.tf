@@ -25,7 +25,7 @@ variable "lambda_function_function_name" {
 variable "lambda_function_handler" {
   description = "Function entrypoint in your code"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_function_image_uri" {
   description = "ECR image URI containing the function's deployment package. Exactly one of filename, image_uri, or s3_bucket must be specified"
@@ -35,7 +35,7 @@ variable "lambda_function_image_uri" {
 variable "lambda_function_kms_key_arn" {
   description = "ARN of the AWS Key Management Service (KMS) key that is used to encrypt environment variables. If this configuration is not provided when environment variables are in use, AWS Lambda uses a default service key. If this configuration is provided when environment variables are not in use, the AWS Lambda API does not save this configuration and Terraform will show a perpetual difference of adding the key. To fix the perpetual difference, remove this configuration"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_function_layers" {
   description = "List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function"
@@ -69,7 +69,7 @@ variable "lambda_function_role" {
 variable "lambda_function_runtime" {
   description = "Identifier of the function's runtime"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_function_s3_bucket" {
   description = "S3 bucket location containing the function's deployment package. This bucket must reside in the same AWS region where you are creating the Lambda function. Exactly one of filename, image_uri, or s3_bucket must be specified. When s3_bucket is set, s3_key is required"
