@@ -15,7 +15,7 @@ variable "glue_trigger_name" {
 variable "glue_trigger_schedule" {
   description = "A cron expression used to specify the schedule"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_trigger_start_on_creation" {
   description = "Set to true to start SCHEDULED and CONDITIONAL triggers when created. True is not supported for ON_DEMAND triggers"
@@ -34,7 +34,7 @@ variable "glue_trigger_type" {
 variable "glue_trigger_workflow_name" {
   description = "A workflow to which the trigger should be associated to. Every workflow graph (DAG) needs a starting trigger (ON_DEMAND or SCHEDULED type) and can contain multiple additional CONDITIONAL triggers"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_trigger_actions" {
   description = "List of actions initiated by this trigger when it fires"
