@@ -26,12 +26,12 @@ variable "lb_target_group_load_balancing_cross_zone_enabled" {
 variable "lb_target_group_name" {
   description = "Name of the target group"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lb_target_group_port" {
   description = "Port on which targets receive traffic, unless overridden when registering a specific target. Required when target_type is instance, ip or alb. Does not apply when target_type is lambda"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lb_target_group_preserve_client_ip" {
   description = "Whether client IP preservation is enabled"
@@ -41,12 +41,12 @@ variable "lb_target_group_preserve_client_ip" {
 variable "lb_target_group_protocol_version" {
   description = "Only applicable when protocol is HTTP or HTTPS"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lb_target_group_protocol" {
   description = "Protocol to use for routing traffic to the targets. Should be one of GENEVE, HTTP, HTTPS, TCP, TCP_UDP, TLS, or UDP. Required when target_type is instance, ip or alb. Does not apply when target_type is lambda"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lb_target_group_proxy_protocol_v2" {
   description = "Whether to enable support for proxy protocol v2 on Network Load Balancers"
@@ -76,7 +76,7 @@ variable "lb_target_group_ip_address_type" {
 variable "lb_target_group_vpc_id" {
   description = "Identifier of the VPC in which to create the target group. Required when target_type is instance, ip or alb. Does not apply when target_type is lambda"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lb_target_group_health_check" {
   description = "Health Check configuration"
