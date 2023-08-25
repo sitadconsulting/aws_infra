@@ -5,7 +5,7 @@ variable "msk_cluster_cluster_name" {
 variable "msk_cluster_enhanced_monitoring" {
   description = "Specify the desired enhanced MSK CloudWatch monitoring level"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "msk_cluster_kafka_version" {
   description = "Specify the desired Kafka software version"
