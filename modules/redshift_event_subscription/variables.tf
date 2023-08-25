@@ -29,7 +29,7 @@ variable "redshift_event_subscription_source_ids" {
 variable "redshift_event_subscription_source_type" {
   description = "The type of source that will be generating the events. Valid options are cluster, cluster-parameter-group, cluster-security-group, cluster-snapshot, or scheduled-action. If not set, all sources will be subscribed to"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_event_subscription_tags" {
   description = "A map of tags to assign to the resource"
