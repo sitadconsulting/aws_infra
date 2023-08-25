@@ -15,7 +15,7 @@ variable "acm_certificate_validation_method" {
 variable "acm_certificate_key_algorithm" {
   description = "Specifies the algorithm of the public and private key pair that your Amazon issued certificate uses to encrypt data"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "acm_certificate_private_key" {
   description = "Certificate's PEM-formatted private key" 
