@@ -118,18 +118,21 @@ resource "aws_msk_cluster" "msk_cluster" {
     for_each = var.msk_cluster_open_monitoring
       content {
         dynamic "prometheus" {
-          content {
-            dynamic "jmx_exporter" {
-              content {
-                enabled_in_broker = jmx_exporter.value["enabled_in_broker"]
-              }
-            }
-            dynamic "node_exporter" {
-              content {
-                enabled_in_broker = node_exporter.value["enabled_in_broker"]
-              }
-            }
-          }
+           for_each = open_monitoring.value.prometheus
+             content {
+               dynamic "jmx_exporter" {
+                 for_each = prometheus.value.jmx_exporter
+                   content {
+                     enabled_in_broker = jmx_exporter.value["enabled_in_broker"]
+                   }
+               }
+               dynamic "node_exporter" {
+                 for_each = prometheus.value.node_exporter
+                   content {
+                     enabled_in_broker = node_exporter.value["enabled_in_broker"]
+                   }
+               }
+             }
         }
       }
   }
