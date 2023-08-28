@@ -34,9 +34,9 @@ output "msk_cluster_current_version" {
   description = "Current version of the MSK Cluster used for updates, e.g., K13V1IB3VIYZZH"
   value       = element(concat(aws_msk_cluster.msk_cluster.*.current_version, [""]), 0)
 }
-output "msk_cluster_encryption_info.0.encryption_at_rest_kms_key_arn" {
+output "msk_cluster_encryption_info_encryption_at_rest_kms_key_arn" {
   description = "The ARN of the KMS key used for encryption at rest of the broker data volumes"
-  value       = element(concat(aws_msk_cluster.msk_cluster.*.encryption_info.0.encryption_at_rest_kms_key_arn, [""]), 0)
+  value       = element(concat(aws_msk_cluster.msk_cluster.encryption_info.*.encryption_at_rest_kms_key_arn, [""]), 0)
 }
 output "msk_cluster_storage_mode" {
   description = "Controls storage mode for supported storage tiers. Valid values are: LOCAL or TIERED"
