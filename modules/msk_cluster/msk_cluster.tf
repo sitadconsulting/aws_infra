@@ -72,7 +72,7 @@ resource "aws_msk_cluster" "msk_cluster" {
   dynamic "encryption_info" {
     for_each = var.msk_cluster_encryption_info 
       content {
-        encryption_at_rest_kms_key_arn = encryption.value["encryption_at_rest_kms_key_arn"]
+        encryption_at_rest_kms_key_arn = encryption_info.value["encryption_at_rest_kms_key_arn"]
         dynamic "encryption_in_transit" {
           for_each = encryption_info.value.encryption_in_transit
             content {
