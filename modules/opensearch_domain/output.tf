@@ -18,11 +18,11 @@ output "opensearch_domain_dashboard_endpoint" {
   description = "Domain-specific endpoint for Dashboard without https scheme"
   value       = element(concat(aws_opensearch_domain.opensearch_domain.*.dashboard_endpoint, [""]), 0)
 }
-output "opensearch_domain_vpc_options.0.availability_zones" {
+output "opensearch_domain_vpc_options_availability_zones" {
   description = "If the domain was created inside a VPC, the names of the availability zones the configured subnet_ids were created inside"
-  value       = element(concat(aws_opensearch_domain.opensearch_domain.*.vpc_options.0.availability_zones, [""]), 0)
+  value       = element(concat(aws_opensearch_domain.opensearch_domain.vpc_options.*.availability_zones, [""]), 0)
 }
-output "opensearch_domain_vpc_options.0.vpc_id" {
+output "opensearch_domain_vpc_options_vpc_id" {
   description = "If the domain was created inside a VPC, the ID of the VPC"
-  value       = element(concat(aws_opensearch_domain.opensearch_domain.*.vpc_options.0.vpc_id, [""]), 0)
+  value       = element(concat(aws_opensearch_domain.opensearch_domain.vpc_options.*.vpc_id, [""]), 0)
 }
