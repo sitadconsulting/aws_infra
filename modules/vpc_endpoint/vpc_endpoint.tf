@@ -3,7 +3,7 @@ resource "aws_vpc_endpoint" "vpc_endpoint" {
   ip_address_type     = var.vpc_endpoint_ip_address_type
   policy              = var.vpc_endpoint_policy
   private_dns_enabled = var.vpc_endpoint_private_dns_enabled
-  routa_table_ids     = var.vpc_endpoint_route_table_ids
+  route_table_ids     = var.vpc_endpoint_route_table_ids
   security_group_ids  = var.vpc_endpoint_security_group_id
   service_name        = var.vpc_endpoint_service_name
   subnet_ids          = var.vpc_endpoint_subnet_ids
