@@ -14,9 +14,9 @@ output "vpc_endpoint_dns_entry" {
   description = "The DNS entries for the VPC Endpoint. Applicable for endpoints of type Interface"
   value       = element(concat(aws_vpc_endpoint.vpc_endpoint.*.dns_entry, [""]), 0)
 }
-output "vpc_endpoint_network_interface_id" {
+output "vpc_endpoint_network_interface_ids" {
   description = "One or more network interfaces for the VPC Endpoint. Applicable for endpoints of type Interface"
-  value       = element(concat(aws_vpc_endpoint.vpc_endpoint.*.network_interface_id, [""]), 0)
+  value       = element(concat(aws_vpc_endpoint.vpc_endpoint.*.network_interface_ids, [""]), 0)
 }
 output "vpc_endpoint_owner_id" {
   description = "The ID of the AWS account that owns the VPC endpoint"
