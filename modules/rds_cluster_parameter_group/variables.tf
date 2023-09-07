@@ -15,7 +15,7 @@ variable "rds_cluster_parameter_group_name" {
 variable "rds_cluster_parameter_group_name_prefix" {
   description = "Creates a unique name beginning with the specified prefix. Conflicts with name"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_cluster_parameter_group_tags" {
   description = "A map of tags to assign to the resource"
