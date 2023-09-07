@@ -3,7 +3,6 @@ resource "aws_db_parameter_group" "db_parameter_group" {
   name_prefix = var.db_parameter_group_name_prefix
   family      = var.db_parameter_group_family
   description = var.db_parameter_group_description
-  parameter   = var.db_parameter_group_paramter
   tags        = var.db_parameter_group_tags
 
   dynamic "parameter" {
