@@ -22,3 +22,12 @@ variable "rds_cluster_parameter_group_tags" {
   type        = map(string)
   default     = {}
 }
+variable "rds_cluster_parameter_group_parameter" {
+  description = " A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via aws rds describe-db-parameters after initial creation of the group"
+  type        = list(object({
+   apply_method = optional(string)
+   name         = string
+   value        = string
+  }))
+  default     =  []
+}
