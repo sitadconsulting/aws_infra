@@ -10,10 +10,6 @@ output "rds_cluster_cluster_identifier" {
   description = "RDS Cluster Identifier"
   value       = element(concat(aws_rds_cluster.rds_cluster.*.cluster_identifier, [""]), 0)
 }
-output "rds_cluster_arn" {
-  description = "ARN of cluster"
-  value       = element(concat(aws_rds_cluster.rds_cluster.*.arn, [""]), 0)
-}
 output "rds_cluster_cluster_resource_id" {
   description = "RDS Cluster Resource ID"
   value       = element(concat(aws_rds_cluster.rds_cluster.*.cluster_resource_id, [""]), 0)
