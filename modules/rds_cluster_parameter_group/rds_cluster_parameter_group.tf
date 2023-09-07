@@ -8,8 +8,9 @@ resource "aws_rds_cluster_parameter_group" "rds_cluster_parameter_group" {
   dynamic "parameter" {
     for_each = var.rds_cluster_parameter_group_parameter
       content {
-        name  = parameter.value["name"]
-        value = parameter.value["value"]
+        apply_method = parameter.value["apply_method"]
+        name         = parameter.value["name"]
+        value        = parameter.value["value"]
       }
   }
 }
