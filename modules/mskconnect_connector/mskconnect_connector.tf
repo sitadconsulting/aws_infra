@@ -12,9 +12,9 @@ resource "aws_mskconnect_connector" "mskconnect_connector" {
         dynamic "autoscaling" {
           for_each = capacity.value.autoscaling
             content {
-              max_worker_count
-              mcu_count
-              min_worker_count
+              max_worker_count = autoscaling.value["max_worker_count"]
+              mcu_count        = autoscaling.value["mcu_count"]
+              min_worker_count = autoscaling.value["min_worker_count"]
               dynamic "scale_in_policy" {
                 for_each = autoscaling.value.scale_in_policy
                   content {
