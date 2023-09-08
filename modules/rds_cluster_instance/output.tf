@@ -30,10 +30,6 @@ output "rds_cluster_instance_engine" {
   description = "Database engine"
   value       = element(concat(aws_rds_cluster_instance.rds_cluster_instance.*.engine, [""]), 0)
 }
-output "rds_cluster_instance_arn" {
-  description = "ARN of cluster instance"
-  value       = element(concat(aws_rds_cluster_instance.rds_cluster_instance.*.arn, [""]), 0)
-}
 output "rds_cluster_instance_engine_version_actual" {
   description = "Database engine version"
   value       = element(concat(aws_rds_cluster_instance.rds_cluster_instance.*.engine_version_actual, [""]), 0)
