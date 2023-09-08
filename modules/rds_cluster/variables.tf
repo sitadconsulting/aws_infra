@@ -63,11 +63,6 @@ variable "rds_cluster_db_subnet_group_name" {
   type        = string
   default     = null
 }
-variable "rds_cluster_delete_protection" {
-  description = "If the DB instance should have deletion protection enabled. The database can't be deleted when this value is set to true. The default is false"
-  type        = bool
-  default     = false
-}
 variable "rds_cluster_enable_http_endpoint" {
   description = " Enable HTTP endpoint (data API). Only valid when engine_mode is set to serverless"
   type        = bool
