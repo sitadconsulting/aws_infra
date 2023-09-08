@@ -54,11 +54,11 @@ output "rds_cluster_instance_dbi_resource_id" {
   description = "Region-unique, immutable identifier for the DB instance."
   value       = element(concat(aws_rds_cluster_instance.rds_cluster_instance.*.dbi_resource_id, [""]), 0)
 }
-output "rds_cluster_instance_performance_insight_enabled" {
+output "rds_cluster_instance_performance_insights_enabled" {
   description = "Specifies whether Performance Insights is enabled or not"
-  value       = element(concat(aws_rds_cluster_instance.rds_cluster_instance.*.performance_insight_enabled, [""]), 0)
+  value       = element(concat(aws_rds_cluster_instance.rds_cluster_instance.*.performance_insights_enabled, [""]), 0)
 }
-output "rds_cluster_instance_performance_insight_kms_key_id" {
+output "rds_cluster_instance_performance_insights_kms_key_id" {
   description = "ARN of the KMS encryption key used by Performance Insights"
-  value       = element(concat(aws_rds_cluster_instance.rds_cluster_instance.*.performance_insight_kms_key_id, [""]), 0)
+  value       = element(concat(aws_rds_cluster_instance.rds_cluster_instance.*.performance_insights_kms_key_id, [""]), 0)
 }
