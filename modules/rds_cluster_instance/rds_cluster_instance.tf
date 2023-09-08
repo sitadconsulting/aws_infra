@@ -19,7 +19,7 @@ resource "aws_rds_cluster_instance" "rds_cluster_instance" {
   performance_insights_retention_period = var.rds_cluster_instance_performance_insights_retention_period
   preferred_backup_window               = var.rds_cluster_instance_preferred_backup_window
   preferred_maintenance_window          = var.rds_cluster_instance_preferred_maintenance_window
-  publicly_accessible                   = var.rds_cluster_instance_publicly_accessible_
+  publicly_accessible                   = var.rds_cluster_instance_publicly_accessible
   promotion_tier                        = var.rds_cluster_instance_promotion_tier
   tags                                  = var.rds_cluster_instance_tags 
 }
