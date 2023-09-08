@@ -171,10 +171,10 @@ resource "aws_kinesisanalyticsv2_application" "kinesisanalyticsv2_application" {
                           resource_arn = kinesis_firehose_input.value["resource_arn"]
                         }
                     }
-                    dynamic "kinesis_stream_input" {
-                      for_each = input.value.kinesis_stream_input
+                    dynamic "kinesis_streams_input" {
+                      for_each = input.value.kinesis_streams_input
                         content {
-                          resource_arn = kinesis_stream_input.value["resource_arn"]
+                          resource_arn = kinesis_streams_input.value["resource_arn"]
                         }
                     }
                   }
@@ -195,10 +195,10 @@ resource "aws_kinesisanalyticsv2_application" "kinesisanalyticsv2_application" {
                           resource_arn = kinesis_firehose.value["resource_arn"]
                         }
                     }
-                    dynamic "kinesis_stream_output" {
-                      for_each = output.value.kinesis_stream_output
+                    dynamic "kinesis_streams_output" {
+                      for_each = output.value.kinesis_streams_output
                         content {
-                          resource_arn = kinesis_stream_output.value["resource_arn"]
+                          resource_arn = kinesis_streams_output.value["resource_arn"]
                         }
                     }
                     dynamic "lambda_output" {
