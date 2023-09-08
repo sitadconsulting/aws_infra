@@ -12,7 +12,6 @@ resource "aws_rds_cluster" "rds_cluster" {
   db_cluster_parameter_group_name     = var.rds_cluster_db_cluster_parameter_group_name
   db_instance_parameter_group_name    = var.rds_cluster_db_instance_parameter_group_name
   db_subnet_group_name                = var.rds_cluster_db_subnet_group_name
-  delete_protection                   = var.rds_cluster_delete_protection
   enable_http_endpoint                = var.rds_cluster_enable_http_endpoint
   enabled_cloudwatch_logs_exports     = var.rds_cluster_enabled_cloudwatch_logs_exports
   engine                              = var.rds_cluster_engine
