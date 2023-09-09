@@ -61,17 +61,17 @@ variable "kinesisanalyticsv2_application_application_configuration" {
         configuration_type            = string
         min_pause_between_checkpoints = optional(number) 
       })), [])
-    })), [])
-    monitoring_configuration = optional(list(object({
-      configuration_type = string
-      log_level          = optional(string)
-      metrics_level      = optional(string)
-    })), [])
-    parallelism_configuration = optional(list(object({
-      auto_scaling_enabled = bool
-      configuration_type   = string
-      parallelism          = optional(number)
-      parallelism_per_kpu  = optional(number)
+      monitoring_configuration = optional(list(object({
+        configuration_type = string
+        log_level          = optional(string)
+        metrics_level      = optional(string)
+      })), [])
+      parallelism_configuration = optional(list(object({
+        auto_scaling_enabled = bool
+        configuration_type   = string
+        parallelism          = optional(number)
+        parallelism_per_kpu  = optional(number)
+      })), [])
     })), [])
     run_configuration = optional(list(object({
       application_restore_configuration = optional(list(object({
