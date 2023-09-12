@@ -84,7 +84,7 @@ variable "rds_cluster_instance_performance_insights_kms_key_id" {
 variable "rds_cluster_instance_performance_insights_retention_period" {
   description = "Amount of time in days to retain Performance Insights data. Valid values are 7, 731 (2 years) or a multiple of 31. When specifying performance_insights_retention_period, performance_insights_enabled needs to be set to true. Defaults to '7 "
   type        = number
-  default     = 7
+  default     = null
 }
 variable "rds_cluster_instance_preferred_backup_window" {
   description = "The daily time range during which automated backups are created if automated backups are enabled. Eg: \"04:00-09:00\". NOTE: If preferred_backup_window is set at the cluster level, this argument must be omitted. "
