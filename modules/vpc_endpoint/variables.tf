@@ -6,7 +6,7 @@ variable "vpc_endpoint_auto_accept" {
 variable "vpc_endpoint_ip_address_type" {
   description = "The IP address type for the endpoint. Valid values are ipv4, dualstack, and ipv6"
   type        = string
-  default     = "ipv4"
+  default     = null
 }
 variable "vpc_endpoint_policy" {
   description = "A policy to attach to the endpoint that controls access to the service. This is a JSON formatted string. Defaults to full access"
