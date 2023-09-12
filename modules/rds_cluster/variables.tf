@@ -126,7 +126,7 @@ variable "rds_cluster_kms_key_id" {
 variable "rds_cluster_manage_master_user_password" {
   description = "Set to true to allow RDS to manage the master user password in Secrets Manager. Cannot be set if master_password is provided"
   type        = bool
-  default     = false
+  default     = null
 }
 variable "rds_cluster_master_user_secret_kms_key_id" {
   description = "The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key"
