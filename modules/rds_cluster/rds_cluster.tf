@@ -79,6 +79,9 @@ resource "aws_rds_cluster" "rds_cluster" {
       }
   }
   lifecycle {
-    ignore_changes = [engine_version]
+    ignore_changes = [
+      engine_version,
+      availability_zones,
+    ]
   }
 }
