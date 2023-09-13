@@ -22,4 +22,10 @@ resource "aws_rds_cluster_instance" "rds_cluster_instance" {
   publicly_accessible                   = var.rds_cluster_instance_publicly_accessible
   promotion_tier                        = var.rds_cluster_instance_promotion_tier
   tags                                  = var.rds_cluster_instance_tags 
+
+   lifecycle {
+    ignore_changes = [
+      cluster_identifier,
+    ]
+  }
 }
