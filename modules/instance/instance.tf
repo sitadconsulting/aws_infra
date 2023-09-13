@@ -142,4 +142,9 @@ resource "aws_instance" "instance" {
         volume_type           = root_block_device.value["volume_type"]
       }
   }
+  lifecycle {
+    ignore_changes = [
+      vpc_security_group_ids,
+    ]
+  }
 }
