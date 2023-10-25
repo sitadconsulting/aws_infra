@@ -14,6 +14,7 @@ allows for a more expressive way in defining highly complex cloud infrastructure
 We have provided usage examples of this idea with companion implementation guide in the docs directory of each project. Follow the link below to access each project directory, you will find corresponding implementation guide in the docs folder. 
  + [Building a Glue streaming and Transactional data lake solution](projects/proj1/)
  + [Building A Secure Containerized Nginx Web Server With EKS Container Orchestration Platform](projects/proj12)
+ + [Stream_Event_Processing_and_Data_Analytics_with_AWS MSK-KDA Flink-GLUE-OSS](projects/proj2)
 
 # **Help us improve, your feedback will be invaluable**
 We'd love for you to engage and explore the set of currently available modules and provided examples. We'd also love to hear from you, so please feel free to provide any 
