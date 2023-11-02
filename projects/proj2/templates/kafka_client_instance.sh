@@ -157,9 +157,7 @@ cd $DEVELOPER_HOME_DIR/devuser01
 wget https://dlcdn.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.zip
 unzip  apache-maven-3.9.5-bin.zip
 ln -s apache-maven-3.9.5 apache-maven
-JAVA_HOME=`alternatives --list | grep jre | awk '{print $3}'`
 M2_HOME=$DEVELOPER_HOME_DIR/devuser01/apache-maven
-sudo echo "export JAVA_HOME=$JAVA_HOME" | tee -a $DEVELOPER_HOME_DIR/devuser01/.bash_profile
 sudo echo "export M2_HOME=$M2_HOME" | tee -a $DEVELOPER_HOME_DIR/devuser01/.bash_profile
 sudo echo "export PATH=$M2_HOME/bin:$PATH" |  tee -a $DEVELOPER_HOME_DIR/devuser01/.bash_profile
 sudo echo "export PATH=$M2_HOME/bin:$PATH" |  tee -a /root/.bash_profile
