@@ -15,6 +15,7 @@ We have provided usage examples of this idea with companion implementation guide
  + [Building a Glue streaming and Transactional data lake solution](projects/proj1/)
  + [Building A Secure Containerized Nginx Web Server With EKS Container Orchestration Platform](projects/proj12)
  + [Stream_Event_Processing_and_Data_Analytics_with_AWS MSK-KDA Flink-GLUE-OSS](projects/proj2)
+ + [Building_A_Real-Time_Database_Replication_And_Change_Data_Capture_Solution_With_MSKConnect-MSK-Cluster_and_Debezium-MySQL-Connector](projects/proj3)
 
 # **Help us improve, your feedback will be invaluable**
 We'd love for you to engage and explore the set of currently available modules and provided examples. We'd also love to hear from you, so please feel free to provide any 
