@@ -11,14 +11,14 @@ public_az_1c                                     = "us-east-1c"
 private_az_1a                                    = "us-east-1a"
 private_az_1b                                    = "us-east-1b"
 private_az_1c                                    = "us-east-1c"
-remote_access_to_kafka_client_instance_port_22   = ["81.153.115.90/32"]
-remote_access_to_kafka_client_instance_port_8081 = ["81.153.115.90/32"]
+remote_access_to_kafka_client_instance_port_22   = ["0.0.0.0/0"]
+remote_access_to_kafka_client_instance_port_8081 = ["0.0.0.0/0"]
 msk_cluster_name                                 = "sitadinfra-msk-cluster"
 ec2_iam_role                                     = "sitadinfra-ec2Role-dev"
 kafka_connect_iam_role                           = "sitadinfra-KafkaConnectIamRole-dev"
 kafka_connect_iam_policy_name                    = "sitadinfra-KafkaConnectIamPolicy-dev"
 kafka_authorization_iam_policy_name              = "sitadinfra-KafkaAuthorizationIamPolicy-dev"
-kafka_client_instance_public_key                 = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCoQmECTY2dWObkmLPIulRMIlhev2CdssrTTTiYZNj46O3DDL9BVZNg9uzPxzZDZgXV2cvJokyvOCYIyQqIDDVK8Qv5JObaF2plbIg0JY/nJz86dv7u3FpSWS5AcEPJCfYsv2XSf6Ywra/oe/AkMucqpCUhOW+DIIwMVN/ZFpIfxjyMXjO0c4Di3+JexXpIkLzhAIp7e4zJn6mNQuXa+1a+/jzhQAXYeVPDNVbGoA10d8deUOYDgZxhwMHwyRI6VURvB4trUY3jLhYdyjqm7f8eClOJS53vvBFGs/PiWqcWhwireDT6czpbNQGjmLGo4EzK7K4Z4WQvPG4v1TTmMZDuYgRSn/pET8fBUgXPxsvA9M+YTq20l2izFtbH6Sb0wUToNXq9S8B3txU4BqI4qGZx8zDZCLO5hHtkshG92NZZFfNAPkfGEDr1OnOAsfZxop5zGO6oLAv8MfRPbUBZ7nhk3r675+C4k4YNNG+qlZVk/w/+0HZGYC047J/vHyaAQSs="
+kafka_client_instance_public_key                 = ""
 s3_streaming_artifacts_bucket_name               = "sitadinfra-streaming-artifacts-dev"
 s3_kafka_connect_target_bucket_name              = "sitadinfra-kafka-connect-target-dev"
 database_user                                    = "master"
