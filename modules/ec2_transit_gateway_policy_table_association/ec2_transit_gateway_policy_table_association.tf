@@ -1,0 +1,4 @@
+resource "aws_ec2_transit_gateway_policy_table_association" "ec2_transit_gateway_policy_table_association" {
+  transit_gateway_attachment_id   = var.ec2_transit_gateway_policy_table_association_transit_gateway_attachment_id
+  transit_gateway_policy_table_id = var.ec2_transit_gateway_policy_table_association_transit_gateway_policy_table_id
+}

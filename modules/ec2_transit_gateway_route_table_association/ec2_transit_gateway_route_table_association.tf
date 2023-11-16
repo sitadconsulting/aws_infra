@@ -1,0 +1,5 @@
+resource "aws_ec2_transit_gateway_route_table_association" "ec2_transit_gateway_route_table_association" {
+  replace_existing_association   = var.ec2_transit_gateway_route_table_association_replace_existing_association
+  transit_gateway_attachment_id  = var.ec2_transit_gateway_route_table_association_transit_gateway_attachment_id
+  transit_gateway_route_table_id = var.ec2_transit_gateway_route_table_association_transit_gateway_route_table_id
+}
