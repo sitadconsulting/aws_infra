@@ -25,7 +25,8 @@ sudo yum -y install python3.9
 sudo yum -y install java-11
 sudo yum -y install git 
 sudo yum -y erase awscli 
-sudo yum -y install jq 
+sudo yum -y install jq
+sudo yum -y install mariadb105.x86_64
 
 # populate bash profile 
 sudo echo "export SOFTWARE_DOWNLOAD_DIR=$SOFTWARE_DOWNLOAD_DIR" | tee -a /root/.bash_profile
@@ -151,11 +152,7 @@ chown -R kafka:kafka $KAFKA_HOME_DIR/*
 cd $KAFKA_HOME_DIR/libs
 wget https://github.com/aws/aws-msk-iam-auth/releases/download/v1.1.1/aws-msk-iam-auth-1.1.1-all.jar
 
-# Load the data into Aurora
-cd $SOFTWARE_DOWNLOAD_DIR
-sudo wget https://dev.mysql.com/get/mysql80-community-release-el9-3.noarch.rpm
-sudo yum -y install mysql80-community-release-el9-3.noarch.rpm
-sudo yum -y install mysql-community-server
+# Update DBA user bash profile and copy files
 sudo echo "export DBA_HOME_DIR=$DBA_HOME_DIR" | tee -a $DBA_HOME_DIR/dbauser01/.bash_profile
 sudo su -c "aws s3 cp s3://${kafka_connect_target_bucket}/scripts/salesdb.sql $DBA_HOME_DIR/dbauser01/scripts/salesdb.sql" -l dbauser01
 #sudo su -c "mysql -f -u master -h ${rds_aurora_endpoint}  --password=${database_password} < /home/ec2-user/scripts/salesdb.sql" -l ec2-user
