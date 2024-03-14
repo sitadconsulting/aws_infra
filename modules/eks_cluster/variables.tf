@@ -31,6 +31,14 @@ variable "eks_cluster_encryption_config" {
   }))
   default     = []
 }
+variable "eks_cluster_kubernetes_network_config" {
+  description = "Configuration block with kubernetes network configuration for the cluster"
+  type        = list(object({
+    ip_family         = optional(string)
+    service_ipv4_cidr = optional(string)
+  }))
+  default     = []
+}
 variable "eks_cluster_outpost_config" {
   description = "Configuration block representing the configuration of your local Amazon EKS cluster on an AWS Outpost"
   type        = list(object({
