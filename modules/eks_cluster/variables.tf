@@ -27,14 +27,7 @@ variable "eks_cluster_encryption_config" {
     provider = list(object({
       key_arn = string 
     }))
-  }))
-  default     = []
-}
-variable "eks_cluster_kubernetes_network_config" {
-  description = "Configuration block with kubernetes network configuration for the cluster"
-  type        = list(object({
-    ip_family         = optional(string)
-    service_ipv4_cidr = optional(string)
+    resources = list(string)
   }))
   default     = []
 }
