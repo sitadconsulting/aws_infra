@@ -18,13 +18,6 @@ resource "aws_eks_cluster" "eks_cluster" {
         }
       }
   }
-  dynamic "kubernetes_network_config" {
-    for_each = var.eks_cluster_kubernetes_network_config
-      content {
-        ip_family         = kubernetes_network_config.value["ip_family"]
-        service_ipv4_cidr = kubernetes_network_config.value["service_ipv4_cidr"]
-      }
-  }
   dynamic "outpost_config" {
     for_each = var.eks_cluster_outpost_config
       content {
