@@ -4,8 +4,14 @@ resource "aws_eks_cluster" "eks_cluster" {
   role_arn                  = var.eks_cluster_role_arn
   tags                      = var.eks_cluster_tags
   version                   = var.eks_cluster_version
-  
 
+  dynamic "access_config" {
+    for_each = var.eks_cluster_access_config
+      content {
+        authentication_mode                         = access_config.value["authentication_mode"]
+        bootstrap_cluster_creator_admin_permissions = access_config.value["bootstrap_cluster_creator_admin_permissions"]
+      }
+  }
   dynamic "encryption_config" {
     for_each = var.eks_cluster_encryption_config
       content {
