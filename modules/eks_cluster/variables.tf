@@ -21,6 +21,14 @@ variable "eks_cluster_version" {
   type        = string
   default     = ""
 }
+variable "eks_cluster_access_config" {
+  description = "Configuration block for the access config associated with your cluster"
+  type        = list(object({
+    authentication_mode                         = optional(string)
+    bootstrap_cluster_creator_admin_permissions = optional(bool)
+  }))
+  default     = []
+}
 variable "eks_cluster_encryption_config" {
   description = "Configuration block with encryption configuration for the cluster"
   type        = list(object({
