@@ -1,5 +1,5 @@
 variable "iam_group_policy_group" {
-  description = "The name of the policy"
+  description = "IAM group policy group name"
   type        = string
 }
 variable "iam_group_policy_name" {
