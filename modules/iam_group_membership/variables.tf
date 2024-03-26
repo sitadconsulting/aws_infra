@@ -12,3 +12,4 @@ variable "iam_group_membership_group" {
   description = "The IAM Group name to attach the list of users to"
   type        = string
   default     = ""
+}
