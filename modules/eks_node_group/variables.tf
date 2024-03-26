@@ -73,7 +73,7 @@ variable "eks_node_group_remote_access" {
   description = "Remote access settings"
   type        = list(object({
     ec2_ssh_key               = optional(string)
-    source_security_group_ids = oprional(list(string))
+    source_security_group_ids = optional(list(string))
   }))  
   default     = []
 }
