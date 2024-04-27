@@ -3,6 +3,7 @@ resource "aws_msk_cluster" "msk_cluster" {
   enhanced_monitoring    = var.msk_cluster_enhanced_monitoring
   kafka_version          = var.msk_cluster_kafka_version
   number_of_broker_nodes = var.msk_cluster_number_of_broker_nodes
+  storage_mode           = var.msk_cluster_storage_mode
   tags                   = var.msk_cluster_tags
 
   dynamic "broker_node_group_info" {
