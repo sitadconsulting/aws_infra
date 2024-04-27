@@ -15,6 +15,11 @@ variable "msk_cluster_number_of_broker_nodes" {
   description = "The desired total number of broker nodes in the kafka cluster. It must be a multiple of the number of specified client subnets"
   type        = number
 }
+variable "msk_cluster_storage_mode" {
+  description = "Controls storage mode for supported storage tiers. Valid values are: LOCAL or TIERED"
+  type        = string
+  default     = null
+}
 variable "msk_cluster_tags" {
   description = "A map of tags to assign to the resource"
   type        = map(string)
