@@ -143,8 +143,6 @@ resource "aws_instance" "instance" {
       }
   }
   lifecycle {
-    ignore_changes = [
-      vpc_security_group_ids,
-    ]
+    ignore_changes = all
   }
 }
