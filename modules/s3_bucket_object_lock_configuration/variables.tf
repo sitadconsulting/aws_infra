@@ -2,7 +2,7 @@ variable "s3_bucket_object_lock_configuration_bucket" {
   description = "Name of the bucket"
   type        = string
 }
-variable "s3_bucket_object_lock_configuration_bucket_expected_bucket_owner" {
+variable "s3_bucket_object_lock_configuration_expected_bucket_owner" {
   description = "Account ID of the expected bucket owner"
   type        = string
   default     = ""
@@ -20,9 +20,11 @@ variable "s3_bucket_object_lock_configuration_token" {
 variable "s3_bucket_object_lock_configuration_rule" {
   description = "Object Lock rule configuration for the specified object"
   type        = list(object({
-    days  = optional(number)
-    mode  = optional(string)
-    years = optional(number)
+    default_retention = list(object({
+      days  = optional(number)
+      mode  = optional(string)
+      years = optional(number)
+    }))
   }))
   default     = []
 }
