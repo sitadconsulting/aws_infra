@@ -28,7 +28,6 @@ variable "s3_bucket_lifecycle_configuration_rule" {
         object_size_greater_than   = optional(number)
         object_size_less_than      = optional(number)
         prefix                     = optional(string)
-        tags                       = optional(map(string))
       })), [])
       tag                             = optional(list(object({
         key   = string
