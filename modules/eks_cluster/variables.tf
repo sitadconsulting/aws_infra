@@ -1,3 +1,8 @@
+variable "eks_cluster_bootstrap_self_managed_addons" {
+  description = "(Optional) Install default unmanaged add-ons, such as aws-cni, kube-proxy, and CoreDNS during cluster creation. If false, you must manually install desired add-ons. Changing this value will force a new cluster to be created. Defaults to true"
+  type        = bool
+  default     = true
+}
 variable "eks_cluster_enabled_cluster_log_types" {
   description = "List of the desired control plane logging to enable"
   type        = list(string)
@@ -29,6 +34,15 @@ variable "eks_cluster_access_config" {
   }))
   default     = []
 }
+variable "compute_config" {
+  description = "(Optional) Configuration block with compute configuration for EKS Auto Mode"
+  type        = list(object({
+    enabled       = optional(bool)
+    node_pools    = optional(string)
+    node_role_arn = optional(string)
+  }))
+  default     = []
+}
 variable "eks_cluster_encryption_config" {
   description = "Configuration block with encryption configuration for the cluster"
   type        = list(object({
@@ -44,6 +58,9 @@ variable "eks_cluster_kubernetes_network_config" {
   type        = list(object({
     ip_family         = optional(string)
     service_ipv4_cidr = optional(string)
+    elastic_load_balancing = optional(list(object({
+      enabled = optional(bool)
+    })), [])
   }))
   default     = []
 }
@@ -58,6 +75,34 @@ variable "eks_cluster_outpost_config" {
   }))
   default     = []
 }
+variable "eks_cluster_remote_network_config" {
+  description = "Optional) Configuration block with remote network configuration for EKS Hybrid Nodes"
+  type        = list(object({
+    remote_node_networks = list(object({
+      cidrs = optional(list(string))
+    }))
+    remote_pod_networks = optional(list(object({
+      cidrs = optional(list(string))
+    })), [])
+  }))
+  default     = []
+}
+variable "eks_cluster_storage_config" {
+  description = "(Optional) Configuration block with storage configuration for EKS Auto Mode"
+  type        = list(object({
+    block_storage = optional(list(object({
+      enabled = optional(bool)
+    })), [])
+  }))
+  default     = []
+}
+variable "eks_cluster_upgrade_policy" {
+  description = "(Optional) Configuration block for the support policy to use for the cluster"
+  type        = list(object({
+    support_type = optional(string)
+  }))
+  default     = []
+}
 variable "eks_cluster_vpc_config" {
   description = "Configuration block for the VPC associated with your cluster"
   type        = list(object({
@@ -67,4 +112,11 @@ variable "eks_cluster_vpc_config" {
     security_group_ids      = optional(list(string))
     subnet_ids              = list(string)
   }))
+}
+variable "eks_cluster_zonal_shift_config" {
+  description = "(Optional) Configuration block with zonal shift configuration for the cluster"
+  type        = list(object({
+    enabled = optional(bool)
+  }))
+  default     = []
 }
