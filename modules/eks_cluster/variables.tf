@@ -34,15 +34,15 @@ variable "eks_cluster_access_config" {
   }))
   default     = []
 }
-variable "eks_cluster_compute_config" {
-  description = "(Optional) Configuration block with compute configuration for EKS Auto Mode"
-  type        = list(object({
-    enabled       = optional(bool)
-    node_pools    = optional(string)
-    node_role_arn = optional(string)
-  }))
-  default     = []
-}
+#variable "eks_cluster_compute_config" {
+#  description = "(Optional) Configuration block with compute configuration for EKS Auto Mode"
+#  type        = list(object({
+#    enabled       = optional(bool)
+#    node_pools    = optional(string)
+#    node_role_arn = optional(string)
+#  }))
+#  default     = []
+#}
 variable "eks_cluster_encryption_config" {
   description = "Configuration block with encryption configuration for the cluster"
   type        = list(object({
@@ -58,9 +58,9 @@ variable "eks_cluster_kubernetes_network_config" {
   type        = list(object({
     ip_family         = optional(string)
     service_ipv4_cidr = optional(string)
-    elastic_load_balancing = optional(list(object({
-      enabled = optional(bool)
-    })), [])
+    #elastic_load_balancing = optional(list(object({
+    #  enabled = optional(bool)
+    #})), [])
   }))
   default     = []
 }
@@ -75,27 +75,27 @@ variable "eks_cluster_outpost_config" {
   }))
   default     = []
 }
-variable "eks_cluster_remote_network_config" {
-  description = "Optional) Configuration block with remote network configuration for EKS Hybrid Nodes"
-  type        = list(object({
-    remote_node_networks = list(object({
-      cidrs = optional(list(string))
-    }))
-    remote_pod_networks = optional(list(object({
-      cidrs = optional(list(string))
-    })), [])
-  }))
-  default     = []
-}
-variable "eks_cluster_storage_config" {
-  description = "(Optional) Configuration block with storage configuration for EKS Auto Mode"
-  type        = list(object({
-    block_storage = optional(list(object({
-      enabled = optional(bool)
-    })), [])
-  }))
-  default     = []
-}
+#variable "eks_cluster_remote_network_config" {
+#  description = "Optional) Configuration block with remote network configuration for EKS Hybrid Nodes"
+#  type        = list(object({
+#    remote_node_networks = list(object({
+#      cidrs = optional(list(string))
+#    }))
+#    remote_pod_networks = optional(list(object({
+#      cidrs = optional(list(string))
+#    })), [])
+#  }))
+#  default     = []
+#}
+#variable "eks_cluster_storage_config" {
+#  description = "(Optional) Configuration block with storage configuration for EKS Auto Mode"
+#  type        = list(object({
+#    block_storage = optional(list(object({
+#      enabled = optional(bool)
+#    })), [])
+#  }))
+#  default     = []
+#}
 variable "eks_cluster_upgrade_policy" {
   description = "(Optional) Configuration block for the support policy to use for the cluster"
   type        = list(object({
