@@ -69,7 +69,7 @@ variable "sqs_queue_redrive_allow_policy" {
   default     = ""
 }
 variable "sqs_queue_redrive_policy" {
-  description = "The JSON policy to set up the Dead Letter Queue, see AWS docs. Note: when specifying maxReceiveCount, you must specify it as an integer (5), and not a string ("5")"
+  description = "The JSON policy to set up the Dead Letter Queue, see AWS docs. Note: when specifying maxReceiveCount, you must specify it as an integer (5), and not a string (\"5\")"
   type        = string
   default     = ""
 }
