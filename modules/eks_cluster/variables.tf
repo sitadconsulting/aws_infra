@@ -34,7 +34,7 @@ variable "eks_cluster_access_config" {
   }))
   default     = []
 }
-variable "compute_config" {
+variable "eks_cluster_compute_config" {
   description = "(Optional) Configuration block with compute configuration for EKS Auto Mode"
   type        = list(object({
     enabled       = optional(bool)
