@@ -16,12 +16,12 @@ variable "lb_target_group_lambda_multi_value_headers_enabled" {
 variable "lb_target_group_load_balancing_algorithm_type" {
   description = "Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is round_robin or least_outstanding_requests. The default is round_robin "
   type        = string
-  default     = "round_robin"
+  default     = null
 }
 variable "lb_target_group_load_balancing_cross_zone_enabled" {
   description = "Indicates whether cross zone load balancing is enabled. The value is \"true\", \"false\" or \"use_load_balancer_configuration\". The default is: use_load_balancer_configuration"
   type        = bool
-  default     = "use_load_balancer_configuration"
+  default     = null
 }
 variable "lb_target_group_name" {
   description = "Name of the target group"
