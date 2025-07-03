@@ -1,17 +1,17 @@
 variable "route53_record_zone_id" {
   description = "The ID of the hosted zone to contain this record"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "route53_record_name" {
   description = "The name of the record"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "route53_record_type" {
   description = "The record type. Valid values are A, AAAA, CAA, CNAME, DS, MX, NAPTR, NS, PTR, SOA, SPF, SRV and TXT"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "route53_record_ttl" {
   description = "The TTL of the record"
@@ -26,12 +26,12 @@ variable "route53_record_records" {
 variable "route53_record_set_identifier" {
   description = "Unique identifier to differentiate records with routing policies from one another"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "route53_record_health_check_id" {
   description = "The health check the record should be associated with"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "route53_record_multivalue_answer_routing_policy" {
   description = "Set to true to indicate a multivalue answer routing policy"
