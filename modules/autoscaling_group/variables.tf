@@ -11,7 +11,7 @@ variable "autoscaling_group_capacity_rebalance" {
 variable "autoscaling_group_context" {
   description = "Reserved"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "autoscaling_group_default_cooldown" {
   description = "Amount of time, in seconds, after a scaling activity completes before another scaling activity can start"
