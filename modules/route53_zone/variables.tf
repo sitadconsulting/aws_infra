@@ -10,7 +10,7 @@ variable "route53_zone_comment" {
 variable "route53_zone_delegation_set_id" {
   description = "The ID of the reusable delegation set whose NS records you want to assign to the hosted zone"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "route53_zone_force_destroy" {
   description = "Whether to destroy all records (possibly managed outside of Terraform) in the zone when destroying the zone"
