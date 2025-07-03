@@ -9,5 +9,5 @@ variable "route53_zone_association_vpc_id" {
 variable "route53_zone_association_vpc_region" {
   description = "The VPC's region"
   type        = string
-  default     = ""
+  default     = null
 }
