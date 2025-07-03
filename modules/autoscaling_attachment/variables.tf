@@ -5,10 +5,10 @@ variable "autoscaling_attachment_autoscaling_group_name" {
 variable "autoscaling_attachment_elb" {
   description = "Name of the ELB"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "autoscaling_attachment_lb_target_group_arn" {
   description = "ARN of a load balancer target group"
   type        = string
-  default     = ""
+  default     = null
 }
