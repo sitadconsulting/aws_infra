@@ -23,5 +23,5 @@ variable "apigatewayv2_integration_response_response_template" {
 variable "apigatewayv2_integration_response_template_selection_expression" {
   description = "The template selection expression for the integration response"
   type        = string
-  default     = ""
+  default     = null
 }
