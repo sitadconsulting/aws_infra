@@ -20,7 +20,7 @@ variable "apigatewayv2_stage_deployment_id" {
 variable "apigatewayv2_stage_description" {
   description = "Description for the stage. Must be less than or equal to 1024 characters in length"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "apigatewayv2_stage_name" {
   description = "Name of the stage. Must be between 1 and 128 characters in length"
