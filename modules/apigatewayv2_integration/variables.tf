@@ -5,7 +5,7 @@ variable "apigatewayv2_integration_api_id" {
 variable "apigatewayv2_integration_connection_id" {
   description = "ID of the VPC link for a private integration. Supported only for HTTP APIs. Must be between 1 and 1024 characters in length"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "apigatewayv2_integration_connection_type" {
   description = "Type of the network connection to the integration endpoint. Valid values: INTERNET, VPC_LINK. Default is INTERNET"
@@ -20,12 +20,12 @@ variable "apigatewayv2_integration_content_handling_strategy" {
 variable "apigatewayv2_integration_credentials_arn" {
   description = "Credentials required for the integration, if any"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "apigatewayv2_integration_description" {
   description = "Description of the integration"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "apigatewayv2_integration_integration_method" {
   description = "Integration's HTTP method. Must be specified if integration_type is not MOCK"
@@ -69,7 +69,7 @@ variable "apigatewayv2_integration_request_templates" {
 variable "apigatewayv2_integration_template_selection_expression" {
   description = "The template selection expression for the integration"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "apigatewayv2_integration_timeout_milliseconds" {
   description = "Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and between 50 and 30,000 milliseconds for HTTP APIs. The default timeout is 29 seconds for WebSocket APIs and 30 seconds for HTTP APIs. Terraform will only perform drift detection of its value when present in a configuration"
