@@ -1,7 +1,7 @@
 variable "glue_registry_description" {
   description = "A description of the registry"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_registry_registry_name" {
   description = "The Name of the registry"
