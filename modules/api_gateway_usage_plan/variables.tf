@@ -1,7 +1,7 @@
 variable "api_gateway_usage_plan_description" {
   description = "Description of a usage plan"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "api_gateway_usage_plan_name" {
   description = "Name of the usage plan"
