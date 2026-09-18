@@ -1,7 +1,7 @@
 variable "redshift_scheduled_action_description" {
   description = "The description of the scheduled action"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_scheduled_action_enabled" {
   description = "Whether to enable the scheduled action. Default is true"
