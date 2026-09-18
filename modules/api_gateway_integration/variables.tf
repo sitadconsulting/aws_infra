@@ -72,7 +72,7 @@ variable "api_gateway_integration_rest_api_id" {
   type        = string
 }
 variable "api_gateway_integration_timeout_milliseconds" {
-  description = "Custom timeout between 50 and 29,000 milliseconds. The default value is 29,000 milliseconds"
+  description = "(Optional) Custom timeout in milliseconds. The minimum value is 50. The maximum value is 300,000 when response_transfer_mode is BUFFERED, and 900,000 when response_transfer_mode is STREAM. The default value is 29,000 milliseconds. You need to raise a Service Quota Ticket to increase time beyond 29,000 milliseconds for BUFFERED mode."
   type        = number
   default     = 29000
 }
