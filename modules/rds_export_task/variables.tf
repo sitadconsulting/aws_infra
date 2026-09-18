@@ -1,7 +1,7 @@
 variable "rds_export_task_export_only" {
   description = "Data to be exported from the snapshot. If this parameter is not provided, all the snapshot data is exported"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_export_task_export_task_identifier" {
   description = "Unique identifier for the snapshot export task"
@@ -22,7 +22,7 @@ variable "rds_export_task_s3_bucket_name" {
 variable "rds_export_task_s3_prefix" {
   description = "Amazon S3 bucket prefix to use as the file name and path of the exported snapshot"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_export_task_source_arn" {
   description = "ARN of the snapshot to export"
