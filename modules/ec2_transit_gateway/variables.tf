@@ -21,7 +21,7 @@ variable "ec2_transit_gateway_default_route_table_propagation" {
 variable "ec2_transit_gateway_description" {
   description = "Description of the EC2 Transit Gateway"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "ec2_transit_gateway_dns_support" {
   description = "Whether DNS support is enabled. Valid values: disable, enable. Default value: enable"
