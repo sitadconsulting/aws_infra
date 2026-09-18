@@ -1,7 +1,7 @@
 variable "quicksight_template_alias_aws_account_id" {
   description = "AWS account ID"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_template_alias_alias_name" {
   description = "Display name of the template alias"
