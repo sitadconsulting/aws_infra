@@ -1,7 +1,7 @@
 variable "glue_data_catalog_encryption_settings_catalog_id" {
   description = "The ID of the Data Catalog to set the security configuration for. If none is provided, the AWS account ID is used by default"
   type        = string
-  default     = ""
+  default     = null
 } 
 variable "glue_data_catalog_encryption_settings_data_catalog_encryption_settings" {
   description = "The security configuration to set"
