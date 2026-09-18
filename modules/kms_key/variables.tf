@@ -21,7 +21,7 @@ variable "kms_key_deletion_window_in_days" {
 variable "kms_key_description" {
   description = "The description of the key as viewed in AWS console"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kms_key_enable_key_rotation" {
   description = "Specifies whether key rotation is enabled. Defaults to false"
