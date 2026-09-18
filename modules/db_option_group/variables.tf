@@ -11,7 +11,7 @@ variable "db_option_group_name_prefix" {
 variable "db_option_group_option_group_description" {
   description = "The description of the option group. Defaults to \"Managed by Terraform\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "db_option_group_engine_name" {
   description = "Specifies the name of the engine that this option group should be associated with"
