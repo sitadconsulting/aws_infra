@@ -23,15 +23,15 @@ variable "autoscaling_lifecycle_hook_name" {
 variable "autoscaling_lifecycle_hook_notification_metadata" {
   description = "Contains additional information that you want to include any time Auto Scaling sends a message to the notification target"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "autoscaling_lifecycle_hook_notification_target_arn" {
   description = "ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue or an SNS topic"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "autoscaling_lifecycle_hook_role_arn" {
   description = "ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target"
   type        = string
-  default     = ""
+  default     = null
 }
