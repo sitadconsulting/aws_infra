@@ -9,7 +9,7 @@ variable "s3_bucket_replication_configuration_role" {
 variable "s3_bucket_replication_configuration_token" {
   description = "Token to allow replication to be enabled on an Object Lock-enabled bucket. You must contact AWS support for the bucket's \"Object Lock token\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_replication_configuration_rule" {
   description = "Configuration rules for managing replication"
