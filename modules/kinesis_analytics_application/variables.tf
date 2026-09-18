@@ -6,7 +6,7 @@ variable "kinesis_analytics_application_code" {
 variable "kinesis_analytics_application_description" {
   description = "Description of the application"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kinesis_analytics_application_name" {
   description = "Name of the Kinesis Analytics Application"
