@@ -19,5 +19,5 @@ variable "api_gateway_gateway_response_rest_api_id" {
 variable "api_gateway_gateway_response_status_code" {
   description = "HTTP status code of the Gateway Response"
   type        = string
-  default     = ""
+  default     = null
 }
