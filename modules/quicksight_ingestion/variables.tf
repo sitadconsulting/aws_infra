@@ -1,7 +1,7 @@
 variable "quicksight_ingestion_aws_account_id" {
   description = "AWS account ID"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_ingestion_data_set_id" {
   description = "ID of the dataset used in the ingestion"
