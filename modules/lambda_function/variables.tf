@@ -6,12 +6,12 @@ variable "lambda_function_architectures" {
 variable "lambda_function_code_signing_config_arn" {
   description = "To enable code signing for this function, specify the ARN of a code-signing configuration. A code-signing configuration includes a set of signing profiles, which define the trusted publishers for this function"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_function_description" {
   description = "Description of what your Lambda Function does"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_function_filename" {
   description = "Path to the function's deployment package within the local filesystem. Exactly one of filename, image_uri, or s3_bucket must be specified"
