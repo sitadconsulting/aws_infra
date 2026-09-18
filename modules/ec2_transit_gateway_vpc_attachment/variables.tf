@@ -1,14 +1,12 @@
 variable "ec2_transit_gateway_vpc_attachment_appliance_mode_support" {
-  description = " "
-  type        =
-  default     =
+  description = "(Optional) Whether Appliance Mode support is enabled. If enabled, a traffic flow between a source and destination uses the same Availability Zone for the VPC attachment for the lifetime of that flow. Valid values: disable, enable. Default value: disable."
+  type        = string
+  default     = null
 }
 variable "ec2_transit_gateway_vpc_attachment_dns_support" {
-  description = " "
-  type        =
-  default     =
-
-
+  description = "(Optional) Whether DNS support is enabled. Valid values: disable, enable. Default value: enable."
+  type        = string
+  default     = null
 }
 variable "ec2_transit_gateway_vpc_attachment_ipv6_support" {
   description = "Whether IPv6 support is enabled. Valid values: disable, enable. Default value: disable"
