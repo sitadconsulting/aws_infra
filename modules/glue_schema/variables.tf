@@ -9,7 +9,7 @@ variable "glue_schema_data_format" {
 variable "glue_schema_description" {
   description = "A description of the schema"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_schema_registry_arn" {
   description = "The ARN of the Glue Registry to create the schema in"
