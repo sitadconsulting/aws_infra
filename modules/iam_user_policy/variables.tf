@@ -1,7 +1,7 @@
 variable "iam_user_policy_name" {
   description = "The name of the policy"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "iam_user_policy_policy" {
   description = "The policy document. This is a JSON formatted string"
