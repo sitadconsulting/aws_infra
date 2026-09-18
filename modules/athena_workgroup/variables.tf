@@ -1,7 +1,7 @@
 variable "athena_workgroup_description" {
   description = "Description of the workgroup"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "athena_workgroup_force_destroy" {
   description = "Option to delete the workgroup and its contents even if the workgroup contains any named queries"
@@ -15,7 +15,7 @@ variable "athena_workgroup_name" {
 variable "athena_workgroup_state" {
   description = "State of the workgroup. Valid values are DISABLED or ENABLED. Defaults to ENABLED"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "athena_workgroup_tags" {
   description = "Key-value map of resource tags for the workgroup"
