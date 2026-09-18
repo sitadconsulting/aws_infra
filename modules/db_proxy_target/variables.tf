@@ -9,10 +9,10 @@ variable "db_proxy_target_target_group_name" {
 variable "db_proxy_target_db_instance_identifier" {
   description = "DB instance identifier"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "db_proxy_target_db_cluster_identifier" {
   description = "DB cluster identifier"
   type        = string
-  default     = ""
+  default     = null
 }
