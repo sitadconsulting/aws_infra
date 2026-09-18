@@ -21,12 +21,12 @@ variable "network_interface_tags" {
 variable "network_interface_description" {
   description = "Description for the network interface"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "network_interface_subnet_id" {
   description = "Subnet ID to create the ENI in"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "network_interface_security_groups" {
   description = "List of security group IDs to assign to the ENI"
