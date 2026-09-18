@@ -1,7 +1,7 @@
 variable "glue_workflow_description" {
   description = "Description of the workflow"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_workflow_default_run_properties" {
   description = "A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow. "
