@@ -1,7 +1,7 @@
 variable "api_gateway_integration_response_content_handling" {
-  description = " "
-  type        =
-  default     =
+  description = "(Optional) How to handle request payload content type conversions. Supported values are CONVERT_TO_BINARY and CONVERT_TO_TEXT. If this property is not defined, the response payload will be passed through from the integration response to the method response without modification."
+  type        = string
+  default     = null
 }
 variable "api_gateway_integration_response_http_method" {
   description = "HTTP method (GET, POST, PUT, DELETE, HEAD, OPTIONS, ANY)"
