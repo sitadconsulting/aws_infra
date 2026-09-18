@@ -14,5 +14,5 @@ variable "acmpca_permission_principal" {
 variable "acmpca_permission_source_account" {
   description = "ID of the calling account"
   type        = string
-  default     = ""
+  default     = null
 }
