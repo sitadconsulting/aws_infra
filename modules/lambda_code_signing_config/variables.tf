@@ -1,7 +1,7 @@
 variable "lambda_code_signing_config_description" {
   description = "Descriptive name for this code signing configuration"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_code_signing_config_allowed_publishers" {
   description = "A configuration block of allowed publishers as signing profiles for this code signing configuration"
