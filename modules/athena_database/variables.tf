@@ -5,12 +5,12 @@ variable "athena_database_bucket" {
 variable "athena_database_comment" {
   description = "Description of the database"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "athena_database_expected_bucket_owner" {
   description = "AWS account ID that you expect to be the owner of the Amazon S3 bucket"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "athena_database_force_destroy" {
   description = "Whether all tables should be deleted from the database so that the database can be destroyed without error. The tables are not recoverable"
