@@ -1,7 +1,7 @@
 variable "lambda_alias_description" {
   description = "Description of the alias"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_alias_function_name" {
   description = "Lambda Function name or ARN"
