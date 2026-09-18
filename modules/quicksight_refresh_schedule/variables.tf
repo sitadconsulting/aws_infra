@@ -1,7 +1,7 @@
 variable "quicksight_refresh_schedule_aws_account_id" {
   description = "AWS account ID"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_refresh_schedule_data_set_id" {
   description = "The ID of the dataset"
