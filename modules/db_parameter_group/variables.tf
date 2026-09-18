@@ -15,7 +15,7 @@ variable "db_parameter_group_family" {
 variable "db_parameter_group_description" {
   description = " The description of the DB parameter group. Defaults to \"Managed by Terraform\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "db_parameter_group_tags" {
   description = "A map of tags to assign to the resource"
