@@ -1,7 +1,7 @@
 variable "s3_bucket_bucket" {
   description = "Name of the bucket. If omitted, Terraform will assign a random, unique name"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_bucket_prefix" {
   description = "Creates a unique bucket name beginning with the specified prefix. Conflicts with bucket"
