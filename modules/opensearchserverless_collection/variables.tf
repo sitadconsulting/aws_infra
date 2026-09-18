@@ -1,7 +1,7 @@
 variable "opensearchserverless_collection_description" {
   description = "Description of the collection"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "opensearchserverless_collection_name" {
   description = "Name of the collection"
