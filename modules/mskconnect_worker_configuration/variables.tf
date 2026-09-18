@@ -1,7 +1,7 @@
 variable "mskconnect_worker_configuration_description" {
   description = "A summary description of the worker configuration"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "mskconnect_worker_configuration_name" {
   description = "The name of the worker configuration"
