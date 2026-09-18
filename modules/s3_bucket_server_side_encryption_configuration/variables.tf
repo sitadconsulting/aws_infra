@@ -5,7 +5,7 @@ variable "s3_bucket_server_side_encryption_configuration_bucket" {
 variable "s3_bucket_server_side_encryption_configuration_expected_bucket_owner" {
   description = "Account ID of the expected bucket owner"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_server_side_encryption_configuration_rule" {
   description = "Set of server-side encryption configuration rules"
