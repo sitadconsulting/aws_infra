@@ -6,7 +6,7 @@ variable "iam_user_force_destroy" {
 variable "iam_user_name" {
   description = "The user's name. The name must consist of upper and lowercase alphanumeric characters with no spaces"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "iam_user_path" {
   description = "Path in which to create the user"
@@ -16,7 +16,7 @@ variable "iam_user_path" {
 variable "iam_user_permissions_boundary" {
   description = "The ARN of the policy that is used to set the permissions boundary for the user"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "iam_user_tags" {
   description = "Additional tags for the iam user resource"
