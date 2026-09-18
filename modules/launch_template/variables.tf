@@ -6,7 +6,7 @@ variable "launch_template_default_version" {
 variable "launch_template_description" {
   description = "Description of the launch template"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "launch_template_disable_api_stop" {
   description = "If true, enables EC2 Instance Stop Protection"
@@ -26,7 +26,7 @@ variable "launch_template_ebs_optimized" {
 variable "launch_template_image_id" {
   description = "The AMI from which to launch the instance"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "launch_template_instance_initiated_shutdown_behavior" {
   description = "Shutdown behavior for the instance. Can be stop or terminate. (Default: stop)"
@@ -36,22 +36,22 @@ variable "launch_template_instance_initiated_shutdown_behavior" {
 variable "launch_template_instance_type" {
   description = "The type of the instance. If present then instance_requirements cannot be present"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "launch_template_kernel_id" {
   description = "The kernel ID"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "launch_template_key_name" {
   description = "The key name to use for the instance"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "launch_template_name" {
   description = "The name of the launch template. If you leave this blank, Terraform will auto-generate a unique name"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "launch_template_name_prefix" {
   description = "Creates a unique name beginning with the specified prefix. Conflicts with name"
@@ -61,7 +61,7 @@ variable "launch_template_name_prefix" {
 variable "launch_template_ram_disk_id" {
   description = "The ID of the RAM disk"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "launch_template_security_group_names" {
   description = "A list of security group names to associate with. If you are creating Instances in a VPC, use vpc_security_group_ids instead"
@@ -71,7 +71,7 @@ variable "launch_template_security_group_names" {
 variable "launch_template_user_data" {
   description = "The base64-encoded user data to provide when launching the instance"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "launch_template_vpc_security_group_ids" {
   description = "A list of security group IDs to associate with. Conflicts with network_interfaces.security_groups "
