@@ -6,7 +6,7 @@ variable "security_group_rule_cidr_blocks" {
 variable "security_group_rule_description" {
   description = "Description of the rule"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "security_group_rule_from_port" {
   description = "Start port (or ICMP type number if protocol is \"icmp\" or \"icmpv6\")"
