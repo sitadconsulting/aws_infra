@@ -11,12 +11,12 @@ variable "ingress_class_metadata_labels" {
 variable "ingress_class_metadata_name" {
   description = "Name of the Ingress Class, must be unique. Cannot be updated"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "ingress_class_spec_controller" {
   description = "The name of the controller that should handle this class "
   type        = string
-  default     = ""
+  default     = null
 }
 variable "ingress_class_spec_parameters" {
   description = "The name of the controller that should handle this class "
