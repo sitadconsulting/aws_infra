@@ -5,7 +5,7 @@ variable "api_gateway_model_content_type" {
 variable "api_gateway_model_description" {
   description = "Description of the model"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "api_gateway_model_name" {
   description = "Name of the model"
