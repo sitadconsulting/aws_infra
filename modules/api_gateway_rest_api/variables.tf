@@ -16,7 +16,7 @@ variable "api_gateway_rest_api_body" {
 variable "api_gateway_rest_api_description" {
   description = "Description of the REST API. If importing an OpenAPI specification via the body argument, this corresponds to the info.description field. If the argument value is provided and is different than the OpenAPI value, the argument value will override the OpenAPI value"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "api_gateway_rest_api_disable_execute_api_endpoint" {
   description = "Whether clients can invoke your API by using the default execute-api endpoint. By default, clients can invoke your API with the default https://{api_id}.execute-api.{region}.amazonaws.com endpoint. To require that clients use a custom domain name to invoke your API, disable the default endpoint. Defaults to false. If importing an OpenAPI specification via the body argument, this corresponds to the x-amazon-apigateway-endpoint-configuration extension disableExecuteApiEndpoint property. If the argument value is true and is different than the OpenAPI value, the argument value will override the OpenAPI value"
