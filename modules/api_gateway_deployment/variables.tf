@@ -1,7 +1,7 @@
 variable "api_gateway_deployment_description" {
   description = "Description of the deployment"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "api_gateway_deployment_rest_api_id" {
   description = "REST API identifier"
