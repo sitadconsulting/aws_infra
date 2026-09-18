@@ -23,7 +23,7 @@ variable "dx_connection_name" {
 variable "dx_connection_provider_name" {
   description = "The name of the service provider associated with the connection"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "dx_connection_skip_destroy" {
   description = "Set to true if you do not wish the connection to be deleted at destroy time, and instead just removed from the Terraform state"
