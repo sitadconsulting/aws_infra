@@ -11,7 +11,7 @@ variable "storage_class_metadata_labels" {
 variable "storage_class_metadata_name" {
   description = "Name of the Storage Class, must be unique"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "storage_class_parameters" {
   description = "The parameters for the provisioner that should create volumes of this storage class"
@@ -31,7 +31,7 @@ variable "storage_class_reclaim_policy" {
 variable "storage_class_volume_binding_mode" {
   description = "Indicates when volume binding and dynamic provisioning should occur"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "storage_class_allow_volume_expansion" {
   description = "Indicates whether the storage class allow volume expand, default true."
