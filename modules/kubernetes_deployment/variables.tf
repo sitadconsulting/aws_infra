@@ -11,12 +11,12 @@ variable "deployment_metadata_labels" {
 variable "deployment_metadata_name" {
   description = "Name of the Deployment, must be unique. Cannot be updated"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "deployment_metadata_namespace" {
   description = "Namespace defines the space within which name of the Deployment must be unique"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "deployment_wait_for_rollout" {
   description = "Wait for the deployment to successfully roll out"
@@ -84,12 +84,12 @@ variable "deployment_spec_template_metadata_labels" {
 variable "deployment_spec_template_metadata_name" {
   description = "Name of the pod, must be unique. Cannot be updated"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "deployment_spec_template_metadata_namespace" {
   description = "Namepace of the pod, must be unique. Cannot be updated"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "deployment_spec_template_spec_active_deadline_seconds" {
   description = "Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers"
@@ -124,12 +124,12 @@ variable "deployment_spec_template_spec_host_pid" {
 variable "deployment_spec_template_spec_hostname" {
   description = "Specifies the hostname of the Pod If not specified"
   type       = string
-  default    = ""
+  default    = null
 }
 variable "deployment_spec_template_spec_node_name" {
   description = "NodeName is a request to schedule this pod onto a specific node"
   type       = string
-  default    = ""
+  default    = null
 }
 variable "deployment_spec_template_spec_node_selector" {
   description = "NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node"
@@ -139,27 +139,27 @@ variable "deployment_spec_template_spec_node_selector" {
 variable "deployment_spec_template_spec_priority_class_name" {
   description = "If specified, indicates the pod's priority"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "deployment_spec_template_spec_restart_policy" {
   description = "Restart policy for all containers within the pod. One of Always, OnFailure, Never"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "deployment_spec_template_spec_runtime_class_name" {
   description = "RuntimeClassName is a feature for selecting the container runtime configuration"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "deployment_spec_template_spec_scheduler_name" {
   description = "If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "deployment_spec_template_spec_service_account_name" {
   description = "ServiceAccountName is the name of the ServiceAccount to use to run this pod"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "deployment_spec_template_spec_share_process_namespace" {
   description = "Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Defaults to false"
@@ -169,7 +169,7 @@ variable "deployment_spec_template_spec_share_process_namespace" {
 variable "deployment_spec_template_spec_subdomain" {
   description = "If specified, the fully qualified Pod hostname will be \"<hostname>.<subdomain>.<pod namespace>.svc.<cluster domain>\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "deployment_spec_template_spec_termination_grace_period_seconds" {
   description = "Optional duration in seconds the pod needs to terminate gracefully upon probe failure"
