@@ -12,12 +12,12 @@ variable "secret_metadata_labels" {
 variable "secret_metadata_name" {
   description = "Name of the secret, must be unique"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "secret_metadata_namespace" {
   description = "Namespace defines the space within which name of the secret must be unique"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "secret_data" {
   description = "A map of the secret data"
@@ -32,7 +32,7 @@ variable "secret_binary_data" {
 variable "secret_type" {
   description = "The secret type. Defaults to Opaque"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "secret_immutable" {
   description = "Ensures that data stored in the Secret cannot be updated (only object metadata can be modified)"
