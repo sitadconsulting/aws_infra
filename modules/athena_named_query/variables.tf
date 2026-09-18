@@ -5,7 +5,7 @@ variable "athena_named_query_database" {
 variable "athena_named_query_description" {
   description = "Brief explanation of the query. Maximum length of 1024"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "athena_named_query_name" {
   description = "Plain language name for the query. Maximum length of 128"
@@ -18,5 +18,5 @@ variable "athena_named_query_query" {
 variable "athena_named_query_workgroup" {
   description = "Workgroup to which the query belongs. Defaults to primary"
   type        = string
-  default     = ""
+  default     = null
 }
