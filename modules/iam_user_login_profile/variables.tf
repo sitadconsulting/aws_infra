@@ -5,7 +5,7 @@ variable "iam_user_login_profile_user" {
 variable "iam_user_login_profile_pgp_key" {
   description = "Either a base-64 encoded PGP public key, or a keybase username in the form keybase:username. Only applies on resource creation"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "iam_user_login_profile_password_reset_required" {
   description = "Whether the user should be forced to reset the generated password on resource creation. Only applies on resource creation"
