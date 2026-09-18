@@ -5,7 +5,7 @@ variable "s3_bucket_lifecycle_configuration_bucket" {
 variable "s3_bucket_lifecycle_configuration_expected_bucket_owner" {
   description = "Account ID of the expected bucket owner"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_lifecycle_configuration_rule" {
   description = "Replication management rules configuration"
