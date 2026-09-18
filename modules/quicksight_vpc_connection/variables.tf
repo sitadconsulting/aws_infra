@@ -1,7 +1,7 @@
 variable "quicksight_vpc_connection_aws_account_id" {
   description = "AWS account ID"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_vpc_connection_vpc_connection_id" {
   description = "The ID of the VPC connection"
