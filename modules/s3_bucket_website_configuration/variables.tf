@@ -5,12 +5,12 @@ variable "s3_bucket_website_configuration_bucket" {
 variable "s3_bucket_website_configuration_expected_bucket_owner" {
   description = "Account ID of the expected bucket owner"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_website_configuration_routing_rules" {
   description = "JSON array containing routing rules describing redirect behavior and when redirects are applied. Use this parameter when your routing rules contain empty String values ("")"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_website_configuration_error_document" {
   description = "Name of the error document for the website"
