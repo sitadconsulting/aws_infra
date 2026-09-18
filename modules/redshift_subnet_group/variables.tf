@@ -1,7 +1,7 @@
 variable "redshift_subnet_group_description" {
   description = "The description of the Redshift Subnet group. Defaults to \"Managed by Terraform\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_subnet_group_name" {
   description = "The name of the Redshift Subnet group"
