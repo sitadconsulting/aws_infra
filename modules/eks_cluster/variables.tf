@@ -24,7 +24,7 @@ variable "eks_cluster_tags" {
 variable "eks_cluster_version" {
   description = "Desired Kubernetes master version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except those automatically triggered by EKS. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by EKS"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "eks_cluster_access_config" {
   description = "Configuration block for the access config associated with your cluster"
