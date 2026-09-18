@@ -1,12 +1,12 @@
 variable "glue_crawler_classifiers" {
   description = "List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_crawler_configuration" {
   description = "JSON string of configuration information"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_crawler_database_name" {
   description = "Glue database where results are written"
@@ -15,7 +15,7 @@ variable "glue_crawler_database_name" {
 variable "glue_crawler_description" {
   description = "Description of the crawler"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_crawler_name" {
   description = "Name of the crawler"
@@ -28,17 +28,17 @@ variable "glue_crawler_role" {
 variable "glue_crawler_schedule" {
   description = "A cron expression used to specify the schedule"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_crawler_security_configuration" {
   description = "The name of Security Configuration to be used by the crawler"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_crawler_table_prefix" {
   description = "The table prefix used for catalog tables that are created"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_crawler_tags" {
   description = "Key-value map of resource tags"
