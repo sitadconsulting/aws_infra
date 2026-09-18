@@ -5,7 +5,7 @@ variable "iam_group_policy_group" {
 variable "iam_group_policy_name" {
   description = "The name of the policy"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "iam_group_policy_name_prefix" {
   description = "Creates a unique name beginning with the specified prefix. Conflicts with name"
