@@ -24,7 +24,7 @@ variable "redshift_event_subscription_sns_topic_arn" {
 variable "redshift_event_subscription_source_ids" {
   description = "A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a source_type must also be specified"
   type        = list(string)
-  default     = ""
+  default     = []
 }
 variable "redshift_event_subscription_source_type" {
   description = "The type of source that will be generating the events. Valid options are cluster, cluster-parameter-group, cluster-security-group, cluster-snapshot, or scheduled-action. If not set, all sources will be subscribed to"
