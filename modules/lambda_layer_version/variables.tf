@@ -11,7 +11,7 @@ variable "lambda_layer_version_compatible_runtimes" {
 variable "lambda_layer_version_description" {
   description = "Description of what your Lambda Layer does"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_layer_version_filename" {
   description = "Path to the function's deployment package within the local filesystem. If defined, The s3_-prefixed options cannot be used"
