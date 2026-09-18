@@ -11,7 +11,7 @@ variable "glue_job_default_arguments" {
 variable "glue_job_description" {
   description = "Description of the job"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_job_execution_class" {
   description = "Indicates whether the job is run with a standard or flexible execution class. The standard execution class is ideal for time-sensitive workloads that require fast job startup and dedicated resources. Valid value: FLEX, STANDARD"
@@ -21,7 +21,7 @@ variable "glue_job_execution_class" {
 variable "glue_job_glue_version" {
   description = "The version of glue to use"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_job_max_capacity" {
   description = "The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. Required when pythonshell is set, accept either 0.0625 or 1.0. Use number_of_workers and worker_type arguments instead with glue_version 2.0 and above"
@@ -54,7 +54,7 @@ variable "glue_job_role_arn" {
 variable "glue_job_security_configuration" {
   description = "The name of the Security Configuration to be associated with the job"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_job_tags" {
   description = "Key-value map of resource tags"
