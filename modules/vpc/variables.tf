@@ -6,7 +6,7 @@ variable "vpc_assign_generated_ipv6_cidr_block" {
 variable "vpc_cidr_block" {
   description = "The IPv4 CIDR block for the VPC. CIDR can be explicitly set or it can be derived from IPAM using ipv4_netmask_length"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "vpc_enable_dns_hostnames" {
   description = "A boolean flag to enable/disable DNS hostnames in the VPC. Defaults false"
@@ -46,7 +46,7 @@ variable "vpc_ipv6_cidr_block" {
 variable "vpc_ipv6_cidr_block_network_border_group" {
   description = "By default when an IPv6 CIDR is assigned to a VPC a default ipv6_cidr_block_network_border_group will be set to the region of the VPC. This can be changed to restrict advertisement of public addresses to specific Network Border Groups such as LocalZones"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "vpc_ipv6_ipam_pool_id" {
   description = "IPAM Pool ID for a IPv6 pool. Conflicts with assign_generated_ipv6_cidr_block"
