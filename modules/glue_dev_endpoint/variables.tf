@@ -6,17 +6,17 @@ variable "glue_dev_endpoint_arguments" {
 variable "glue_dev_endpoint_extra_jars_s3_path" {
   description = "Path to one or more Java Jars in an S3 bucket that should be loaded in this endpoint"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_dev_endpoint_extra_python_libs_s3_path" {
   description = "Path(s) to one or more Python libraries in an S3 bucket that should be loaded in this endpoint. Multiple values must be complete paths separated by a comma"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_dev_endpoint_glue_version" {
   description = "Specifies the versions of Python and Apache Spark to use. Defaults to AWS Glue version 0.9"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_dev_endpoint_name" {
   description = "The name of this endpoint. It must be unique in your account"
@@ -49,7 +49,7 @@ variable "glue_dev_endpoint_role_arn" {
 variable "glue_dev_endpoint_security_configuration" {
   description = "The name of the Security Configuration structure to be used with this endpoint"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_dev_endpoint_security_group_ids" {
   description = "Security group IDs for the security groups to be used by this endpoint"
@@ -59,7 +59,7 @@ variable "glue_dev_endpoint_security_group_ids" {
 variable "glue_dev_endpoint_subnet_id" {
   description = "The subnet ID for the new endpoint to use"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_dev_endpoint_tags" {
   description = "Key-value map of resource tags"
@@ -69,5 +69,5 @@ variable "glue_dev_endpoint_tags" {
 variable "glue_dev_endpoint_worker_type" {
   description = "The type of predefined worker that is allocated to this endpoint. Accepts a value of Standard, G.1X, or G.2X"
   type        = string
-  default     = ""
+  default     = null
 }
