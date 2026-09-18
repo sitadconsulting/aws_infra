@@ -5,7 +5,7 @@ variable "mskconnect_connector_connector_configuration" {
 variable "mskconnect_connector_description" {
   description = "A summary description of the connector"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "mskconnect_connector_kafkaconnect_version" {
   description = "The version of Kafka Connect. It has to be compatible with both the Apache Kafka cluster's version and the plugins"
