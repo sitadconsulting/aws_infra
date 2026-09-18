@@ -6,7 +6,7 @@ variable "kms_replica_external_key_bypass_policy_lockout_safety_check" {
 variable "kms_replica_external_key_description" {
   description = "A description of the KMS key"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kms_replica_external_key_deletion_window_in_days" {
   description = "The waiting period, specified in number of days. After the waiting period ends, AWS KMS deletes the KMS key. If you specify a value, it must be between 7 and 30, inclusive. If you do not specify a value, it defaults to 30"
