@@ -1,7 +1,7 @@
 variable "acmpca_certificate_api_passthrough" {
   description = "Specifies X.509 certificate information to be included in the issued certificate. To use with API Passthrough templates"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "acmpca_certificate_certificate_authority_arn" {
   description = "ARN of the certificate authority"
