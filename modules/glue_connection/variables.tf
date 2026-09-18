@@ -1,7 +1,7 @@
 variable "glue_connection_catalog_id" {
   description = "The ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_connection_connection_properties" {
   description = "A map of key-value pairs used as parameters for this connection"
@@ -16,7 +16,7 @@ variable "glue_connection_connection_type" {
 variable "glue_connection_description" {
   description = "Description of the connection"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_connection_match_criteria" {
   description = "A list of criteria that can be used in selecting this connection"
