@@ -12,27 +12,27 @@ variable "cluster_role_binding_metadata_labels" {
 variable "cluster_role_binding_metadata_name" {
   description = "Name of the Cluster Role Binding, must be unique. Cannot be updated"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "cluster_role_binding_metadata_namespace" {
   description = "Namespace defines the space within which name of the Cluster Role Binding must be unique"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "cluster_role_binding_role_ref_api_group" {
   description = "The API group to drive authorization decisions"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "cluster_role_binding_role_ref_kind" {
   description = "The type of binding to use"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "cluster_role_binding_role_ref_name" {
   description = "The name of this ClusterRole to bind Subjects to"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "cluster_role_binding_subjects" {
   description = "A list of The Users, Groups, or ServiceAccounts to grant permissions to"
