@@ -11,7 +11,7 @@ variable "vpc_security_group_egress_rule_cidr_ipv6" {
 variable "vpc_security_group_egress_rule_description" {
   description = "The security group rule description"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "vpc_security_group_egress_rule_from_port" {
   description = "The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type"
