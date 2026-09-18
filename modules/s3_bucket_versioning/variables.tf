@@ -5,12 +5,12 @@ variable "s3_bucket_versioning_bucket" {
 variable "s3_bucket_versioning_expected_bucket_owner" {
   description = "Account ID of the expected bucket owner"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_versioning_mfa" {
   description = "Concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device - Required if versioning_configuration mfa_delete is enabled"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_versioning_versioning_configuration" {
   description = "versioning configuration"
