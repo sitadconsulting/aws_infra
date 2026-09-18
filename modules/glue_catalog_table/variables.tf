@@ -1,12 +1,12 @@
 variable "glue_catalog_table_catalog_id" {
   description = "ID of the Glue Catalog and database to create the table in. If omitted, this defaults to the AWS Account ID plus the database name"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_catalog_table_description" {
   description = "Description of the table"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_catalog_table_database_name" {
   description = "Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase"
@@ -15,12 +15,12 @@ variable "glue_catalog_table_database_name" {
 variable "glue_catalog_table_name" {
   description = "Name of the table. For Hive compatibility, this must be entirely lowercase"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_catalog_table_owner" {
   description = "Owner of the table"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_catalog_table_parameters" {
   description = "Properties associated with this table, as a list of key-value pairs"
@@ -35,17 +35,17 @@ variable "glue_catalog_table_retention" {
 variable "glue_catalog_table_table_type" {
   description = "Type of this table (EXTERNAL_TABLE, VIRTUAL_VIEW, etc.). While optional, some Athena DDL queries such as ALTER TABLE and SHOW CREATE TABLE will fail if this argument is empty"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_catalog_table_view_expanded_text" {
   description = "If the table is a view, the expanded text of the view; otherwise null"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_catalog_table_view_original_text" {
   description = "If the table is a view, the original text of the view; otherwise null"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_catalog_table_partition_index" {
   description = "Configuration for a maximum of 3 partition indexes"
