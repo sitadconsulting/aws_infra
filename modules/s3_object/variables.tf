@@ -15,7 +15,7 @@ variable "s3_object_bucket_key_enabled" {
 variable "s3_object_cache_control" {
   description = "Caching behavior along the request/reply chain"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_content" {
   description = "Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text"
@@ -30,27 +30,27 @@ variable "s3_object_content_base64" {
 variable "s3_object_content_disposition" {
   description = "Presentational information for the object"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_content_encoding" {
   description = "Content encodings that have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_content_language" {
   description = "Language the content is in e.g., en-US or en-GB"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_content_type" {
   description = "Standard MIME type describing the format of the object data, e.g., application/octet-stream. All Valid MIME Types are valid for this input"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_etag" {
   description = "Triggers updates when the value changes. The only meaningful value is filemd5(\"path/to/file\") (Terraform 0.11.12 or later). This attribute is not compatible with KMS encryption, kms_key_id or server_side_encryption = \"aws:kms\" (see source_hash instead)"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_force_destroy" {
   description = "Whether to allow the object to be deleted by removing any legal hold on any object version. Default is false. This value should be set to true only if the bucket has S3 object lock enabled"
@@ -99,7 +99,7 @@ variable "s3_object_source" {
 variable "s3_object_source_hash" {
   description = "Triggers updates like etag but useful to address etag encryption limitations. Set using filemd5(\"path/to/source\") (Terraform 0.11.12 or later)"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_storage_class" {
   description = "Storage Class for the object. Defaults to \"STANDARD\""
@@ -114,5 +114,5 @@ variable "s3_object_tags" {
 variable "s3_object_website_redirect" {
   description = "Target URL for website redirect"
   type        = string
-  default     = ""
+  default     = null
 }
