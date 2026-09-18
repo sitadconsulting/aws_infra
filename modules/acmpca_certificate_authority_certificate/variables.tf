@@ -9,5 +9,5 @@ variable "certificate_authority_certificate_certificate_authority_arn" {
 variable "certificate_authority_certificate_certificate_chain" {
   description = "PEM-encoded certificate chain that includes any intermediate certificates and chains up to root CA"
   type        = string
-  default     = ""
+  default     = null
 }
