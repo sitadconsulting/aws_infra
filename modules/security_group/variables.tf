@@ -11,7 +11,7 @@ variable "security_group_name_prefix" {
 variable "security_group_name" {
   description = "Name of the security group. If omitted, Terraform will assign a random, unique name"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "security_group_revoke_rules_on_delete" {
   description = "Instruct Terraform to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default false"
@@ -26,7 +26,7 @@ variable "security_group_tags" {
 variable "security_group_vpc_id" {
   description = "VPC ID. Defaults to the region's default VPC"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "security_group_egress" {
   description = "Configuration block for egress rules. Can be specified multiple times for each egress rule"
