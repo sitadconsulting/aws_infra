@@ -10,5 +10,5 @@ variable "redshift_cluster_iam_roles_iam_role_arns" {
 variable "redshift_cluster_iam_roles_default_iam_role_arn" {
   description = "ARN of the IAM role that was set as default for the cluster when the cluster was created"
   type        = string
-  default     = ""
+  default     = null
 }
