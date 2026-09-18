@@ -1,7 +1,7 @@
 variable "quicksight_data_set_aws_account_id" {
   description = "AWS account ID"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_data_set_data_set_id" {
   description = "Identifier for the data set"
