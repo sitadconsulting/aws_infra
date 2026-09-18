@@ -6,7 +6,7 @@ variable "security_group_rule_cidr_blocks" {
 variable "security_group_rule_description" {
   description = "The Description of the security group rule"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "security_group_rule_from_port" {
   description = "The FROM_PORT to set for this security group rule"
