@@ -1,7 +1,7 @@
 variable "opensearchserverless_security_config_description" {
   description = "Description of the security configuration"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "opensearchserverless_security_config_name" {
   description = "Name of the configuration"
