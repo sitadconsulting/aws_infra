@@ -11,7 +11,7 @@ variable "kms_external_key_deletion_window_in_days" {
 variable "kms_external_key_description" {
   description = " Description of the key"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kms_external_key_enabled" {
   description = "Specifies whether the key is enabled. Keys pending import can only be false. Imported keys default to true unless expired"
@@ -21,7 +21,7 @@ variable "kms_external_key_enabled" {
 variable "kms_external_key_key_material_base64" {
   description = "Base64 encoded 256-bit symmetric encryption key material to import. The CMK is permanently associated with this key material"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kms_external_key_multi_region" {
   description = "Indicates whether the KMS key is a multi-Region (true) or regional (false) key. Defaults to false"
@@ -31,7 +31,7 @@ variable "kms_external_key_multi_region" {
 variable "kms_external_key_policy" {
   description = "A key policy JSON document. If you do not provide a key policy, AWS KMS attaches a default key policy to the CMK"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kms_external_key_tags" {
   description = "A key-value map of tags to assign to the key"
@@ -41,5 +41,5 @@ variable "kms_external_key_tags" {
 variable "kms_external_key_valid_to" {
   description = "Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable"
   type        = string
-  default     = ""
+  default     = null
 }
