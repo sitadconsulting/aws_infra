@@ -1,7 +1,7 @@
 variable "nat_gateway_allocation_id" {
   description = "The Allocation ID of the Elastic IP address for the gateway. Required for connectivity_type of public"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "nat_gateway_connectivity_type" {
   description = "Connectivity type for the gateway. Valid values are private and public. Defaults to public"
