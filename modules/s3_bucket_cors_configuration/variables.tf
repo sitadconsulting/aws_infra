@@ -5,7 +5,7 @@ variable "s3_bucket_cors_configuration_bucket" {
 variable "s3_bucket_cors_configuration_expected_bucket_owner" {
   description = "Account ID of the expected bucket owner"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_cors_configuration_cors_rule" {
   description = "Set of origins and methods rules"
