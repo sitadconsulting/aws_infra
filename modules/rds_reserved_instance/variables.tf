@@ -10,7 +10,7 @@ variable "rds_reserved_instance_instance_count" {
 variable "rds_reserved_instance_reservation_id" {
   description = "Customer-specified identifier to track this reservation"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "rds_reserved_instance_tags" {
   description = "Map of tags to assign to the DB reservation"
