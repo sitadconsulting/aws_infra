@@ -11,7 +11,7 @@ variable "cluster_role_metadata_labels" {
 variable "cluster_role_metadata_name" {
   description = "Name of the Cluster Role, must be unique. Cannot be updated"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "cluster_role_rules" {
   description = "A list of Policy Rules for this ClusterRole "
