@@ -1,7 +1,7 @@
 variable "opensearchserverless_security_policy_description" {
   description = "Description of the policy. Typically used to store information about the permissions defined in the policy"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "opensearchserverless_security_policy_name" {
   description = "Name of the policy"
