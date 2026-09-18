@@ -11,5 +11,5 @@ variable "namespace_labels" {
 variable "namespace_name" {
   description = "Name of the Namespace, must be unique. Cannot be updated"
   type        = string
-  default     = ""
+  default     = null
 }
