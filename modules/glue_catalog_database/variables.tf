@@ -1,17 +1,17 @@
 variable "glue_catalog_database_catalog_id" {
   description = "ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_catalog_database_description" {
   description = "Description of the database"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_catalog_database_location_uri" {
   description = "Location of the database (for example, an HDFS path)"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_catalog_database_name" {
   description = "Name of the database. The acceptable characters are lowercase letters, numbers, and the underscore character"
