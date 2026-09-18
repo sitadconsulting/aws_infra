@@ -1,7 +1,7 @@
 variable "glue_ml_transform_description" {
   description = "Description of the ML Transform"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_ml_transform_glue_version" {
   description = "The version of glue to use"
