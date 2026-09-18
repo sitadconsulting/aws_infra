@@ -6,7 +6,7 @@ variable "cloudwatch_log_group_kms_key_id" {
 variable "cloudwatch_log_group_name" {
   description = "The name of the log group. If omitted, Terraform will assign a random, unique name"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "cloudwatch_log_group_name_prefix" {
   description = "Creates a unique name beginning with the specified prefix. Conflicts with name"
