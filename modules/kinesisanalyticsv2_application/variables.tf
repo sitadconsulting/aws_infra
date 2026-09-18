@@ -1,7 +1,7 @@
 variable "kinesisanalyticsv2_application_description" {
   description = "A summary description of the application"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kinesisanalyticsv2_application_force_stop" {
   description = "Whether to force stop an unresponsive Flink-based application"
