@@ -16,12 +16,12 @@ variable "service_account_metadata_labels" {
 variable "service_account_metadata_name" {
   description = "Name of the Service Account, must be unique. Cannot be updated"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "service_account_metadata_namespace" {
   description = "Namespace defines the space within which name of the Service Account must be unique"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "service_account_image_pull_secret" {
   description = "A list of references to secrets in the same namespace to use for pulling any images in pods that reference this Service Account"
