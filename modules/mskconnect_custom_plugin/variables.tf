@@ -5,7 +5,7 @@ variable "mskconnect_custom_plugin_content_type" {
 variable "mskconnect_custom_plugin_description" {
   description = "A summary description of the custom plugin"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "mskconnect_custom_plugin_name" {
   description = "The name of the custom plugin"
