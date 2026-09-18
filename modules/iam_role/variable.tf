@@ -5,7 +5,7 @@ variable "iam_role_assume_role_policy" {
 variable "iam_role_description" {
   description = "Description of the role"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "iam_role_force_detach_policies" {
   description = "Whether to force detaching any policies the role has before destroying it. Defaults to false"
@@ -40,7 +40,7 @@ variable "iam_role_path" {
 variable "iam_role_permissions_boundary" {
   description = "ARN of the policy that is used to set the permissions boundary for the role"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "iam_role_tags" {
   description = "Key-value mapping of tags for the IAM role"
