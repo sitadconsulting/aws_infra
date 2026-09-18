@@ -1,7 +1,7 @@
 variable "glue_partition_index_catalog_id" {
   description = "The catalog ID where the table resides"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_partition_index_database_name" {
   description = "Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase"
