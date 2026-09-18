@@ -11,12 +11,12 @@ variable "service_metadata_labels" {
 variable "service_metadata_name" {
   description = "Name of the Service, must be unique. Cannot be updated"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "service_metadata_namespace" {
   description = "Namespace defines the space within which name of the Service must be unique"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "service_wait_for_load_balancer" {
   description = "Terraform will wait for the load balancer to have at least 1 endpoint before considering the resource created. Defaults to true"
@@ -71,7 +71,7 @@ variable "service_spec_internal_traffic_policy" {
 variable "service_spec_load_balancer_class" {
   description = "The class of the load balancer implementation this Service belongs to. If specified, the value of this field must be a label-style identifier, with an optional prefix"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "service_spec_load_balancer_ip" {
   description = "Only applies to type = LoadBalancer. LoadBalancer will get created with the IP specified in this field"
