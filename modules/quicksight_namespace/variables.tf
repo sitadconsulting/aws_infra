@@ -1,12 +1,12 @@
 variable "quicksight_namespace_aws_account_id" {
   description = "AWS account ID"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_namespace_identity_store" {
   description = "User identity directory type. Defaults to QUICKSIGHT, the only current valid value"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_namespace_namespace" {
   description = "Name of the namespace"
