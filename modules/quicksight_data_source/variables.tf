@@ -1,7 +1,7 @@
 variable "quicksight_data_source_aws_account_id" {
   description = "The ID for the AWS account that the data source is in. Currently, you use the ID for the AWS account that contains your Amazon QuickSight account"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_data_source_data_source_id" {
   description = "An identifier for the data source"
@@ -23,7 +23,7 @@ variable "quicksight_data_source_type" {
 variable "quicksight_data_source_credentials" {
   description = "The credentials Amazon QuickSight uses to connect to your underlying source. Currently, only credentials based on user name and password are supported"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_data_source_parameters" {
   description = "The parameters used to connect to this data source (exactly one)"
