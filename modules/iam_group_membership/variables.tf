@@ -1,7 +1,7 @@
 variable "iam_group_membership_name" {
   description = "The name to identify the Group Membership"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "iam_group_membership_users" {
   description = "A list of IAM User names to associate with the Group"
@@ -11,5 +11,5 @@ variable "iam_group_membership_users" {
 variable "iam_group_membership_group" {
   description = "The IAM Group name to attach the list of users to"
   type        = string
-  default     = ""
+  default     = null
 }
