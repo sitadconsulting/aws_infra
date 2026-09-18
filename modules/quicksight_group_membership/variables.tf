@@ -1,7 +1,7 @@
 variable "quicksight_group_membership_aws_account_id" {
   description = "The ID for the AWS account that the group is in. Currently, you use the ID for the AWS account that contains your Amazon QuickSight account"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "quicksight_group_membership_member_name" {
   description = "The name of the member to add to the group"
