@@ -1,12 +1,12 @@
 variable "iam_policy_description" {
   description = "Description of the IAM policy"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "iam_policy_name" {
   description = "The name of the policy. If omitted, Terraform will assign a random, unique name"
   type     = string
-  default  = ""
+  default  = null
 }
 variable "iam_policy_name_prefix" {
   description = "Creates a unique name beginning with the specified prefix. Conflicts with name"
