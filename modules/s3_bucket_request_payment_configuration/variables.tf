@@ -5,7 +5,7 @@ variable "s3_bucket_request_payment_configuration_bucket" {
 variable "s3_bucket_request_payment_configuration_expected_bucket_owner" {
   description = "Account ID of the expected bucket owner"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_request_payment_configuration_payer" {
   description = "Specifies who pays for the download and request fees. Valid values: BucketOwner, Requester"
