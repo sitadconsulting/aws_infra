@@ -61,7 +61,7 @@ variable "lambda_event_source_mapping_starting_position" {
 variable "lambda_event_source_mapping_starting_position_timestamp" {
   description = "A timestamp in RFC3339 format of the data record which to start reading when using starting_position set to AT_TIMESTAMP. If a record with this exact timestamp does not exist, the next later record is chosen. If the timestamp is older than the current trim horizon, the oldest available record is chosen"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "lambda_event_source_mapping_topics" {
   description = "The name of the Kafka topics. Only available for MSK sources. A single topic name must be specified"
