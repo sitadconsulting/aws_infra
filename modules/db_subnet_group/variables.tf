@@ -11,7 +11,7 @@ variable "db_subnet_group_name_prefix" {
 variable "db_subnet_group_description" {
   description = "The description of the DB subnet group. Defaults to \"Managed by Terraform\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "db_subnet_group_subnet_ids" {
   description = "A list of VPC subnet ID"
