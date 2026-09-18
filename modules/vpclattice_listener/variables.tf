@@ -14,12 +14,12 @@ variable "vpcvpclattice_listener_protocol" {
 variable "vpcvpclattice_listener_service_arn" {
   description = "Amazon Resource Name (ARN) of the VPC Lattice service. You must include either the service_arn or service_identifier arguments"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "vpcvpclattice_listener_service_identifier" {
   description = "ID of the VPC Lattice service. You must include either the service_arn or service_identifier arguments"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "vpcvpclattice_listener_tags" {
   description = "A map of tags to assign to the resource"
