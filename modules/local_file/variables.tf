@@ -1,12 +1,12 @@
 variable "file_content" {
   description = "Read file content"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "file_filename" {
   description = "The location of the file on the local file system"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "file_directory_permission" {
   description = "Permissions to set for directories created (before umask), expressed as string in numeric notation. Default value is 0777"
