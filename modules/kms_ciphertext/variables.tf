@@ -1,7 +1,7 @@
 variable "kms_ciphertext_context" {
   description = "Mapping that makes up the encryption context"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "kms_ciphertext_key_id" {
   description = "Globally unique key ID for the customer master key"
