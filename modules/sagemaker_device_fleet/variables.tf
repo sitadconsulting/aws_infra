@@ -1,7 +1,7 @@
 variable "sagemaker_device_fleet_description" {
   description = "A description of the fleet"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "sagemaker_device_fleet_device_fleet_name" {
   description = "The name of the Device Fleet (must be unique)"
