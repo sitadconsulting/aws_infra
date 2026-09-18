@@ -9,7 +9,7 @@ variable "s3_bucket_intelligent_tiering_configuration_name" {
 variable "s3_bucket_intelligent_tiering_configuration_status" {
   description = "Specifies the status of the configuration. Valid values: Enabled, Disabled"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_intelligent_tiering_configuration_filter" {
   description = "Bucket filter configuration"
