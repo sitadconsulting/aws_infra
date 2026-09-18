@@ -5,7 +5,7 @@ variable "api_gateway_api_key_customer_id" {
 variable "api_gateway_api_key_description" {
   description = "API key description. Defaults to \"Managed by Terraform\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "api_gateway_api_key_enabled" {
   description = "Whether the API key can be used by callers. Defaults to true"
