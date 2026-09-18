@@ -20,7 +20,7 @@ variable "api_gateway_stage_deployment_id" {
 variable "api_gateway_stage_description" {
   description = "Description of the stage"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "api_gateway_stage_documentation_version" {
   description = "Version of the associated API documentation"
