@@ -24,5 +24,5 @@ variable "eks_access_entry_type" {
 variable "eks_access_entry_user_name" {
   description = "Defaults to principal ARN if user is principal else defaults to assume-role/session-name is role is used"
   type        = string
-  default     = ""
+  default     = null
 }
