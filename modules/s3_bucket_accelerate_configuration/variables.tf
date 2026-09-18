@@ -5,7 +5,7 @@ variable "s3_bucket_accelerate_configuration_bucket" {
 variable "s3_bucket_accelerate_configuration_expected_bucket_owner" {
   description = "Account ID of the expected bucket owner"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_accelerate_configuration_status" {
   description = "Transfer acceleration state of the bucket. Valid values: Enabled, Suspended"
