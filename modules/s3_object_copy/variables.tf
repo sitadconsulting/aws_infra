@@ -10,12 +10,12 @@ variable "s3_object_copy_bucket" {
 variable "s3_object_copy_cache_control" {
   description = "Specifies caching behavior along the request/reply chain"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_content_disposition" {
   description = "Specifies presentational information for the object"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_content_encoding" {
   description = "Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field"
@@ -25,7 +25,7 @@ variable "s3_object_copy_content_encoding" {
 variable "s3_object_copy_content_language" {
   description = "Language the content is in e.g., en-US or en-GB"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_content_type" {
   description = "Standard MIME type describing the format of the object data, e.g., application/octet-stream. All Valid MIME Types are valid for this input"
@@ -35,37 +35,37 @@ variable "s3_object_copy_content_type" {
 variable "s3_object_copy_copy_if_match" {
   description = "Copies the object if its entity tag (ETag) matches the specified tag"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_copy_if_modified_since" {
   description = "Copies the object if it has been modified since the specified time"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_copy_if_none_match" {
   description = "Copies the object if its entity tag (ETag) is different than the specified ETag"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_copy_if_unmodified_since" {
   description = "Copies the object if it hasn't been modified since the specified time, in RFC3339 format"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_customer_algorithm" {
   description = "Specifies the algorithm to use to when encrypting the object (for example, AES256)"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_customer_key" {
   description = "Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon S3 does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side-encryption-customer-algorithm header"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_customer_key_md5" {
   description = "Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure that the encryption key was transmitted without error"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_expected_bucket_owner" {
   description = "Account id of the expected destination bucket owner. If the destination bucket is owned by a different account, the request will fail with an HTTP 403 (Access Denied) error "
@@ -80,7 +80,7 @@ variable "s3_object_copy_expected_source_bucket_owner" {
 variable "s3_object_copy_expires" {
   description = "Date and time at which the object is no longer cacheable, in RFC3339 format"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_force_destroy" {
   description = "Allow the object to be deleted by removing any legal hold on any object version. Default is false. This value should be set to true only if the bucket has S3 object lock enabled"
@@ -94,12 +94,12 @@ variable "s3_object_copy_key" {
 variable "s3_object_copy_kms_encryption_context" {
   description = "Specifies the AWS KMS Encryption Context to use for object encryption. The value is a base64-encoded UTF-8 string holding JSON with the encryption context key-value pairs"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_kms_key_id" {
   description = "Specifies the AWS KMS Key ARN to use for object encryption. This value is a fully qualified ARN of the KMS Key. If using aws_kms_key, use the exported arn attribute: kms_key_id = aws_kms_key.foo.arn"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_metadata" {
   description = "Map of keys/values to provision metadata (will be automatically prefixed by x-amz-meta-, note that only lowercase label are currently supported by the AWS Go API)"
@@ -109,22 +109,22 @@ variable "s3_object_copy_metadata" {
 variable "s3_object_copy_metadata_directive" {
   description = "Specifies whether the metadata is copied from the source object or replaced with metadata provided in the request. Valid values are COPY and REPLACE"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_object_lock_legal_hold_status" {
   description = "The legal hold status that you want to apply to the specified object. Valid values are ON and OFF"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_object_lock_mode" {
   description = "Object lock retention mode that you want to apply to this object. Valid values are GOVERNANCE and COMPLIANCE"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_object_lock_retain_until_date" {
   description = "Date and time, in RFC3339 format, when this object's object lock will expire"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_object_copy_request_payer" {
   description = "Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests "
