@@ -5,7 +5,7 @@ variable "sagemaker_project_project_name" {
 variable "sagemaker_project_project_description" {
   description = "A description for the project"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "sagemaker_project_tags" {
   description = "A map of tags to assign to the resource. If configured with a provider default_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level"
