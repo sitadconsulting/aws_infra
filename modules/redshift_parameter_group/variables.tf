@@ -1,7 +1,7 @@
 variable "redshift_parameter_group_description" {
   description = "The description of the Redshift parameter group. Defaults to \"Managed by Terraform\""
   type        = string
-  default     = ""
+  default     = null
 }
 variable "redshift_parameter_group_family" {
   description = "The family of the Redshift parameter group"
