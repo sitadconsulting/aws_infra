@@ -5,7 +5,7 @@ variable "api_gateway_vpc_link_name" {
 variable "api_gateway_vpc_link_description" {
   description = "Description of the VPC link"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "api_gateway_vpc_link_target_arns" {
   description = "List of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target"
