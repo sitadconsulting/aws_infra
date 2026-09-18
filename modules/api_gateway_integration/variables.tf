@@ -6,7 +6,7 @@ variable "api_gateway_integration_cache_key_parameters" {
 variable "api_gateway_integration_cache_namespace" {
   description = "ntegration's cache namespace"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "api_gateway_integration_connection_id" {
   description = "ID of the VpcLink used for the integration. Required if connection_type is VPC_LINK"
@@ -38,6 +38,11 @@ variable "api_gateway_integration_integration_http_method" {
   type        = string
   default     = null
 }
+variable "api_gateway_integration_integration_target" {
+  description = "(Optional) ALB or NLB ARN to send the request to. Used for private integrations with VPC Link V2. When using VPC Link V2, this parameter specifies the load balancer ARN, while uri is used to set the Host header"
+  type        = string
+  default     = null
+}
 variable "api_gateway_integration_passthrough_behavior" {
   description = "Integration passthrough behavior (WHEN_NO_MATCH, WHEN_NO_TEMPLATES, NEVER). Required if request_templates is used"
   type        = string
@@ -56,6 +61,11 @@ variable "api_gateway_integration_request_templates" {
 variable "api_gateway_integration_resource_id" {
   description = "API resource ID"
   type        = string
+}
+variable "api_gateway_integration_response_transfer_mode" {
+  description = "(Optional) Response transfer mode of the integration. Valid values are BUFFERED and STREAM. Default to BUFFERED. Once set, setting the value to BUFFERED requires explicitly specifying BUFFERED, rather than removing this argument"
+  type        = string
+  default     = null
 }
 variable "api_gateway_integration_rest_api_id" {
   description = "ID of the associated REST API"
