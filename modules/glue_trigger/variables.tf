@@ -1,7 +1,7 @@
 variable "glue_trigger_description" {
   description = "A description of the new trigger"
   type        = string
-  default     = ""
+  default     = null
 } 
 variable "glue_trigger_enabled" {
   description = "Start the trigger. Defaults to true"
