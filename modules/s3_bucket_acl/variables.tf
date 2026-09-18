@@ -1,7 +1,7 @@
 variable "s3_bucket_acl_acl" {
   description = "Canned ACL to apply to the bucket"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_acl_bucket" {
   description = "Name of the bucket"
@@ -9,8 +9,8 @@ variable "s3_bucket_acl_bucket" {
 }
 variable "s3_bucket_acl_expected_bucket_owner" {
   description = "Account ID of the expected bucket owner"
-  type        =
-  default     = 
+  type        = string
+  default     = null
 }
 variable "s3_bucket_acl_access_control_policy" {
   description = "Configuration of object ACL permissions per grantee"
