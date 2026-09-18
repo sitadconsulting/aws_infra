@@ -1,7 +1,7 @@
 variable "sagemaker_feature_group_description" {
   description = "A free-form description of a Feature Group"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "sagemaker_feature_group_event_time_feature_name" {
   description = "The name of the feature that stores the EventTime of a Record in a Feature Group"
