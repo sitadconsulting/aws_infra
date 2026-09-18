@@ -6,7 +6,7 @@ variable "sagemaker_pipeline_pipeline_definition" {
 variable "sagemaker_pipeline_pipeline_description" {
   description = "A description of the pipeline"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "sagemaker_pipeline_pipeline_display_name" {
   description = "The display name of the pipeline"
