@@ -5,7 +5,7 @@ variable "eks_addon_addon_name" {
 variable "eks_addon_addon_version" {
   description = "The version of the EKS add-on. The version must match one of the versions returned by describe-addon-versions"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "eks_addon_cluster_name" {
   description = "Name of the EKS Cluster"
@@ -14,7 +14,7 @@ variable "eks_addon_cluster_name" {
 variable "eks_addon_configuration_values" {
   description = "Custom configuration values for addons with single JSON string. This JSON string value must match the JSON schema derived from describe-addon-configuration"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "eks_addon_resolve_conflicts_on_create" {
   description = "How to resolve field value conflicts when migrating a self-managed add-on to an Amazon EKS add-on. Valid values are NONE and OVERWRITE. For more details see the CreateAddon API Docs"
