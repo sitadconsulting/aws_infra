@@ -11,12 +11,12 @@ variable "ingress_metadata_labels" {
 variable "ingress_metadata_name" {
   description = "Name of the ingress resource, must be unique. Cannot be updated"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "ingress_metadata_namespace" {
   description = "Namespace defines the space within which name of the ingress resource must be unique"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "ingress_spec_default_backend" {
   description = "A default backend capable of servicing requests that don't match any rule"
@@ -39,7 +39,7 @@ variable "ingress_spec_default_backend" {
 variable "ingress_spec_ingress_class_name" {
   description = "The ingress class name references an IngressClass resource that contains additional configuration including the name of the controller that should implement the class"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "ingress_spec_rule" {
   description = "A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend"
