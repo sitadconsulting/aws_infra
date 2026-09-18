@@ -33,13 +33,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "s3_bucket_lifecycle_configurat
                     object_size_greater_than = and.value["object_size_greater_than"]
                     object_size_less_than    = and.value["object_size_less_than"]
                     prefix                   = and.value["prefix"]
+                    tags                     = and.value["tags"]
                   }
               }
               dynamic "tag" {
-                for_each = filter.value.tags
+                for_each = filter.value.tag
                   content {
-                    key   = tags.value["key"]
-                    value = tags.value["value"]
+                    key   = tag.value["key"]
+                    value = tag.value["value"]
                   }
               }
             }
