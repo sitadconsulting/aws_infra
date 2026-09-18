@@ -1,7 +1,7 @@
 variable "sagemaker_image_description" {
   description = "The description of the image"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "sagemaker_image_display_name" {
   description = "The display name of the image. When the image is added to a domain (must be unique to the domain)"
