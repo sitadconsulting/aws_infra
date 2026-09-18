@@ -25,7 +25,7 @@ variable "release_dependency_update" {
 variable "release_description" {
   description = "Set release description attribute (visible in the history)"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "release_devel" {
   description = "Use chart development versions, too. Equivalent to version '>0.0.0-0'. If version is set, this is ignored"
@@ -69,7 +69,7 @@ variable "release_name" {
 variable "release_namespace" {
   description = "The namespace to install the release into. Defaults to default"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "release_pass_credentials" {
   description = "Pass credentials to all domains. Defaults to false"
@@ -94,32 +94,32 @@ variable "release_replace" {
 variable "release_repository" {
   description = "Repository URL where to locate the requested chart"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "release_repository_ca_file" {
   description = "The Repositories CA File"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "release_repository_cert_file" {
   description = "The repositories cert file"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "release_repository_key_file" {
   description = "The repositories cert key file"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "release_repository_password" {
   description = "Password for HTTP basic authentication against the repository"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "release_repository_username" {
   description = "Username for HTTP basic authentication against the repository"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "release_reset_values" {
   description = "When upgrading, reset the values to the ones built into the chart. Defaults to false"
