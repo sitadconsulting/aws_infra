@@ -5,7 +5,7 @@ variable "s3_bucket_logging_bucket" {
 variable "s3_bucket_logging_expected_bucket_owner" {
   description = "Account ID of the expected bucket owner"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "s3_bucket_logging_target_bucket" {
   description = "Name of the bucket where you want Amazon S3 to store server access logs"
