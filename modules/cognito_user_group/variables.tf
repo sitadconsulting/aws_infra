@@ -1,7 +1,7 @@
 variable "cognito_user_group_description" {
   description = "The description of the user group"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "cognito_user_group_name" {
   description = "The name of the user group"
@@ -10,7 +10,7 @@ variable "cognito_user_group_name" {
 variable "cognito_user_group_precedence" {
   description = "The precedence of the user group"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "cognito_user_group_role_arn" {
   description = "The ARN of the IAM role to be associated with the user group"
