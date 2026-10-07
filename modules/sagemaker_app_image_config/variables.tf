@@ -7,6 +7,38 @@ variable "sagemaker_app_image_config_tags" {
   type        = map(string)
   default     = {}
 }
+variable "sagemaker_app_image_config_code_editor_app_image_config" {
+  description = "The CodeEditorAppImageConfig. You can only specify one image kernel in the AppImageConfig API. This kernel is shown to users before the image starts. After the image runs, all kernels are visible in Code Editor"
+  type        = list(object({
+    container_config = optional(list(object({
+      container_arguments             = optional(list(string))
+      container_entrypoint            = optional(list(string))
+      container_environment_variables = optional(map(string))
+    })), [])
+    file_system_config = optional(list(object({
+      default_gid = optional(number)
+      default_uid = optional(number)
+      mount_path  = optional(string)
+    })), [])
+  }))
+  default = []
+}
+variable "sagemaker_app_image_config_jupyter_lab_image_config" {
+  description = "The JupyterLabAppImageConfig. You can only specify one image kernel in the AppImageConfig API. This kernel is shown to users before the image starts. After the image runs, all kernels are visible in JupyterLab"
+  type        = list(object({
+    container_config = optional(list(object({
+      container_arguments             = optional(list(string))
+      container_entrypoint            = optional(list(string))
+      container_environment_variables = optional(map(string))
+    })), [])
+    file_system_config = optional(list(object({
+      default_gid = optional(number)
+      default_uid = optional(number)
+      mount_path  = optional(string)
+    })), [])
+  }))
+  default = []
+}
 variable "sagemaker_app_image_config_kernel_gateway_image_config" {
   description = "The configuration for the file system and kernels in a SageMaker image running as a KernelGateway app"
   type        = list(object({
