@@ -1,7 +1,7 @@
 variable "sagemaker_feature_group_description" {
   description = "A free-form description of a Feature Group"
   type        = string
-  default     = null
+  default     = ""
 }
 variable "sagemaker_feature_group_event_time_feature_name" {
   description = "The name of the feature that stores the EventTime of a Record in a Feature Group"
@@ -29,6 +29,11 @@ variable "sagemaker_feature_group_feature_definition" {
   type        = list(object({
     feature_name = optional(string)
     feature_type = optional(string)
+    collection_config = optional(list(object({
+      vector_config = optional(list(object({
+        dimension = optional(number)
+      })), [])
+    })), [])
   }))
 }
 variable "sagemaker_feature_group_offline_store_config" {
@@ -63,4 +68,13 @@ variable "sagemaker_feature_group_online_store_config" {
     })), [])
   }))
   default     = []
+}
+variable "sagemaker_feature_group_throughput_config" {
+  description = "Throughput config"
+  type        = list(object({
+    throughput_mode                  = optional(string)
+    provisioned_read_capacity_units  = optional(number)
+    provisioned_write_capacity_units = optional(number)
+  }))
+  default = []
 }
