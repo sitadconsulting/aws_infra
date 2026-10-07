@@ -1,8 +1,8 @@
 resource "aws_sagemaker_feature_group" "sagemaker_feature_group" {
   description                    = var.sagemaker_feature_group_description
   event_time_feature_name        = var.sagemaker_feature_group_event_time_feature_name
-  feature_group_name             = var.sagemaker_feature_group_feature_group_name 
-  record_identifier_feature_name = var.sagemaker_feature_group_record_identifier_feature_name 
+  feature_group_name             = var.sagemaker_feature_group_feature_group_name
+  record_identifier_feature_name = var.sagemaker_feature_group_record_identifier_feature_name
   role_arn                       = var.sagemaker_feature_group_role_arn
   tags                           = var.sagemaker_feature_group_tags
 
@@ -11,6 +11,17 @@ resource "aws_sagemaker_feature_group" "sagemaker_feature_group" {
       content {
         feature_name = feature_definition.value["feature_name"]
         feature_type = feature_definition.value["feature_type"]
+        dynamic "collection_config" {
+          for_each = feature_definition.value.collection_config
+            content {
+              dynamic "vector_config" {
+                for_each = collection_config.value.vector_config
+                  content {
+                    dimension = vector_config.value["dimension"]
+                  }
+              }
+            }
+        }
       }
   }
   dynamic "offline_store_config" {
@@ -25,7 +36,7 @@ resource "aws_sagemaker_feature_group" "sagemaker_feature_group" {
               database   = data_catalog_config.value["database"]
               table_name = data_catalog_config.value["table_name"]
             }
-        } 
+        }
         dynamic "s3_storage_config" {
           for_each = offline_store_config.value.s3_storage_config
             content {
@@ -54,6 +65,14 @@ resource "aws_sagemaker_feature_group" "sagemaker_feature_group" {
               value = ttl_duration.value["value"]
             }
         }
+      }
+  }
+  dynamic "throughput_config" {
+    for_each = var.sagemaker_feature_group_throughput_config
+      content {
+        throughput_mode                  = throughput_config.value["throughput_mode"]
+        provisioned_read_capacity_units  = throughput_config.value["provisioned_read_capacity_units"]
+        provisioned_write_capacity_units = throughput_config.value["provisioned_write_capacity_units"]
       }
   }
 }
