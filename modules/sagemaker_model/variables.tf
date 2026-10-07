@@ -20,13 +20,14 @@ variable "sagemaker_model_tags" {
 variable "sagemaker_model_container" {
   description = "Specifies containers in the inference pipeline. If not specified, the primary_container argument is required"
   type        = list(object({
-    container_hostname = optional(string)
-    environment        = optional(map(string))
-    image              = optional(string)
-    mode               = optional(string)
-    model_data_url     = optional(string)
-    model_package_name = optional(string)
-    image_config       = optional(list(object({
+    container_hostname           = optional(string)
+    environment                  = optional(map(string))
+    image                        = optional(string)
+    inference_specification_name = optional(string)
+    mode                         = optional(string)
+    model_data_url               = optional(string)
+    model_package_name           = optional(string)
+    image_config                 = optional(list(object({
       repository_access_mode = string
       repository_auth_config = optional(list(object({
         repository_credentials_provider_arn = string
@@ -34,10 +35,16 @@ variable "sagemaker_model_container" {
     })), [])
     model_data_source  = optional(list(object({
       s3_data_source  = list(object({
-        s3_uri           = string
-        s3_data_type     = string
-        compression_type = string 
+        s3_uri              = string
+        s3_data_type        = string
+        compression_type    = string
+        model_access_config = optional(list(object({
+          accept_eula = bool
+        })), [])
       }))
+    })), [])
+    multi_model_config = optional(list(object({
+      model_cache_setting = optional(string)
     })), [])
   }))
   default     = []
@@ -50,15 +57,17 @@ variable "sagemaker_model_inference_execution_config" {
   default     = []
 }
 variable "sagemaker_model_primary_container" {
-  description = "The primary docker image containing inference code that is used when the model is deployed for predictions. If not specified, the container argument is required"
+  description = "The primary docker image containing inference code that is used when the model is deployed for predictions. If not specified, the container
+ argument is required"
   type        = list(object({
-    container_hostname = optional(string)
-    environment        = optional(map(string))
-    image              = optional(string)
-    mode               = optional(string)
-    model_data_url     = optional(string)
-    model_package_name = optional(string)
-    image_config       = optional(list(object({
+    container_hostname           = optional(string)
+    environment                  = optional(map(string))
+    image                        = optional(string)
+    inference_specification_name = optional(string)
+    mode                         = optional(string)
+    model_data_url               = optional(string)
+    model_package_name           = optional(string)
+    image_config                 = optional(list(object({
       repository_access_mode = string
       repository_auth_config = optional(list(object({
         repository_credentials_provider_arn = string
@@ -68,8 +77,14 @@ variable "sagemaker_model_primary_container" {
       s3_data_source  = list(object({
         s3_uri           = string
         s3_data_type     = string
-        compression_type = string 
+        compression_type = string
+        model_access_config = optional(list(object({
+          accept_eula = bool
+        })), [])
       }))
+    })), [])
+    multi_model_config = optional(list(object({
+      model_cache_setting = optional(string)
     })), [])
   }))
   default     = []
