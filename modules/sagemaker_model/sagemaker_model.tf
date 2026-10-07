@@ -7,12 +7,13 @@ resource "aws_sagemaker_model" "sagemaker_model" {
   dynamic "container" {
     for_each = var.sagemaker_model_container
       content {
-        container_hostname = container.value["container_hostname"]
-        environment        = container.value["environment"]
-        image              = container.value["image"]
-        mode               = container.value["mode"]
-        model_data_url     = container.value["model_data_url"]
-        model_package_name = container.value["model_package_name"]
+        container_hostname           = container.value["container_hostname"]
+        environment                  = container.value["environment"]
+        image                        = container.value["image"]
+        inference_specification_name = container.value["inference_specification_name"]
+        mode                         = container.value["mode"]
+        model_data_url               = container.value["model_data_url"]
+        model_package_name           = container.value["model_package_name"]
         dynamic "image_config" {
           for_each = container.value.image_config
             content {
@@ -34,12 +35,24 @@ resource "aws_sagemaker_model" "sagemaker_model" {
                     s3_uri           = s3_data_source.value["s3_uri"]
                     s3_data_type     = s3_data_source.value["s3_data_type"]
                     compression_type = s3_data_source.value["compression_type"]
+                    dynamic "model_access_config" {
+                      for_each = s3_data_source.value.model_access_config
+                        content {
+                          accept_eula = model_access_config.value["accept_eula"]
+                        }
+                    }
                   }
               }
             }
         }
+        dynamic "multi_model_config" {
+          for_each = container.value.multi_model_config
+            content {
+              model_cache_setting = multi_model_config.value["model_cache_setting"]
+            }
+        }
       }
-  } 
+  }
   dynamic "inference_execution_config" {
     for_each = var.sagemaker_model_inference_execution_config
       content {
@@ -49,12 +62,13 @@ resource "aws_sagemaker_model" "sagemaker_model" {
   dynamic "primary_container" {
     for_each = var.sagemaker_model_primary_container
       content {
-        container_hostname = primary_container.value["container_hostname"]
-        environment        = primary_container.value["environment"]
-        image              = primary_container.value["image"]
-        mode               = primary_container.value["mode"]
-        model_data_url     = primary_container.value["model_data_url"]
-        model_package_name = primary_container.value["model_package_name"]
+        container_hostname           = primary_container.value["container_hostname"]
+        environment                  = primary_container.value["environment"]
+        image                        = primary_container.value["image"]
+        inference_specification_name = container.value["inference_specification_name"]
+        mode                         = primary_container.value["mode"]
+        model_data_url               = primary_container.value["model_data_url"]
+        model_package_name           = primary_container.value["model_package_name"]
         dynamic "image_config" {
           for_each = primary_container.value.image_config
             content {
@@ -76,8 +90,20 @@ resource "aws_sagemaker_model" "sagemaker_model" {
                     s3_uri           = s3_data_source.value["s3_uri"]
                     s3_data_type     = s3_data_source.value["s3_data_type"]
                     compression_type = s3_data_source.value["compression_type"]
+                    dynamic "model_access_config" {
+                      for_each = s3_data_source.value.model_access_config
+                        content {
+                          accept_eula = model_access_config.value["accept_eula"]
+                        }
+                    }
                   }
               }
+            }
+        }
+        dynamic "multi_model_config" {
+          for_each = primary_container.value.multi_model_config
+            content {
+              model_cache_setting = multi_model_config.value["model_cache_setting"]
             }
         }
       }
@@ -86,7 +112,7 @@ resource "aws_sagemaker_model" "sagemaker_model" {
     for_each = var.sagemaker_model_vpc_config
       content {
         subnets            = vpc_config.value["subnets"]
-        security_group_ids = vpc_config.value["security_group_ids"] 
+        security_group_ids = vpc_config.value["security_group_ids"]
       }
   }
 }
