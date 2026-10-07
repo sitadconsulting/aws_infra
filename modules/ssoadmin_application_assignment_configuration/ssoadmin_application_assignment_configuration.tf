@@ -1,0 +1,4 @@
+resource "aws_ssoadmin_application_assignment_configuration" "ssoadmin_application_assignment_configuration" {
+  application_arn     = var.ssoadmin_application_assignment_configuration_application_arn
+  assignment_required = var.ssoadmin_application_assignment_configuration_assignment_required
+}
