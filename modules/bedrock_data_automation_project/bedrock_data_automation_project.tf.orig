@@ -1,0 +1,454 @@
+resource "awscc_bedrock_data_automation_project" "bedrock_data_automation_project" {
+  kms_encryption_context = var.bedrock_data_automation_project_kms_encryption_context
+  kms_key_id             = var.bedrock_data_automation_project_kms_key_id
+  project_description    = var.bedrock_data_automation_project_project_description
+  project_name           = var.bedrock_data_automation_project_name
+  project_type           = var.bedrock_data_automation_project_type
+  tags                   = var.bedrock_data_automation_project_tags
+   
+  #dynamic "custom_output_configuration" {
+  #  for_each = var.bedrock_data_automation_project_custom_output_configuration
+  #    content {
+  #      dynamic "blueprints" {
+  #        for_each = custom_output_configuration.value.blueprints
+  #          content {
+  #            blueprint_arn     = blueprints.value["blueprint_arn"]
+  #            blueprint_stage   = blueprints.value["blueprint_stage"]
+  #            blueprint_version = blueprints.value["blueprint_version"]
+  #          }
+  #      }
+  #    }
+  #}
+  custom_output_configuration = {
+    blueprints = var.bedrock_data_automation_project_custom_output_configuration_blueprints
+  }
+  #dynamic "override_configuration" {
+  #  for_each = var.bedrock_data_automation_project_override_configuration
+  #    content {
+  #      dynamic "audio" {
+  #        for_each = override_configuration.value.audio
+  #          content {
+  #            dynamic "language_configuration" {
+  #              for_each = audio.value.language_configuration
+  #                content {
+  #                  generative_output_language  = language_configuration.value["generative_output_language"]
+  #                  identify_multiple_languages = language_configuration.value["identify_multiple_languages"]
+  #                  input_languages             = language_configuration.value["input_languages"]
+  #                }
+  #            } 
+  #            dynamic "modality_processing" {
+  #              for_each = audio.value.modality_processing
+  #                content {
+  #                  state = modality_processing.value["state"]
+  #                }
+  #            }
+  #            dynamic "sensitive_data_configuration" {
+  #              for_each = audio.value.sensitive_data_configuration
+  #                content {
+  #                  detection_mode  = sensitive_data_configuration.value["detection_mode"]
+  #                  detection_scope = sensitive_data_configuration.value["detection_scope"]
+  #                  dynamic "pii_entities_configuration" {
+  #                    for_each = sensitive_data_configuration.value.pii_entities_configuration
+  #                      content {
+  #                        pii_entity_types    = pii_entities_configuration.value["pii_entity_types"]
+  #                        redaction_mask_mode = pii_entities_configuration.value["redaction_mask_mode"]
+  #                      }
+  #                  }
+  #                } 
+  #            }
+  #          }
+  #      }
+  #      dynamic "document" {
+  #        for_each = override_configuration.value.document
+  #          content {
+  #            dynamic "modality_processing" {
+  #              for_each = document.value.modality_processing
+  #                content {
+  #                  state = modality_processing.value["state"]
+  #                }
+  #            }
+  #            dynamic "sensitive_data_configuration" {
+  #              for_each = document.value.sensitive_data_configuration
+  #                content {
+  #                  detection_mode  = sensitive_data_configuration.value["detection_mode"]
+  #                  detection_scope = sensitive_data_configuration.value["detection_scope"]
+  #                  dynamic "pii_entities_configuration" {
+  #                    for_each = sensitive_data_configuration.value.pii_entities_configuration
+  #                      content {
+  #                        pii_entity_types    = pii_entities_configuration.value["pii_entity_types"]
+  #                        redaction_mask_mode = pii_entities_configuration.value["redaction_mask_mode"]
+  #                      }
+  #                  }
+  #                }
+  #            }
+  #            dynamic "splitter" {
+  #              for_each = document.value.splitter
+  #                content {
+  #                  state = splitter.value["state"]
+  #                }
+  #            }
+  #          }
+  #      }
+  #      dynamic "image" {
+  #        for_each = override_configuration.value.image
+  #          content {
+  #            dynamic "modality_processing" {
+  #              for_each = image.value.modality_processing
+  #                content {
+  #                  state = modality_processing.value["state"]
+  #                }
+  #            } 
+  #            dynamic "sensitive_data_configuration" {
+  #              for_each = image.value.sensitive_data_configuration
+  #                content {
+  #                  detection_mode  = sensitive_data_configuration.value["detection_mode"]
+  #                  detection_scope = sensitive_data_configuration.value["detection_scope"]
+  #                  dynamic "pii_entities_configuration" {
+  #                    for_each = sensitive_data_configuration.value.pii_entities_configuration
+  #                      content {
+  #                        pii_entity_types    = pii_entities_configuration.value["pii_entity_types"]
+  #                        redaction_mask_mode = pii_entities_configuration.value["redaction_mask_mode"]
+  #                      } 
+  #                  }
+  #                }
+  #            }
+  #          }
+  #      }
+  #      dynamic "modality_routing" {
+  #        for_each = override_configuration.value.modality_routing
+  #          content {
+  #            jpeg = modality_routing.value["jpeg"]
+  #            mov  = modality_routing.value["mov"]
+  #            mp_4 = modality_routing.value["mp_4"]
+  #            png  = modality_routing.value["png"]
+  #          }
+  #      }
+  #      dynamic "video" {
+  #        for_each = override_configuration.value.video
+  #          content {
+  #            dynamic "modality_processing" {
+  #              for_each = video.value.modality_processing
+  #                content {
+  #                  state = modality_processing.value["state"]
+  #                }
+  #            } 
+  #            dynamic "sensitive_data_configuration" {
+  #              for_each = video.value.sensitive_data_configuration
+  #                content {
+  #                  detection_mode  = sensitive_data_configuration.value["detection_mode"]
+  #                  detection_scope = sensitive_data_configuration.value["detection_scope"]
+  #                  dynamic "pii_entities_configuration" {
+  #                    for_each = sensitive_data_configuration.value.pii_entities_configuration
+  #                      content {
+  #                        pii_entity_types    = pii_entities_configuration.value["pii_entity_types"]
+  #                        redaction_mask_mode = pii_entities_configuration.value["redaction_mask_mode"]
+  #                      }
+  #                  }
+  #                }
+  #             }
+  #          }
+  #      }
+  #    } 
+  #}
+  override_configuration = {
+    audio = {
+      language_configuration = {
+        generative_output_language  = var.bedrock_data_automation_project_override_configuration_audio_language_configuration_generative_output_language
+        identify_multiple_languages = var.bedrock_data_automation_project_override_configuration_audio_language_configuration_identify_multiple_languages
+        input_languages             = var.bedrock_data_automation_project_override_configuration_audio_language_configuration_input_languages
+      }
+      modality_processing = {
+        state = var.bedrock_data_automation_project_override_configuration_audio_modality_processing_state
+      }
+      sensitive_data_configuration = {
+        detection_mode  = var.bedrock_data_automation_project_override_configuration_audio_sensitive_data_configuration_detection_mode
+        detection_scope = var.bedrock_data_automation_project_override_configuration_audio_sensitive_data_configuration_detection_scope
+        pii_entities_configuration = {
+          pii_entity_types    = var.bedrock_data_automation_project_override_configuration_audio_sensitive_data_configuration_pii_entities_configuration_pii_entity_types
+          redaction_mask_mode = var.bedrock_data_automation_project_override_configuration_audio_sensitive_data_configuration_pii_entities_configuration_redaction_mask_mode
+        }
+      }
+    }
+    document = {
+      modality_processing = {
+        state = var.bedrock_data_automation_project_override_configuration_document_modality_processing_state
+      }
+      sensitive_data_configuration = {
+        detection_mode  = var.bedrock_data_automation_project_override_configuration_document_sensitive_data_configuration_detection_mode
+        detection_scope = var.bedrock_data_automation_project_override_configuration_document_sensitive_data_configuration_detection_scope
+        pii_entities_configuration = {
+          pii_entity_types    = var.bedrock_data_automation_project_override_configuration_document_sensitive_data_configuration_pii_entities_configuration_pii_entity_types
+          redaction_mask_mode = var.bedrock_data_automation_project_override_configuration_document_sensitive_data_configuration_pii_entities_configuration_redaction_mask_mode
+        }
+      }
+      splitter = {
+        state = var.bedrock_data_automation_project_override_configuration_document_splitter_state
+      } 
+    }
+    image = {
+      modality_processing = {
+        state = var.bedrock_data_automation_project_override_configuration_image_modality_processing_state
+      }
+      sensitive_data_configuration = {
+        detection_mode  = var.bedrock_data_automation_project_override_configuration_image_sensitive_data_configuration_detection_mode
+        detection_scope = var.bedrock_data_automation_project_override_configuration_image_sensitive_data_configuration_detection_scope
+        pii_entities_configuration = {
+          pii_entity_types    = var.bedrock_data_automation_project_override_configuration_image_sensitive_data_configuration_pii_entities_configuration_pii_entity_types
+          redaction_mask_mode = var.bedrock_data_automation_project_override_configuration_image_sensitive_data_configuration_pii_entities_configuration_redaction_mask_mode
+        }
+      }
+    }
+    modality_routing = {
+      jpeg = var.bedrock_data_automation_project_override_configuration_modality_routing_jpeg
+      mov  = var.bedrock_data_automation_project_override_configuration_modality_routing_mov
+      mp_4 = var.bedrock_data_automation_project_override_configuration_modality_routing_mp_4
+      png  = var.bedrock_data_automation_project_override_configuration_modality_routing_png
+    }
+    video = {
+      modality_processing = {
+        state = var.bedrock_data_automation_project_override_configuration_video_modality_processing_state 
+      }
+      sensitive_data_configuration = {
+        detection_mode  = var.bedrock_data_automation_project_override_configuration_video_sensitive_data_configuration_detection_mode
+        detection_scope = var.bedrock_data_automation_project_override_configuration_video_sensitive_data_configuration_detection_scope
+        pii_entities_configuration = {
+          pii_entity_types    = var.bedrock_data_automation_project_override_configuration_video_sensitive_data_configuration_pii_entities_configuration_pii_entity_types
+          redaction_mask_mode = var.bedrock_data_automation_project_override_configuration_video_sensitive_data_configuration_pii_entities_configuration_redaction_mask_mode
+        }
+      }
+    }
+  }
+  #dynamic "standard_output_configuration" {
+  #  for_each = var.bedrock_data_automation_project_standard_output_configuration
+  #    content {
+  #      dynamic "audio" {
+  #        for_each = standard_output_configuration.value.audio
+  #          content {
+  #            dynamic "extraction" {
+  #              for_each = audio.value.extraction
+  #                content {
+  #                  dynamic "category" {
+  #                    for_each = extraction.value.category
+  #                      content {
+  #                        state = category.value["state"]
+  #                        types = category.value["types"]
+  #                        dynamic "type_configuration" {
+  #                          for_each = category.value.type_configuration
+  #                            content {
+  #                              dynamic "transcript" {
+  #                                for_each = type_configuration.value.transcript
+  #                                  content {
+  #                                    dynamic "channel_labeling" {
+  #                                      for_each = transcript.value.channel_labeling
+  #                                        content {
+  #                                          state = channel_labeling.value["state"]
+  #                                        }
+  #                                    }
+  #                                    dynamic "speaker_labeling" {
+  #                                      for_each = transcript.value.speaker_labeling
+  #                                        content {
+  #                                          state = speaker_labeling.value["state"]
+  #                                        }
+  #                                    }
+  #                                  }
+  #                              }
+  #                            }
+  #                        }
+  #                      } 
+  #                  }
+  #                }
+  #            }
+  #            dynamic "generative_field" {
+  #              for_each = audio.value.generative_field
+  #                content {
+  #                  state = generative_field.value["state"]
+  #                  types = generative_field.value["types"]
+  #                }
+  #            }
+  #          }
+  #      }
+  #      dynamic "document" {
+  #        for_each = standard_output_configuration.value.document
+  #          content {
+  #            dynamic "extraction" {
+  #              for_each = document.value.extraction
+  #                content {
+  #                  dynamic "bounding_box" {
+  #                    for_each = extraction.value.bounding_box
+  #                      content {
+  #                        state = bounding_box.value["state"]
+  #                      }
+  #                  } 
+  #                  dynamic "granularity" {
+  #                    for_each = extraction.value.granularity
+  #                      content {
+  #                        types = granularity.value["types"]
+  #                      }
+  #                  }
+  #                }
+  #            }
+  #            dynamic "generative_field" {
+  #              for_each = document.value.extraction
+  #                content {
+  #                  state = generative_field.value["state"]
+  #                }
+  #            }
+  #            dynamic "output_format" {
+  #              for_each = document.value.extraction
+  #                content {
+  #                  dynamic "additional_file_format" {
+  #                    for_each = output_format.value.additional_file_format
+  #                      content {
+  #                        state = additional_file_format.value["state"]
+  #                      }
+  #
+  #                  }
+  #                  dynamic "text_format" {
+  #                    for_each = output_format.value.text_format
+  #                      content {
+  #                        types = text_format.value["types"]
+  #                      }
+  #                  }
+  #                }
+  #            }
+  #          }
+  #      }
+  #      dynamic "image" {
+  #        for_each = standard_output_configuration.value.image
+  #          content {
+  #            dynamic "extraction" {
+  #              for_each = image.value.extraction
+  #                content {
+  #                  dynamic "bounding_box" {
+  #                    for_each = extraction.value.bounding_box
+  #                      content {
+  #                        state = bounding_box.value["state"]
+  #                      }
+  #                  }
+  #                  dynamic "category" {
+  #                    for_each = extraction.value.category
+  #                      content {
+  #                        state = category.value["state"]
+  #                        types = category.value["types"]
+  #                      }
+  #                 }
+  #                }
+  #            }
+  #            dynamic "generative_field" {
+  #              for_each = image.value.generative_field
+  #                content {
+  #                  state = generative_field.value["state"]
+  #                  types = generative_field.value["types"]
+  #                }
+  #            }
+  #          }
+  #      }
+  #      dynamic "video" {
+  #        for_each = standard_output_configuration.value.video
+  #          content {
+  #            dynamic "extraction" {
+  #              for_each = video.value.extraction
+  #                content {
+  #                  dynamic "bounding_box" {
+  #                    for_each = extraction.value.bounding_box
+  #                      content {
+  #                        state = bounding_box.value["state"]
+  #                      }
+  #                  }  
+  #                  dynamic "category" {
+  #                    for_each = extraction.value.category
+  #                      content {
+  #                        state = category.value["state"]
+  #                        types = category.value["types"]
+  #                      }
+  #                  }
+  #                }
+  #            }
+  #            dynamic "generative_field" {
+  #              for_each = video.value.generative_field
+  #                content {
+  #                  state = generative_field.value["state"] 
+  #                  types = generative_field.value["types"]
+  #                }
+  #            }
+  #          }
+  #      }
+  #    }
+  #}
+  standard_output_configuration = {
+    audio = {
+      extraction = {
+        category = {
+          state = var.bedrock_data_automation_project_standard_output_configuration_audio_extraction_category_state
+          types = var.bedrock_data_automation_project_standard_output_configuration_audio_extraction_category_types
+          type_configuration = {
+            transcript = {
+              channel_labeling = {
+                state = var.bedrock_data_automation_project_standard_output_configuration_audio_extraction_category_type_configuration_transcript_channel_labeling_state 
+              }
+              speaker_labeling = {
+                state = var.bedrock_data_automation_project_standard_output_configuration_audio_extraction_category_type_configuration_speaker_labeling_state
+              }
+            }
+          }
+        }
+      }
+      generative_field = {
+         state = var.bedrock_data_automation_project_standard_output_configuration_audio_generative_field_state
+         types = var.bedrock_data_automation_project_standard_output_configuration_audio_generative_field_types
+      }
+    }
+    document = {
+      extraction = {
+        bounding_box = {
+          state = var.bedrock_data_automation_project_standard_output_configuration_document_extraction_bounding_box_state
+        }
+        granularity = {
+          types = var.bedrock_data_automation_project_standard_output_configuration_document_extraction_granularity_types
+        }
+      }
+      generative_field = {
+        state = var.bedrock_data_automation_project_standard_output_configuration_document_generative_field_state
+      }
+      output_format = {
+        additional_file_format = {
+          state = var.bedrock_data_automation_project_standard_output_configuration_document_output_format_additional_file_format_state
+        }
+        text_format = {
+          types = var.bedrock_data_automation_project_standard_output_configuration_document_output_format_text_format_types
+        }
+      }
+    }
+    image = {
+      extraction = {
+        bounding_box = {
+          state = var.bedrock_data_automation_project_standard_output_configuration_image_extraction_bounding_box_state
+        }
+        category = {
+          state = var.bedrock_data_automation_project_standard_output_configuration_image_extraction_category_state
+          types = var.bedrock_data_automation_project_standard_output_configuration_image_extraction_category_types
+        }
+      }
+      generative_field = {
+        state = var.bedrock_data_automation_project_standard_output_configuration_image_generative_field_state
+        types = var.bedrock_data_automation_project_standard_output_configuration_image_generative_field_types
+
+      }
+    }
+    video = {
+      extraction = {
+        bounding_box = {
+          state = var.bedrock_data_automation_project_standard_output_configuration_video_extraction_bounding_box_state
+        }
+        category = {
+          state = var.bedrock_data_automation_project_standard_output_configuration_video_extraction_category_state
+          types = var.bedrock_data_automation_project_standard_output_configuration_video_extraction_category_types
+        }
+      }
+      generative_field = {
+        state = var.bedrock_data_automation_project_standard_output_configuration_video_generative_field_state
+        types = var.bedrock_data_automation_project_standard_output_configuration_video_generative_field_types
+      }
+    }
+  }
+}
