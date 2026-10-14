@@ -20,7 +20,7 @@ We have provided usage examples of this idea with companion implementation guide
 Instead of having all your configuration in one single data.tf file, you could split out the configuration as you see fit, you could name files based on project and/or AWS service name for instance.
 
 # **Help us improve, your feedback will be invaluable**
-We'd love for you to engage and explore the set of currently available modules and provided examples. We'd also love to hear from you, if you would like to raise an issue, please send an email at hello@sitadconsulting.com, so we can add you as a collaborator.
+We'd love for you to engage and explore the set of currently available modules and provided examples. We'd also love to hear from you, if you need to raise an issue, please send us an email at hello@sitadconsulting.com, so we can add you as a collaborator.
 
 # **Our Goal**
 Our goal for making this available to the public is to help businesses seeking to mordernize in the cloud or adopt cloud services for the first time, leverage the resouces we have provided in other to accelerate thier journey. As a company, we are committed to seeing enterprises thrive and succeed in the shift to adopting or modernizing in the cloud.
