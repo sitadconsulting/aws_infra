@@ -2,6 +2,7 @@ resource "aws_mskconnect_custom_plugin" "mskconnect_custom_plugin" {
   content_type = var.mskconnect_custom_plugin_content_type
   description  = var.mskconnect_custom_plugin_description
   name         = var.mskconnect_custom_plugin_name
+  tags         = var.mskconnect_custom_plugin_tags
 
   dynamic "location" {
     for_each = var.mskconnect_custom_plugin_location

@@ -11,6 +11,11 @@ variable "mskconnect_custom_plugin_name" {
   description = "The name of the custom plugin"
   type        = string
 }
+variable "mskconnect_custom_plugin_tags" {
+  description = "(Optional) A map of tags to assign to the resource"
+  type        = map(string)
+  default     = {}
+}
 variable "mskconnect_custom_plugin_location" {
   description = "Information about the location of a custom plugin"
   type        = list(object({
