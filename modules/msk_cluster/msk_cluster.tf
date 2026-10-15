@@ -16,11 +16,30 @@ resource "aws_msk_cluster" "msk_cluster" {
         dynamic "connectivity_info" {
           for_each = broker_node_group_info.value.connectivity_info
             content {
+              network_type = connectivity_info.value["network_type"]
               dynamic "public_access" {
                 for_each = connectivity_info.value.public_access
                   content {
                     type = public_access.value["type"]
                   }
+              }
+              dynamic "vpc_connectivity" {
+                for_each = connectivity_info.value.vpc_connectivity
+		  content {
+                    dynamic "client_authentication" {
+		      for_each = vpc_connectivity.value.client_authentication
+			content {
+			  tls = client_authentication.value["tls"]
+			  dynamic "sasl" {
+			    for_each = client_authentication.value.sasl
+			      content {
+                                iam   = sasl.value["iam"]
+				scram = sasl.value["scram"]
+			      }
+			  }
+			}
+                    }
+		  }
               }
             }
         }
@@ -136,5 +155,11 @@ resource "aws_msk_cluster" "msk_cluster" {
              }
         }
       }
+  }
+  dynamic "rebalancing" {
+    for_each = var.msk_cluster_rebalancing
+      content {
+        status = rebalancing.value["status"]
+      }	
   }
 }

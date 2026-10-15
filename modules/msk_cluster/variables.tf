@@ -33,8 +33,18 @@ variable "msk_cluster_broker_node_group_info" {
     instance_type     = string
     security_groups   = list(string)
     connectivity_info = optional(list(object({
-      public_access   = optional(list(object({
+      network_type  = optional(string)
+      public_access = optional(list(object({
         type = optional(string)
+      })), [])
+      vpc_connectivity = optional(list(object({
+        client_authentication = optional(list(object({
+          tls  = optional(bool)
+          sasl = optional(list(object({
+            iam   = optional(bool)
+            scram = optional(bool)
+          })), [])
+        })), [])
       })), [])
     })), []) 
     storage_info      = optional(list(object({
@@ -115,4 +125,11 @@ variable "msk_cluster_open_monitoring" {
     }))
   }))
   default     = []
+}
+variable "msk_cluster_rebalancing" {
+  description = "(Optional) Configuration block for intelligent rebalancing"
+  type        = list(object({
+    status = string
+  }))
+  default = []
 }
