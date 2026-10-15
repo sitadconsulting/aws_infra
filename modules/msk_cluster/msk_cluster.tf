@@ -25,21 +25,21 @@ resource "aws_msk_cluster" "msk_cluster" {
               }
               dynamic "vpc_connectivity" {
                 for_each = connectivity_info.value.vpc_connectivity
-		  content {
+		          content {
                     dynamic "client_authentication" {
-		      for_each = vpc_connectivity.value.client_authentication
-			content {
-			  tls = client_authentication.value["tls"]
-			  dynamic "sasl" {
-			    for_each = client_authentication.value.sasl
-			      content {
+		              for_each = vpc_connectivity.value.client_authentication
+			            content {
+			              tls = client_authentication.value["tls"]
+			              dynamic "sasl" {
+			                for_each = client_authentication.value.sasl
+			                  content {
                                 iam   = sasl.value["iam"]
-				scram = sasl.value["scram"]
-			      }
-			  }
-			}
+				                scram = sasl.value["scram"]
+			                  }
+			               }
+			            }
                     }
-		  }
+		         }
               }
             }
         }
