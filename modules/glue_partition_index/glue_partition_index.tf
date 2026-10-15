@@ -6,7 +6,8 @@ resource "aws_glue_partition_index" "glue_partition_index" {
   dynamic "partition_index" {
     for_each = var.glue_partition_index_partition_index
       content {
-
+        index_name = partition_index.value["index_name"]
+        keys       = partition_index.value["keys"]
       }
   }
 }
