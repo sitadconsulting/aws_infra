@@ -41,3 +41,18 @@ variable "eks_addon_service_account_role_arn" {
   type        = string
   default     = null
 }
+variable "eks_addon_namespace_config" {
+  description = "(Optional) Namespace configuration for the add-on"
+  type        = list(object({
+    namespace =  string
+  }))
+  default     = []
+}
+variable "eks_addon_pod_identity_association" {
+  description = "(Optional) Configuration block with EKS Pod Identity association settings"
+  type        = list(object({
+    role_arn        = string
+    service_account = string
+  }))
+  default     = []
+}
