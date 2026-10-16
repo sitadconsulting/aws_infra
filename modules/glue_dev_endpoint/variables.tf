@@ -35,7 +35,7 @@ variable "glue_dev_endpoint_number_of_workers" {
 variable "glue_dev_endpoint_public_key" {
   description = "The public key to be used by this endpoint for authentication"
   type        = string
-  default     = ""
+  default     = null
 }
 variable "glue_dev_endpoint_public_keys" {
   description = "A list of public keys to be used by this endpoint for authentication"
