@@ -47,6 +47,52 @@ variable "glue_catalog_table_view_original_text" {
   type        = string
   default     = null
 }
+variable "glue_catalog_table_open_table_format_input" {
+  description = "(Optional) Configuration block for open table formats"
+  type        = list(object({
+    iceberg_input = list(object({
+      metadata_operation  = string
+      version             = optional(string)
+      iceberg_table_input = optional(list(object({
+        location   = string
+        properties = optional(map(string))
+        partition_spec = optional(list(object({
+          spec_id = optional(string)
+          fields  = list(object({
+            field_id  = optional(string)
+            name      = string
+            source_id = string
+            transform = string
+          }))
+        })), [])
+        schema         = list(object({
+          identifier_field_ids = optional(list(string))
+          schema_id            = optional(string)
+          type                 = optional(string)
+          fields               = list(object({
+            doc             = optional(string)
+            id              = string
+            initial_default = optional(string)
+            name            = string
+            required        = bool
+            type            = string
+            write_default   = optional(string)
+          }))
+        }))
+        sort_order     = optional(list(object({
+          order_id  = string
+          fields    = list(object({
+            direction  = string
+            null_order = string
+            source_id  = string
+            transform  = string
+          }))
+        })), [])
+      })), [])
+    }))
+  }))
+  default     = []
+}
 variable "glue_catalog_table_partition_index" {
   description = "Configuration for a maximum of 3 partition indexes"
   type        = list(object({
@@ -58,15 +104,17 @@ variable "glue_catalog_table_partition_index" {
 variable "glue_catalog_table_partition_keys" {
   description = "Configuration of columns by which the table is partitioned. Only primitive types are supported as partition keys"
   type        = list(object({
-    comment = optional(string)
-    name    = string
-    type    = optional(string)
+    comment    = optional(string)
+    name       = string
+    parameters = optional(map(string))
+    type       = optional(string)
   }))
   default     = []
 }
 variable "glue_catalog_table_storage_descriptor" {
   description = "Configuration for information about the physical storage of this table"
   type        = list(object({
+    additional_locations      = optional(list(string))
     bucket_columns            = optional(list(string))
     compressed                = optional(bool)
     input_format              = optional(string)
@@ -113,6 +161,28 @@ variable "glue_catalog_table_target_table" {
     catalog_id    = string
     database_name = string
     name          = string 
+    region        = optional(string)
+  }))
+  default     = []
+}
+variable "glue_catalog_table_view_definition" {
+  description = "(Optional) Structure that contains all the information that defines the view, including the dialect or dialects for the view, and the query"
+  type        = list(object({
+    definer                = optional(string)
+    is_protected           = optional(bool)
+    last_refresh_type      = optional(string)
+    refresh_seconds        = optional(number)
+    sub_object_version_ids = optional(list(string))
+    sub_objects            = optional(list(string))
+    view_version_id        = optional(string)
+    view_version_token     = optional(string)
+    representations        = optional(list(object({
+      dialect               = optional(string)
+      dialect_version       = optional(string)
+      validation_connection = optional(string)
+      view_expanded_text    = optional(string)
+      view_original_text    = optional(string)
+    })), [])
   }))
   default     = []
 }
