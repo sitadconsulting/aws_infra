@@ -11,8 +11,9 @@ variable "glue_data_catalog_encryption_settings_data_catalog_encryption_settings
       return_connection_password_encrypted = bool
     }))
     encryption_at_rest             = list(object({
-      catalog_encryption_mode = string
-      sse_aws_kms_key_id      = optional(string)
+      catalog_encryption_mode         = string
+      catalog_encryption_service_role = optiional(string)
+      sse_aws_kms_key_id              = optional(string)
     }))
   }))
   default     = []

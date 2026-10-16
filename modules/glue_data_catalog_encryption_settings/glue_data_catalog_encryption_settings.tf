@@ -14,8 +14,9 @@ resource "aws_glue_data_catalog_encryption_settings" "glue_data_catalog_encrypti
         dynamic "encryption_at_rest" {
           for_each = data_catalog_encryption_settings.value.encryption_at_rest
             content {
-              catalog_encryption_mode = encryption_at_rest.value["catalog_encryption_mode"]
-              sse_aws_kms_key_id      = encryption_at_rest.value["sse_aws_kms_key_id"]
+              catalog_encryption_mode         = encryption_at_rest.value["catalog_encryption_mode"]
+              catalog_encryption_service_role = encryption_at_rest.value["catalog_encryption_service_role"]
+              sse_aws_kms_key_id              = encryption_at_rest.value["sse_aws_kms_key_id"]
             }
         }
      }
