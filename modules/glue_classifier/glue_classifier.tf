@@ -12,6 +12,7 @@ resource "aws_glue_classifier" "glue_classifier" {
         disable_value_trimming     = csv_classifier.value["disable_value_trimming"]
         header                     = csv_classifier.value["header"]
         quote_symbol               = csv_classifier.value["quote_symbol"]
+        serde                      = csv_classifier.value["serde"]
       }
    }
    dynamic "grok_classifier" {

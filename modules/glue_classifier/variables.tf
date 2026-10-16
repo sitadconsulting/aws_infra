@@ -13,6 +13,7 @@ variable "glue_classifier_csv_classifier" {
     disable_value_trimming     = optional(bool)
     header                     = optional(list(string))
     quote_symbol               = optional(string)
+    serde                      = optional(string)
   }))
   default     = []
 }
