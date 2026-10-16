@@ -18,15 +18,19 @@ resource "aws_glue_catalog_database" "glue_catalog_database" {
         }
       }
   }
+  dynamic "federated_database" {
+    for_each = var.glue_catalog_database_federated_database
+      content {
+        connection_name = federated_database.value["connection_name"]
+        identifier      = federated_database.value["identifier"]
+      }
+  }
   dynamic "target_database" {
     for_each = var.glue_catalog_database_target_database
       content {
         catalog_id    = target_database.value["catalog_id"]
         database_name = target_database.value["database_name"] 
+        region        = target_database.value["region"]
       }
-  }
-  lifecycle {
-    create_before_destroy = true
-    ignore_changes        = []
   }
 }

@@ -37,11 +37,20 @@ variable "glue_catalog_database_create_table_default_permission" {
   }))
   default     = []
 }
+variable "glue_catalog_database_federated_database" {
+  description = "(Optional) Configuration block that references an entity outside the AWS Glue Data Catalog"
+  type        = list(object({
+    connection_name = optional(string)
+    identifier      = optional(string)
+  }))
+  default     = []
+}
 variable "glue_catalog_database_target_database" {
   description = "Configuration for a target database for resource linking "
   type        = list(object({
     catalog_id    = string
     database_name = string 
+    region        = optional(string)
   }))
   default     = []
 }
