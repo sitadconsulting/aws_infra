@@ -23,6 +23,21 @@ variable "glue_job_glue_version" {
   type        = string
   default     = null
 }
+variable "glue_job_job_mode" {
+  description = "(Optional) Describes how a job was created. Valid values are SCRIPT, NOTEBOOK and VISUAL"
+  type        = string
+  default     = null
+}
+variable "glue_job_job_run_queuing_enabled" {
+  description = "(Optional) Specifies whether job run queuing is enabled for the job runs for this job. A value of true means job run queuing is enabled for the job runs. If false or not populated, the job runs will not be considered for queueing"
+  type        = bool
+  default     = null
+}
+variable "glue_job_maintenance_window" {
+  description = "(Optional) Specifies the day of the week and hour for the maintenance window for streaming jobs"
+  type        = string
+  default     = null
+}
 variable "glue_job_max_capacity" {
   description = "The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. Required when pythonshell is set, accept either 0.0625 or 1.0. Use number_of_workers and worker_type arguments instead with glue_version 2.0 and above"
   type        = number
@@ -77,6 +92,7 @@ variable "glue_job_command" {
     name            = optional(string)
     script_location = string
     python_version  = optional(string)
+    runtime         = optional(string)
   }))
   default     = []
 }
@@ -91,6 +107,20 @@ variable "glue_job_notification_property" {
   description = "Notification property of the job"
   type        = list(object({
     notify_delay_after = optional(number)
+  }))
+  default     = []
+}
+variable "glue_job_source_control_details" {
+  description = "(Optional) The details for a source control configuration for a job, allowing synchronization of job artifacts to or from a remote repository"
+  type        = list(object({
+    auth_strategy   = optional(string)
+    auth_token      = optional(string)
+    branch          = optional(string)
+    folder          = optional(string)
+    last_commit_id  = optional(string)
+    owner           = optional(string)
+    provider        = optional(string)
+    repository      = optional(string)
   }))
   default     = []
 }
