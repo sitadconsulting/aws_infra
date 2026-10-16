@@ -37,6 +37,24 @@ resource "aws_glue_crawler" "glue_crawler" {
         scan_rate = dynamodb_target.value["scan_rate"]
       }
   }
+  dynamic "hudi_target" {
+    for_each = var.glue_crawler_hudi_target
+      content {
+        connection_name         = hudi_target.value["connection_name"]
+        paths                   = hudi_target.value["paths"]
+        exclusions              = hudi_target.value["exclusions"]
+        maximum_traversal_depth = hudi_target.value["maximum_traversal_depth"]
+      }
+  }
+  dynamic "iceberg_target" {
+    for_each = var.glue_crawler_iceberg_target
+      content {
+        connection_name         = iceberg_target.value["connection_name"]
+        paths                   = iceberg_target.value["paths"]
+        exclusions              = iceberg_target.value["exclusions"]
+        maximum_traversal_depth = iceberg_target.value["maximum_traversal_depth"]
+      }
+  }
   dynamic "jdbc_target" {
     for_each = var.glue_crawler_jdbc_target
       content {

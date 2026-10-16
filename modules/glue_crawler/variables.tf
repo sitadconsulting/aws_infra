@@ -79,9 +79,29 @@ variable "glue_crawler_jdbc_target" {
   description = "Jdbc target arguments"
   type        = list(object({
     connection_name            = string
-    enable_additional_metadata = optional(list(string))
+    enable_additional_metadata = optional(string)
     exclusions                 = optional(list(string))
     path                       = string
+  }))
+  default     = []
+}
+variable "glue_crawler_hudi_target" {
+  description = "(Optional) List of nested Hudi target arguments"
+  type        = list(object({
+    connection_name         = optional(string)
+    paths                   = list(string)
+    exclusions              = optional(list(string))
+    maximum_traversal_depth = number
+  }))
+  default     = []
+}
+variable "glue_crawler_iceberg_target" {
+  description = "(Optional) List of nested Iceberg target arguments"
+  type        = list(object({
+    connection_name         = optional(string)
+    paths                   = list(string)
+    exclusions              = optional(list(string))
+    maximum_traversal_depth = number
   }))
   default     = []
 }
@@ -96,7 +116,7 @@ variable "glue_crawler_lake_formation_configuration" {
 variable "glue_crawler_lineage_configuration" {
   description = "Specifies data lineage configuration settings for the crawler"
   type        = list(object({
-    crawler_lineage_settings = optional(list(string))
+    crawler_lineage_settings = optional(string)
   }))
   default     = []
 }
