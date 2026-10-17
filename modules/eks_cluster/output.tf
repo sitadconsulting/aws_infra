@@ -1,5 +1,5 @@
 output "eks_cluster_id" {
-  description = "cluster id"
+  description = "Name of the cluster"
   value       = element(concat(aws_eks_cluster.eks_cluster.*.id, [""]), 0)
 }
 output "eks_cluster_name" {
@@ -13,6 +13,14 @@ output "eks_cluster_arn" {
 output "eks_cluster_certificate_authority" {
   description = "cluster certificate authority data"
   value       = concat(aws_eks_cluster.eks_cluster.*.certificate_authority, [""])
+}
+output "eks_cluster_cluster_id" {
+  description = "The ID of your local Amazon EKS cluster on the AWS Outpost. This attribute isn't available for an AWS EKS cluster on AWS cloud"
+  value       = concat(aws_eks_cluster.eks_cluster.*.cluster_id, [""])
+}
+output "eks_cluster_created_at" {
+  description = "Unix epoch timestamp in seconds for when the cluster was created"
+  value       = concat(aws_eks_cluster.eks_cluster.*.created_at, [""])
 }
 output "eks_cluster_endpoint" {
   description = "cluster endpoint"
