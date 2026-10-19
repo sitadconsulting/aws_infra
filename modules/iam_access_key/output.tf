@@ -1,3 +1,7 @@
+output "iam_access_key_create_date" {
+  description = "Date and time in RFC3339 format that the access key was created"
+  value       = element(concat(aws_iam_access_key.iam_access_key.*.create_date, [""]), 0)
+}
 output "iam_access_key_encrypted_secret" {
   description = "Encrypted secret, base64 encoded, if pgp_key was specified"
   value       = element(concat(aws_iam_access_key.iam_access_key.*.encrypted_secret, [""]), 0)
