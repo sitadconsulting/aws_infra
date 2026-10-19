@@ -2,6 +2,10 @@ output "iam_policy_id" {
   description = "ARN assigned by AWS to this policy."
   value       = element(concat(aws_iam_policy.iam_policy.*.id, [""]), 0)
 }
+output "iam_policy_attachment_count" {
+  description = "Number of entities (users, groups, and roles) that the policy is attached to"
+  value       = element(concat(aws_iam_policy.iam_policy.*.attachment_count, [""]), 0)
+}
 output "iam_policy_arn" {
   description = "ARN assigned by AWS to this policy."
   value       = element(concat(aws_iam_policy.iam_policy.*.arn, [""]), 0)

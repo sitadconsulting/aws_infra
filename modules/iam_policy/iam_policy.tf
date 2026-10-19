@@ -1,13 +1,9 @@
 resource "aws_iam_policy" "iam_policy" {
-  description = var.iam_policy_description
-  name        = var.iam_policy_name
-  name_prefix = var.iam_policy_name_prefix
-  policy      = var.iam_policy_policy
-  path        = var.iam_policy_path
-  tags        = var.iam_policy_tags
-
-  lifecycle {
-    create_before_destroy = true
-    ignore_changes        = all
-  }
+  delay_after_policy_creation_in_ms = var.iam_policy_delay_after_policy_creation_in_ms
+  description                       = var.iam_policy_description
+  name                              = var.iam_policy_name
+  name_prefix                       = var.iam_policy_name_prefix
+  path                              = var.iam_policy_path
+  policy                            = var.iam_policy_policy
+  tags                              = var.iam_policy_tags
 }
