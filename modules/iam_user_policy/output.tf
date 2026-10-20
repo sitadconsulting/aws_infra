@@ -1,8 +1,8 @@
 output "iam_user_policy_id" {
-  description = "The user policy ID"
+  description = "The user policy ID, in the form of user_name:user_policy_name"
   value       = element(concat(aws_iam_user_policy.iam_user_policy.*.id, [""]), 0)
 }
 output "iam_user_policy_name" {
-  description = "The name of the policy"
+  description = "The name of the policy (always set)"
   value       = element(concat(aws_iam_user_policy.iam_user_policy.*.name, [""]), 0)
 }
