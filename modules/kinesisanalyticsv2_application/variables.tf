@@ -1,38 +1,42 @@
+variable "kinesisanalyticsv2_application_application_mode" {
+  description = "(Optional) Application's mode. Valid values are STREAMING, INTERACTIVE"
+  type        = string
+  default     = null
+}
 variable "kinesisanalyticsv2_application_description" {
-  description = "A summary description of the application"
+  description = "(Optional) Summary description of the application"
   type        = string
   default     = null
 }
 variable "kinesisanalyticsv2_application_force_stop" {
-  description = "Whether to force stop an unresponsive Flink-based application"
+  description = "(Optional) Whether to force stop an unresponsive Flink-based application"
   type        = bool
   default     = false
 }
 variable "kinesisanalyticsv2_application_name" {
-  description = "The name of the application"
+  description = "(Required) Name of the application"
   type        = string
 }
 variable "kinesisanalyticsv2_application_runtime_environment" {
-  description = "The runtime environment for the application. Valid values: SQL-1_0, FLINK-1_6, FLINK-1_8, FLINK-1_11, FLINK-1_13, FLINK-1_15"
+  description = "(Required) Runtime environment for the application. Valid values: SQL-1_0, FLINK-1_6, FLINK-1_8, FLINK-1_11, FLINK-1_13, FLINK-1_15, FLINK-1_18, FLINK-1_19, FLINK-1_20, FLINK-2_2, FLINK-2_3"
   type        = string
-  default     = null
 }
 variable "kinesisanalyticsv2_application_service_execution_role" {
-  description = "The ARN of the IAM role used by the application to access Kinesis data streams, Kinesis Data Firehose delivery streams, Amazon S3 objects, and other external resources"
+  description = "(Required) ARN of the IAM role used by the application to access Kinesis data streams, Kinesis Data Firehose delivery streams, Amazon S3 objects, and other external resources"
   type        = string
 }
 variable "kinesisanalyticsv2_application_start_application" {
-  description = "Whether to start or stop the application"
+  description = "(Optional) Whether to start or stop the application"
   type        = bool
   default     = false
 }
 variable "kinesisanalyticsv2_application_tags" {
-  description = "A map of tags to assign to the application"
+  description = "(Optional) Map of tags to assign to the application"
   type        = map(string)
   default     = {}
 }
 variable "kinesisanalyticsv2_application_application_configuration" {
-  description = "The application's configuration"
+  description = "(Optional) Application configuration"
   type        = list(object({
     application_code_configuration = list(object({
       code_content_type = string
@@ -45,6 +49,10 @@ variable "kinesisanalyticsv2_application_application_configuration" {
         })), [])
       })), [])
     }))
+    application_encryption_configuration = optional(list(object({
+      key_id   = optional(string)
+      key_type = string
+    })), [])
     application_snapshot_configuration = optional(list(object({
       snapshots_enabled = bool
     })), [])
@@ -56,7 +64,7 @@ variable "kinesisanalyticsv2_application_application_configuration" {
     })), [])
     flink_application_configuration = optional(list(object({
       checkpoint_configuration = optional(list(object({
-        checkpointing_enabled         = bool
+        checkpointing_enabled         = optional(bool)
         checkpoint_interval           = optional(number)
         configuration_type            = string
         min_pause_between_checkpoints = optional(number) 
@@ -67,7 +75,7 @@ variable "kinesisanalyticsv2_application_application_configuration" {
         metrics_level      = optional(string)
       })), [])
       parallelism_configuration = optional(list(object({
-        auto_scaling_enabled = bool
+        auto_scaling_enabled = optional(bool)
         configuration_type   = string
         parallelism          = optional(number)
         parallelism_per_kpu  = optional(number)
@@ -174,7 +182,7 @@ variable "kinesisanalyticsv2_application_application_configuration" {
   default     = []
 }
 variable "kinesisanalyticsv2_application_application_cloudwatch_logging_options" {
-  description = "A CloudWatch log stream to monitor application configuration errors"
+  description = "(Optional) CloudWatch log stream to monitor application configuration errors"
   type        = list(object({
     log_stream_arn = string
   }))

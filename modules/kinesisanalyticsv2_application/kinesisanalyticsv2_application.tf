@@ -1,4 +1,5 @@
 resource "aws_kinesisanalyticsv2_application" "kinesisanalyticsv2_application" {
+  application_mode       = var.kinesisanalyticsv2_application_application_mode
   description            = var.kinesisanalyticsv2_application_description
   force_stop             = var.kinesisanalyticsv2_application_force_stop
   name                   = var.kinesisanalyticsv2_application_name
@@ -28,6 +29,13 @@ resource "aws_kinesisanalyticsv2_application" "kinesisanalyticsv2_application" {
                     }
                   }
               }
+            }
+        }
+        dynamic "application_encryption_configuration" {
+          for_each = application_configuration.value.application_encryption_configuration
+            content {
+              key_id   = application_encryption_configuration.value["key_id"]
+              key_type = application_encryption_configuration.value["key_type"]
             }
         }
         dynamic "application_snapshot_configuration" {
