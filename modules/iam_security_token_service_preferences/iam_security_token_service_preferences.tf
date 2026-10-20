@@ -1,0 +1,3 @@
+resource "aws_iam_security_token_service_preferences" "iam_security_token_service_preferences" {
+  global_endpoint_token_version = var.iam_security_token_service_preferences_global_endpoint_token_version
+}
