@@ -1,15 +1,17 @@
 resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_stream" {
   destination            = var.kinesis_firehose_delivery_stream_destination
+  destination_id         = var.kinesis_firehose_delivery_stream_destination_id
   name                   = var.kinesis_firehose_delivery_stream_name
   tags                   = var.kinesis_firehose_delivery_stream_tags
+  version_id             = var.kinesis_firehose_delivery_stream_version_id
 
   dynamic "elasticsearch_configuration" {
     for_each = var.kinesis_firehose_delivery_stream_elasticsearch_configuration
       content {
         buffering_interval    = elasticsearch_configuration.value["buffering_interval"]
         buffering_size        = elasticsearch_configuration.value["buffering_size"]
-        domain_arn            = elasticsearch_configuration.value["domain_arn"]
         cluster_endpoint      = elasticsearch_configuration.value["cluster_endpoint"]
+        domain_arn            = elasticsearch_configuration.value["domain_arn"]
         index_name            = elasticsearch_configuration.value["index_name"]
         index_rotation_period = elasticsearch_configuration.value["index_rotation_period"]
         retry_duration        = elasticsearch_configuration.value["retry_duration"]
@@ -31,9 +33,9 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
               dynamic "processors" {
                 for_each = processing_configuration.value.processors
                   content {
-                    type = processor.value["type"]
+                    type = processors.value["type"]
                     dynamic "parameters" {
-                      for_each = processor.value.parameters
+                      for_each = processors.value.parameters
                         content {
                           paramter_name   = parameters.value["paramter_name"]
                           parameter_value = parameters.value["parameter_value"]
@@ -44,7 +46,7 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
             }
         }
         dynamic "s3_configuration" {
-          for_each = var.kinesis_firehose_delivery_stream_s3_configuration
+          for_each = elasticsearch_configuration.value.s3_configuration
             content {
               bucket_arn          = s3_configuration.value["bucket_arn"]
               buffering_interval  = s3_configuration.value["buffering_interval"]
@@ -55,14 +57,13 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
               prefix              = s3_configuration.value["prefix"]
               role_arn            = s3_configuration.value["role_arn"]
               dynamic "cloudwatch_logging_options" {
-                for_each = elasticsearch_configuration.value.cloudwatch_logging_options
+                for_each = s3_configuration.value.cloudwatch_logging_options
                   content {
                     enabled         = cloudwatch_logging_options.value["enabled"]
                     log_group_name  = cloudwatch_logging_options.value["log_group_name"]
                     log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
                   }
               }
-             
             } 
         } 
         dynamic "vpc_config" {
@@ -79,10 +80,12 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
     for_each = var.kinesis_firehose_delivery_stream_extended_s3_configuration
       content {
         bucket_arn          = extended_s3_configuration.value["bucket_arn"]
-        buffering_size      = extended_s3_configuration.value["buffering_size"]
         buffering_interval  = extended_s3_configuration.value["bufferng_interval"]
+        buffering_size      = extended_s3_configuration.value["buffering_size"]
         compression_format  = extended_s3_configuration.value["compression_format"]
+        custom_time_zone    = extended_s3_configuration.value["custom_time_zone"]
         error_output_prefix = extended_s3_configuration.value["error_output_prefix"]
+        file_extension      = extended_s3_configuration.value["file_extension"]
         kms_key_arn         = extended_s3_configuration.value["kms_key_arn"]
         prefix              = extended_s3_configuration.value["prefix"]
         role_arn            = extended_s3_configuration.value["role_arn"]
@@ -145,7 +148,6 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
                                 max_padding_bytes             = parquet_ser_de.value["max_padding_bytes"]
                                 page_size_bytes               = parquet_ser_de.value["page_size_bytes"]
                                 writer_version                = parquet_ser_de.value["writer_version"]
-                                
                               }
                           }
                         }
@@ -187,9 +189,9 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
               dynamic "processors" {
                 for_each = processing_configuration.value.processors
                   content {
-                    type = processor.value["type"]
+                    type = processors.value["type"]
                     dynamic "parameters" {
-                      for_each = processor.value.parameters
+                      for_each = processors.value.parameters
                         content {
                           paramter_name   = parameters.value["paramter_name"]
                           parameter_value = parameters.value["parameter_value"]
@@ -202,14 +204,24 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
         dynamic "s3_backup_configuration" {
           for_each = extended_s3_configuration.value.s3_backup_configuration
             content {
-              bucket_arn         = s3_backup_configuration.value["bucket_arn"]
-              buffering_interval = s3_backup_configuration.value["buffering_interval"]
-              buffering_size     = s3_backup_configuration.value["buffering_size"]
-              compression_format = s3_backup_configuration.value["compression_format"]
-              role_arn           = s3_backup_configuration.value["role_arn"]
+              bucket_arn          = s3_backup_configuration.value["bucket_arn"]
+              buffering_interval  = s3_backup_configuration.value["buffering_interval"]
+              buffering_size      = s3_backup_configuration.value["buffering_size"]
+              compression_format  = s3_backup_configuration.value["compression_format"]
+              error_output_prefix = s3_backup_configuration.value["error_output_prefix"] 
+              kms_key_arn         = s3_backup_configuration.value["kms_key_arn"]
+              prefix              = s3_backup_configuration.value["prefix"]
+              role_arn            = s3_backup_configuration.value["role_arn"]
+              dynamic "cloudwatch_logging_options" {
+                for_each = s3_backup_configuration.value.cloudwatch_logging_options
+                  content {
+                    enabled         = cloudwatch_logging_options.value["enabled"]
+                    log_group_name  = cloudwatch_logging_options.value["log_group_name"]
+                    log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
+                  }
+              }
             }
         }
-        
       }
   }
   dynamic "http_endpoint_configuration" {
@@ -238,9 +250,9 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
               dynamic "processors" {
                 for_each = processing_configuration.value.processors
                   content {
-                    type = processor.value["type"]
+                    type = processors.value["type"]
                     dynamic "parameters" {
-                      for_each = processor.value.parameters
+                      for_each = processors.value.parameters
                         content {
                           paramter_name   = parameters.value["paramter_name"]
                           parameter_value = parameters.value["parameter_value"]
@@ -248,7 +260,6 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
                     }
                   }
               } 
-            
             } 
         }
         dynamic "request_configuration" {
@@ -264,6 +275,103 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
               }
             }
         }
+         dynamic "s3_configuration" {
+          for_each = http_endpoint_configuration.value.s3_configuration
+            content {
+              bucket_arn          = s3_configuration.value["bucket_arn"]
+              buffering_interval  = s3_configuration.value["buffering_interval"]
+              buffering_size      = s3_configuration.value["buffering_size"]
+              compression_format  = s3_configuration.value["compression_format"]
+              error_output_prefix = s3_configuration.value["error_output_prefix"]
+              kms_key_arn         = s3_configuration.value["kms_key_arn"]
+              prefix              = s3_configuration.value["prefix"]
+              role_arn            = s3_configuration.value["role_arn"]
+              dynamic "cloudwatch_logging_options" {
+                for_each = s3_configuration.value.cloudwatch_logging_options
+                  content {
+                    enabled         = cloudwatch_logging_options.value["enabled"]
+                    log_group_name  = cloudwatch_logging_options.value["log_group_name"]
+                    log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
+                  }
+              }
+            }
+        }
+        dynamic "secrets_manager_configuration" {
+          for_each = http_endpoint_configuration.value.secrets_manager_configuration
+            content {
+              enabled    = secrets_manager_configuration.value["enabled"]
+              secret_arn = secrets_manager_configuration.value["secret_arn"]
+              role_arn   = secrets_manager_configuration.value["role_arn"]
+            }
+        }
+      }
+  }
+  dynamic "iceberg_configuration" {
+    for_each = var.kinesis_firehose_delivery_stream_iceberg_configuration
+      content {
+        append_only        = iceberg_configuration.value["append_only"]
+        buffering_interval = iceberg_configuration.value["buffering_interval"]
+        buffering_size     = iceberg_configuration.value["buffering_size"]
+        catalog_arn        = iceberg_configuration.value["catalog_arn"]
+        retry_duration     = iceberg_configuration.value["retry_duration"]
+        role_arn           = iceberg_configuration.value["role_arn"]
+        s3_backup_mode     = iceberg_configuration.value["s3_backup_mode"]
+        dynamic "cloudwatch_logging_options" {
+          for_each = iceberg_configuration.value.cloudwatch_logging_options
+            content {
+              enabled         = cloudwatch_logging_options.value["enabled"]
+              log_group_name  = cloudwatch_logging_options.value["log_group_name"]
+              log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
+            }
+        }
+        dynamic "destination_table_configuration" {
+          for_each = iceberg_configuration.value.destination_table_configuration
+            content {
+              database_name          = destination_table_configuration.value["database_name"]
+              table_name             = destination_table_configuration.value["table_name"]
+              s3_error_output_prefix = destination_table_configuration.value["s3_error_output_prefix"]
+              unique_keys            = destination_table_configuration.value["unique_keys"]
+            }
+        }
+        dynamic "processing_configuration" {
+          for_each = iceberg_configuration.value.processing_configuration
+            content {
+              enabled = processing_configuration.value["enabled"]
+              dynamic "processors" {
+                for_each  = processing_configuration.value.processors
+                  content {
+                    dynamic "parameters" {
+                      for_each = processors.value.parameters
+                        content {
+                          parameter_name  = parameters.value["parameter_name"]
+                          parameter_value = parameters.value["parameter_value"]
+                        }
+                    }
+                  }
+              }
+            }
+        }
+        dynamic "s3_configuration" {
+          for_each = iceberg_configuration.value.s3_configuration
+            content {
+              bucket_arn          = s3_configuration.value["bucket_arn"]
+              buffering_interval  = s3_configuration.value["buffering_interval"]
+              buffering_size      = s3_configuration.value["buffering_size"]
+              compression_format  = s3_configuration.value["compression_format"]
+              error_output_prefix = s3_configuration.value["error_output_prefix"]
+              kms_key_arn         = s3_configuration.value["kms_key_arn"]
+              prefix              = s3_configuration.value["prefix"]
+              role_arn            = s3_configuration.value["role_arn"]
+              dynamic "cloudwatch_logging_options" {
+                for_each = s3_configuration.value.cloudwatch_logging_options
+                  content {
+                    enabled         = cloudwatch_logging_options.value["enabled"]
+                    log_group_name  = cloudwatch_logging_options.value["log_group_name"]
+                    log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
+                  }
+              }
+            }
+        }
       }
   }
   dynamic "kinesis_source_configuration" {
@@ -271,6 +379,21 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
       content {
         kinesis_stream_arn = kinesis_source_configuration.value["kinesis_stream_arn"]
         role_arn           = kinesis_source_configuration.value["role_arn"]
+      }
+  }
+  dynamic "msk_source_configuration" {
+    for_each = var.kinesis_firehose_delivery_stream_msk_source_configuration
+      content {
+        msk_cluster_arn     = msk_source_configuration.value["msk_cluster_arn"]
+        read_from_timestamp = msk_source_configuration.value["read_from_timestamp"]
+        topic_name          = msk_source_configuration.value["topic_name"]
+        dynamic "authentication_configuration" {
+          for_each = msk_source_configuration.value.authentication_configuration
+            content {
+              connectivity = authentication_configuration.value["connectivity"]
+              role_arn     = authentication_configuration.value["role_arn"]
+            }
+        }
       }
   }
   dynamic "opensearch_configuration" {
@@ -294,6 +417,12 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
               log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
             }
         }
+        dynamic "document_id_options" {
+          for_each = opensearch_configuration.value.document_id_options
+            content {
+              default_document_id_format = document_id_options.value["default_document_id_format"]
+            }
+        }
         dynamic "processing_configuration" {
           for_each = opensearch_configuration.value.processing_configuration
             content {
@@ -301,9 +430,9 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
               dynamic "processors" {
                 for_each = processing_configuration.value.processors
                   content {
-                    type = processor.value["type"]
+                    type = processors.value["type"]
                     dynamic "parameters" {
-                      for_each = processor.value.parameters
+                      for_each = processors.value.parameters
                         content {
                           paramter_name   = parameters.value["paramter_name"]
                           parameter_value = parameters.value["parameter_value"]
@@ -311,7 +440,27 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
                     }
                   }
               } 
-
+            }
+        }
+        dynamic "s3_configuration" {
+          for_each = opensearch_configuration.value.s3_configuration
+            content {
+              bucket_arn          = s3_configuration.value["bucket_arn"]
+              buffering_interval  = s3_configuration.value["buffering_interval"]
+              buffering_size      = s3_configuration.value["buffering_size"]
+              compression_format  = s3_configuration.value["compression_format"]
+              error_output_prefix = s3_configuration.value["error_output_prefix"]
+              kms_key_arn         = s3_configuration.value["kms_key_arn"]
+              prefix              = s3_configuration.value["prefix"]
+              role_arn            = s3_configuration.value["role_arn"]
+              dynamic "cloudwatch_logging_options" {
+                for_each = s3_configuration.value.cloudwatch_logging_options
+                  content {
+                    enabled         = cloudwatch_logging_options.value["enabled"]
+                    log_group_name  = cloudwatch_logging_options.value["log_group_name"]
+                    log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
+                  }
+              }
             }
         }
         dynamic "vpc_config" {
@@ -320,6 +469,74 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
               subnet_ids         = vpc_config.value["subnet_ids"]
               security_group_ids = vpc_config.value["security_group_ids"]
               role_arn           = vpc_config.value["role_arn"]      
+            }
+        }
+      }
+  }
+  dynamic "opensearchserverless_configuration" {
+    for_each = var.kinesis_firehose_delivery_stream_opensearchserverless_configuration
+      content {
+        buffering_interval  = opensearchserverless_configuration.value["buffering_interval"]
+        buffering_size      = opensearchserverless_configuration.value["buffering_size"]
+        collection_endpoint = opensearchserverless_configuration.value["collection_endpoint"]
+        index_name          = opensearchserverless_configuration.value["index_name"]
+        retry_duration      = opensearchserverless_configuration.value["retry_duration"]
+        role_arn            = opensearchserverless_configuration.value["role_arn"]
+        s3_backup_mode      = opensearchserverless_configuration.value["s3_backup_mode"]
+        dynamic "cloudwatch_logging_options" {
+          for_each = opensearchserverless_configuration.value.cloudwatch_logging_options
+            content {
+              enabled         = cloudwatch_logging_options.value["enabled"]
+              log_group_name  = cloudwatch_logging_options.value["log_group_name"]
+              log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
+            }
+        }
+        dynamic "processing_configuration" {
+          for_each = opensearchserverless_configuration.value.processing_configuration
+            content {
+              enabled = processing_configuration.value["enabled"]
+              dynamic "processors" {
+                for_each = processing_configuration.value.processors
+                  content {
+                    type = processors.value["type"]
+                    dynamic "parameters" {
+                      for_each = processors.value.parameters
+                        content {
+                          paramter_name   = parameters.value["paramter_name"]
+                          parameter_value = parameters.value["parameter_value"]
+                        }
+                    }
+                  }
+              }
+            }
+        }
+        dynamic "s3_configuration" {
+          for_each = opensearchserverless_configuration.value.s3_configuration
+            content {
+              bucket_arn          = s3_configuration.value["bucket_arn"]
+              buffering_interval  = s3_configuration.value["buffering_interval"]
+              buffering_size      = s3_configuration.value["buffering_size"]
+              compression_format  = s3_configuration.value["compression_format"]
+              error_output_prefix = s3_configuration.value["error_output_prefix"]
+              kms_key_arn         = s3_configuration.value["kms_key_arn"]
+              prefix              = s3_configuration.value["prefix"]
+              role_arn            = s3_configuration.value["role_arn"]
+              dynamic "cloudwatch_logging_options" {
+                for_each = s3_configuration.value.cloudwatch_logging_options
+                  content {
+                    enabled         = cloudwatch_logging_options.value["enabled"]
+                    log_group_name  = cloudwatch_logging_options.value["log_group_name"]
+                    log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
+                  }
+              }
+            }
+        }
+        dynamic "vpc_config" {
+          for_each = opensearchserverless_configuration.value.vpc_config
+            content {
+              subnet_ids         = vpc_config.value["subnet_ids"]
+              security_group_ids = vpc_config.value["security_group_ids"]
+              role_arn           = vpc_config.value["role_arn"]
             }
         }
       }
@@ -351,9 +568,9 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
               dynamic "processors" {
                 for_each = processing_configuration.value.processors
                   content {
-                    type = processor.value["type"]
+                    type = processors.value["type"]
                     dynamic "parameters" {
-                      for_each = processor.value.parameters
+                      for_each = processors.value.parameters
                         content {
                           paramter_name   = parameters.value["paramter_name"]
                           parameter_value = parameters.value["parameter_value"]
@@ -361,7 +578,6 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
                     }
                   }
               } 
-
             }
         }
         dynamic "s3_backup_configuration" {
@@ -385,28 +601,35 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
               }
             }
         }
-      }
-  }
-  dynamic "s3_configuration" {
-    for_each = var.kinesis_firehose_delivery_stream_s3_configuration
-      content {
-        bucket_arn          = s3_configuration.value["bucket_arn"]
-        buffering_interval  = s3_configuration.value["buffering_interval"]
-        buffering_size      = s3_configuration.value["buffering_size"]
-        compression_format  = s3_configuration.value["compression_format"]
-        error_output_prefix = s3_configuration.value["error_output_prefix"]
-        kms_key_arn         = s3_configuration.value["kms_key_arn"]
-        prefix              = s3_configuration.value["prefix"]
-        role_arn            = s3_configuration.value["role_arn"]
-        dynamic "cloudwatch_logging_options" {
-          for_each = elasticsearch_configuration.value.cloudwatch_logging_options
+        dynamic "s3_configuration" {
+          for_each = redshift_configuration.value.s3_configuration
             content {
-              enabled         = cloudwatch_logging_options.value["enabled"]
-              log_group_name  = cloudwatch_logging_options.value["log_group_name"]
-              log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
+              bucket_arn          = s3_configuration.value["bucket_arn"]
+              buffering_interval  = s3_configuration.value["buffering_interval"]
+              buffering_size      = s3_configuration.value["buffering_size"]
+              compression_format  = s3_configuration.value["compression_format"]
+              error_output_prefix = s3_configuration.value["error_output_prefix"]
+              kms_key_arn         = s3_configuration.value["kms_key_arn"]
+              prefix              = s3_configuration.value["prefix"]
+              role_arn            = s3_configuration.value["role_arn"]
+              dynamic "cloudwatch_logging_options" {
+                for_each = s3_configuration.value.cloudwatch_logging_options
+                  content {
+                    enabled         = cloudwatch_logging_options.value["enabled"]
+                    log_group_name  = cloudwatch_logging_options.value["log_group_name"]
+                    log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
+                  }
+              }
             }
         }
-   
+        dynamic "secrets_manager_configuration" {
+          for_each = http_endpoint_configuration.value.secrets_manager_configuration
+            content {
+              enabled    = secrets_manager_configuration.value["enabled"]
+              secret_arn = secrets_manager_configuration.value["secret_arn"]
+              role_arn   = secrets_manager_configuration.value["role_arn"]
+            }
+        }
       }
   }
   dynamic "server_side_encryption" {
@@ -415,6 +638,74 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
         enabled  = server_side_encryption.value["enabled"]
         key_arn  = server_side_encryption.value["key_arn"]
         key_type = server_side_encryption.value["key_type"]
+      }
+  }
+  dynamic "snowflake_configuration" {
+    for_each = var.kinesis_firehose_delivery_stream_snowflake_configuration
+      content {
+        account_url                = snowflake_configuration.value["account_url"]
+        buffering_interval         = snowflake_configuration.value["buffering_interval"]
+        buffering_size             = snowflake_configuration.value["buffering_size"]
+        content_column_name        = snowflake_configuration.value["content_column_name"]
+        data_loading_option        = snowflake_configuration.value["data_loading_option"]
+        database                   = snowflake_configuration.value["database"]
+        key_passphrase             = snowflake_configuration.value["key_passphrase"]
+        metadata_column_name       = snowflake_configuration.value["metadata_column_name"]
+        private_key                = snowflake_configuration.value["private_key"]
+        retry_duration             = snowflake_configuration.value["retry_duration"]
+        role_arn                   = snowflake_configuration.value["role_arn"]
+        s3_backup_mode             = snowflake_configuration.value["s3_backup_mode"]
+        schema                     = snowflake_configuration.value["schema"]
+        table                      = snowflake_configuration.value["table"]
+        user                       = snowflake_configuration.value["user"]
+        dynamic "cloudwatch_logging_options" {
+          for_each = snowflake_configuration.value.cloudwatch_logging_options
+            content {
+              enabled         = cloudwatch_logging_options.value["enabled"]
+              log_group_name  = cloudwatch_logging_options.value["log_group_name"]
+              log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
+            }
+        }
+        dynamic "processing_configuration" {
+          for_each = snowflake_configuration.value.processing_configuration
+            content {
+              enabled = processing_configuration.value["enabled"]
+              dynamic "processors" {
+                for_each = processing_configuration.value.processors
+                  content {
+                    type = processors.value["type"]
+                    dynamic "parameters" {
+                      for_each = processors.value.parameters
+                        content {
+                          paramter_name   = parameters.value["paramter_name"]
+                          parameter_value = parameters.value["parameter_value"]
+                        }
+                    }
+                  }
+              }
+            }
+        }
+        dynamic "s3_configuration" {
+          for_each = snowflake_configuration.value.s3_configuration
+            content {
+              bucket_arn          = s3_configuration.value["bucket_arn"]
+              buffering_interval  = s3_configuration.value["buffering_interval"]
+              buffering_size      = s3_configuration.value["buffering_size"]
+              compression_format  = s3_configuration.value["compression_format"]
+              error_output_prefix = s3_configuration.value["error_output_prefix"]
+              kms_key_arn         = s3_configuration.value["kms_key_arn"]
+              prefix              = s3_configuration.value["prefix"]
+              role_arn            = s3_configuration.value["role_arn"]
+              dynamic "cloudwatch_logging_options" {
+                for_each = s3_configuration.value.cloudwatch_logging_options
+                  content {
+                    enabled         = cloudwatch_logging_options.value["enabled"]
+                    log_group_name  = cloudwatch_logging_options.value["log_group_name"]
+                    log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
+                  }
+              }
+            }
+        }
       }
   }
   dynamic "splunk_configuration" {
@@ -441,9 +732,9 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
               dynamic "processors" {
                 for_each = processing_configuration.value.processors
                   content {
-                    type = processor.value["type"]
+                    type = processors.value["type"]
                     dynamic "parameters" {
-                      for_each = processor.value.parameters
+                      for_each = processors.value.parameters
                         content {
                           paramter_name   = parameters.value["paramter_name"]
                           parameter_value = parameters.value["parameter_value"]
@@ -472,7 +763,14 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose_delivery_strea
                     log_stream_name = cloudwatch_logging_options.value["log_stream_name"]
                   }
               }
-            
+            }
+        }
+        dynamic "secrets_manager_configuration" {
+          for_each = http_endpoint_configuration.value.secrets_manager_configuration
+            content {
+              enabled    = secrets_manager_configuration.value["enabled"]
+              secret_arn = secrets_manager_configuration.value["secret_arn"]
+              role_arn   = secrets_manager_configuration.value["role_arn"]
             }
         }
       }

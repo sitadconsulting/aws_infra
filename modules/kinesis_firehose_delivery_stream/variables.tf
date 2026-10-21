@@ -1,18 +1,28 @@
 variable "kinesis_firehose_delivery_stream_destination" {
-  description = "This is the destination to where the data is delivered. The only options are s3 (Deprecated, use extended_s3 instead), extended_s3, redshift, elasticsearch, splunk, http_endpoint and opensearch"
+  description = "(Required) Destination where the data is delivered. The only options are s3 (Deprecated, use extended_s3 instead), extended_s3, redshift, elasticsearch, splunk, http_endpoint, opensearch, opensearchserverless and snowflake"
   type        = string
 } 
+variable "kinesis_firehose_delivery_stream_destination_id" {
+  description = "(Optional) Identifier of the destination for the delivery stream"
+  type        = string
+  default     = null
+}
 variable "kinesis_firehose_delivery_stream_name" {
-  description = "A name to identify the stream. When using for WAF logging, name must be prefixed with aws-waf-logs-"
+  description = "(Required) Name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with aws-waf-logs-"
   type        = string
 }
 variable "kinesis_firehose_delivery_stream_tags" {
-  description = "A map of tags to assign to the resource"
+  description = "(Optional) Map of tags to assign to the resource"
   type        = map(string)
   default     = {}
 }
+variable "kinesis_firehose_delivery_stream_version_id" {
+  descrption = "(Optional) Version identifier of the delivery stream"
+  type       = string
+  default    = null
+}
 variable "kinesis_firehose_delivery_stream_elasticsearch_configuration" {
-  description = "Configuration options if elasticsearch is the destination"
+  description = "(Optional) Configuration options when destination is elasticsearch"
   type        = list(object({
     buffering_interval    = optional(number)
     buffering_size        = optional(number)
@@ -63,13 +73,15 @@ variable "kinesis_firehose_delivery_stream_elasticsearch_configuration" {
   default     = []
 }
 variable "kinesis_firehose_delivery_stream_extended_s3_configuration" {
-  description = "Enhanced configuration options if s3 is the destination"
+  description = "(Optional, only Required when destination is extended_s3) Enhanced configuration options for the s3 destination"
   type        = list(object({
     bucket_arn          = string
-    buffering_size      = optional(number)
     buffering_interval  = optional(number) 
+    buffering_size      = optional(number)
     compression_format  = optional(string)
+    custom_time_zone    = optional(string)
     error_output_prefix = optional(string)
+    file_extension      = optional(string)
     kms_key_arn         = optional(string)
     prefix              = optional(string)
     role_arn            = string
@@ -140,11 +152,26 @@ variable "kinesis_firehose_delivery_stream_extended_s3_configuration" {
         })), [])
       })), [])
     })), [])
+    s3_backup_configuration = optional(list(object({
+      bucket_arn                 = string
+      buffering_interval         = optional(number)
+      buffering_size             = optional(number)
+      compression_format         = optional(string)
+      error_output_prefix        = optional(string)
+      kms_key_arn                = optional(string)
+      prefix                     = optional(string)
+      role_arn                   = string
+      cloudwatch_logging_options = optional(list(object({
+        enabled         = optional(bool)
+        log_group_name  = optional(string)
+        log_stream_name = optional(string)
+      })), [])
+    })), [])
   }))
   default     =  []
 }
 variable "kinesis_firehose_delivery_stream_http_endpoint_configuration" {
-  description = "Configuration options if http_endpoint is the destination "
+  description = "(Optional) Configuration options when destination is http_endpoint. Requires the user to also specify an s3_configuration block"
   type        = list(object({
     access_key         = optional(string)
     buffering_interval = optional(number)
@@ -191,19 +218,86 @@ variable "kinesis_firehose_delivery_stream_http_endpoint_configuration" {
         log_stream_name = optional(string)
       })), [])
     }))
+    secrets_manager_configuration = optional(list(object({
+      enabled    = optional(bool)
+      secret_arn = optional(string)
+      role_arn   = optional(string)
+    })), [])
+  }))
+  default     = []
+}
+variable "kinesis_firehose_delivery_stream_iceberg_configuration" {
+  description = "(Optional) Configuration options when destination is iceberg"
+  type        = list(object({
+    append_only        = optional(bool)
+    buffering_interval = optional(number)
+    buffering_size     = optional(nmber)
+    catalog_arn        = string
+    retry_duration     = optional(number)
+    role_arn           = string
+    s3_backup_mode     = optional(string)
+    cloudwatch_logging_options      = optional(list(object({
+      enabled         = optional(bool)
+      log_group_name  = optional(string)
+      log_stream_name = optional(string)
+    })), [])
+    destination_table_configuration = optional(list(object({
+      database_name          = string
+      table_name             = string
+      s3_error_output_prefix = optiona(string)
+      unique_keys            = optional(list(string))
+    })), [])
+    processing_configuration        = optional(list(object({
+      enabled    = optional(bool)
+      processors = optional(list(object({
+        type       = string
+        parameters = optional(list(object({
+          parameter_name  = string
+          parameter_value = string
+        })), [])
+      })), [])
+    })), [])
+    s3_configuration                = list(object({
+      bucket_arn                 = string
+      buffering_interval         = optional(number)
+      buffering_size             = optional(number)
+      compression_format         = optional(string)
+      error_output_prefix        = optional(string)
+      kms_key_arn                = optional(string)
+      prefix                     = optional(string)
+      role_arn                   = string
+      cloudwatch_logging_options = optional(list(object({
+        enabled         = optional(bool)
+        log_group_name  = optional(string)
+        log_stream_name = optional(string)
+      })), [])
+    }))
   }))
   default     = []
 }
 variable "kinesis_firehose_delivery_stream_kinesis_source_configuration" {
-  description = "Allows the ability to specify the kinesis stream that is used as the source of the firehose delivery stream"
+  description = "(Optional) Stream and role ARNs for a Kinesis data stream used as the source for a delivery stream"
   type        = list(object({
     kinesis_stream_arn = string
     role_arn           = string
   }))
   default     =  []
 }
+variable "kinesis_firehose_delivery_stream_msk_source_configuration" {
+  description = "(Optional) Configuration for the Amazon MSK cluster to be used as the source for a delivery stream"
+  type        = list(object({
+    msk_cluster_arn              = string
+    read_from_timestamp          = optional(string)
+    topic_name                   = string
+    authentication_configuration = list(object({
+      connectivity = string
+      role_arn     = string
+    }))
+  }))
+  default     = []
+}
 variable "kinesis_firehose_delivery_stream_opensearch_configuration" {
-  description = "Configuration options if opensearch is the destination "
+  description = "(Optional) Configuration options when destination is opensearch"
   type        = list(object({
     buffering_interval    = optional(number)
     buffering_size        = optional(number)
@@ -215,6 +309,57 @@ variable "kinesis_firehose_delivery_stream_opensearch_configuration" {
     role_arn              = string
     s3_backup_mode        = optional(string)
     type_name             = optional(string)
+    cloudwatch_logging_option = optional(list(object({
+      enabled         = optional(bool)
+      log_group_name  = optional(string)
+      log_stream_name = optional(string)
+    })), [])
+    document_id_options = optional(list(object({
+      default_document_id_format = string
+    })), [])
+    processing_configuration = optional(list(object({
+      enabled    = optional(bool)
+      processors = optional(list(object({
+        type     = string
+        parameters = optional(list(object({
+          parameter_name  = string
+          parameter_value = string
+        })), [])
+      })), [])
+    })), [])
+    s3_configuration = list(object({
+      bucket_arn          = string
+      buffering_interval  = optional(number)
+      buffering_size      = optional(number)
+      compression_format  = optional(string)
+      error_output_prefix = optional(string)
+      kms_key_arn         = optional(string)
+      prefix              = optional(string)
+      role_arn            = string
+      cloudwatch_logging_option = optional(list(object({
+        enabled         = optional(bool)
+        log_group_name  = optional(string)
+        log_stream_name = optional(string)
+      })), [])
+    }))
+    vpc_config = optional(list(object({
+      subnet_ids         = list(string)
+      security_group_ids = list(string)
+      role_arn           = string
+    })), [])
+  }))
+  default     = []
+}
+variable "kinesis_firehose_delivery_stream_opensearchserverless_configuration" {
+  description = "(Optional) Configuration options when destination is opensearchserverless"
+  type        = list(object({
+    buffering_interval  = optional(number)
+    buffering_size      = optional(number)
+    collection_endpoint = string
+    index_name          = string
+    retry_duration      = optional(number)
+    role_arn            = string
+    s3_backup_mode      = optional(number)
     cloudwatch_logging_option = optional(list(object({
       enabled         = optional(bool)
       log_group_name  = optional(string)
@@ -252,19 +397,19 @@ variable "kinesis_firehose_delivery_stream_opensearch_configuration" {
     })), [])
   }))
   default     = []
-}
+} 
 variable "kinesis_firehose_delivery_stream_redshift_configuration" {
-  description = "Configuration options if redshift is the destination"
+  description = "(Optional) Configuration options when destination is redshift. Requires the user to also specify an s3_configuration"
   type        = list(object({
     cluster_jdbcurl    = string
     copy_options       = optional(string)
     data_table_columns = optional(string)
     data_table_name    = string
-    password           = string
+    password           = optional(string)
     retry_duration     = optional(number)
     role_arn           = string
     s3_backup_mode     = optional(string)
-    username           = string
+    username           = optional(string)
     cloudwatch_logging_option = optional(list(object({
       enabled         = optional(bool)
       log_group_name  = optional(string)
@@ -295,30 +440,31 @@ variable "kinesis_firehose_delivery_stream_redshift_configuration" {
         log_stream_name = optional(string)
       })), [])
     })), [])
-  }))
-  default     = []
-}
-variable "kinesis_firehose_delivery_stream_s3_configuration" {
-  description = "Required for non-S3 destinations"
-  type        = list(object({
-    bucket_arn          = string
-    buffering_interval  = optional(number)
-    buffering_size      = optional(number)
-    compression_format  = optional(string)
-    error_output_prefix = optional(string)
-    kms_key_arn         = optional(string)
-    prefix              = optional(string)
-    role_arn            = string
-    cloudwatch_logging_options = optional(list(object({
-      enabled         = optional(bool)
-      log_group_name  = optional(string)
-      log_stream_name = optional(string)
+    s3_configuration = list(object({
+      bucket_arn          = string
+      buffering_interval  = optional(number)
+      buffering_size      = optional(number)
+      compression_format  = optional(string)
+      error_output_prefix = optional(string)
+      kms_key_arn         = optional(string)
+      prefix              = optional(string)
+      role_arn            = string
+      cloudwatch_logging_option = optional(list(object({
+        enabled         = optional(bool)
+        log_group_name  = optional(string)
+        log_stream_name = optional(string)
+      })), [])
+    }))
+    secrets_manager_configuration = optional(list(object({
+      enabled    = optional(bool)
+      secret_arn = optional(string)
+      role_arn   = optional(string)
     })), [])
   }))
   default     = []
 }
 variable "kinesis_firehose_delivery_stream_server_side_encryption" {
-  description = "Encrypt at rest options. Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream"
+  description = "(Optional) Encrypt at rest options.. Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream"
   type        = list(object({
     enabled  = optional(bool)
     key_arn  = optional(string)
@@ -326,9 +472,74 @@ variable "kinesis_firehose_delivery_stream_server_side_encryption" {
   }))
   default     = []
 }
-variable "kinesis_firehose_delivery_stream_splunk_configuration" {
-  description = "Configuration options if splunk is the destination"
+variable "kinesis_firehose_delivery_stream_snowflake_configuration" {
+  description = "(Optional) Configuration options when destination is snowflake"
   type        = list(object({
+    account_url                = string
+    buffering_interval         = optional(number)
+    buffering_size             = optional(number)
+    content_column_name        = optional(string)
+    data_loading_option        = optional(string)
+    database                   = string
+    key_passphrase             = optional(string)
+    metadata_column_name       = optional(string)
+    private_key                = optional(string)
+    retry_duration             = optional(number)
+    role_arn                   = string
+    s3_backup_mode             = optional(string)
+    schema                     = string
+    table                      = string
+    user                       = optional(string)
+    cloudwatch_logging_options = optional(list(object({
+      enabled         = optional(bool)
+      log_group_name  = optional(string)
+      log_stream_name = optional(string)
+    })), [])
+    processing_configuration = optional(list(object({
+      enabled    = optional(bool)
+      processors = optional(list(object({
+        type     = string
+        parameters = optional(list(object({
+          parameter_name  = string
+          parameter_value = string
+        })), [])
+      })), [])
+    })), [])
+    s3_configuration = list(object({
+      bucket_arn          = string
+      buffering_interval  = optional(number)
+      buffering_size      = optional(number)
+      compression_format  = optional(string)
+      error_output_prefix = optional(string)
+      kms_key_arn         = optional(string)
+      prefix              = optional(string)
+      role_arn            = string
+      cloudwatch_logging_option = optional(list(object({
+        enabled         = optional(bool)
+        log_group_name  = optional(string)
+        log_stream_name = optional(string)
+      })), [])
+    }))
+    secrets_manager_configuration = optional(list(object({
+      enabled    = optional(bool)
+      secret_arn = optional(string)
+      role_arn   = optional(string)
+    })), [])
+    snowflake_role_configuration = optional(list(object({
+      enabled        = optional(bool)
+      snowflake_role = optional(string)
+    })), [])
+    snowflake_vpc_configuration  = optional(list(object({
+      private_link_vpce_id = string
+    })), [])
+  }))
+  default     = []
+} 
+variable "kinesis_firehose_delivery_stream_splunk_configuration" {
+  description = "(Optional) Configuration options when destination is splunk"
+  type        = list(object({
+    buffering_interval         = optional(number)
+    buffering_size             = optional(number)
     hec_acknowledgment_timeout = optional(number)
     hec_endpoint               = string
     hec_endpoint_type          = optional(string)
@@ -365,6 +576,11 @@ variable "kinesis_firehose_delivery_stream_splunk_configuration" {
         log_stream_name = optional(string)
       })), [])
     }))
+    secrets_manager_configuration = optional(list(object({
+      enabled    = optional(bool)
+      secret_arn = optional(string)
+      role_arn   = optional(string)
+    })), [])
   }))
   default     = []
 }
