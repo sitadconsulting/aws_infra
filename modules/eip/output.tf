@@ -26,6 +26,10 @@ output "eip_private_ip" {
   description = "Contains the private IP address (if in VPC)"
   value       = element(concat(aws_eip.eip.*.private_ip, [""]), 0)
 }
+output "eip_ptr_record" {
+  description = "The DNS pointer (PTR) record for the IP address"
+  value       = element(concat(aws_eip.eip.*.ptr_record, [""]), 0)
+}
 output "eip_public_dns" {
   description = "The public dns name associated with this EIP"
   value       = element(concat(aws_eip.eip.*.public_dns, [""]), 0)
