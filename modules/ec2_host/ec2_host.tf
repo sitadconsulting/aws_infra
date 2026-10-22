@@ -1,0 +1,10 @@
+resource "aws_ec2_host" "ec2_host" {
+  asset_id           = var.ec2_host_asset_id
+  auto_placement     = var.ec2_host_auto_placement
+  availability_zone  = var.ec2_host_availability_zone
+  host_recovery      = var.ec2_host_host_recovery
+  instance_family    = var.ec2_host_instance_family
+  instance_type      = var.ec2_host_instance_type
+  outpost_arn        = var.ec2_host_outpost_arn
+  tags               = var.ec2_host_tags
+}
