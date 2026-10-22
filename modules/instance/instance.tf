@@ -2,11 +2,11 @@ resource "aws_instance" "instance" {
   ami                                  = var.instance_ami
   associate_public_ip_address          = var.instance_associate_public_ip_address
   availability_zone                    = var.instance_availability_zone
-  cpu_core_count                       = var.instance_cpu_core_count
-  cpu_threads_per_core                 = var.instance_cpu_threads_per_core
   disable_api_stop                     = var.instance_disable_api_stop
   disable_api_termination              = var.instance_disable_api_termination
   ebs_optimized                        = var.instance_ebs_optimized
+  enable_primary_ipv6                  = var.instance_enable_primary_ipv6
+  force_destroy                        = var.instance_force_destroy
   get_password_data                    = var.instance_get_password_data
   hibernation                          = var.instance_hibernation
   host_id                              = var.instance_host_id
@@ -19,6 +19,7 @@ resource "aws_instance" "instance" {
   key_name                             = var.instance_key_name
   monitoring                           = var.instance_monitoring
   placement_group                      = var.instance_placement_group
+  placement_group_id                   = var.instance_placement_group_id
   placement_partition_number           = var.instance_placement_partition_number
   private_ip                           = var.instance_private_ip
   secondary_private_ips                = var.instance_secondary_private_ips
@@ -49,9 +50,10 @@ resource "aws_instance" "instance" {
   dynamic "cpu_options" {
     for_each = var.instance_cpu_options
       content {
-        amd_sev_snp      = cpu_options.value["amd_sev_snp"]
-        core_count       = cpu_options.value["core_count"]
-        threads_per_core = cpu_options.value["threads_per_core"]
+        amd_sev_snp           = cpu_options.value["amd_sev_snp"]
+        core_count            = cpu_options.value["core_count"]
+        nested_virtualization = cpu_options.value["nested_virtualization"]
+        threads_per_core      = cpu_options.value["threads_per_core"]
       }
   }
   dynamic "credit_specification" {
@@ -89,6 +91,21 @@ resource "aws_instance" "instance" {
         virtual_name = ephemeral_block_device.value["virtual_name"]
       }
   }
+  dynamic "instance_market_options" {
+    for_each = var.instance_instance_market_options
+      content {
+        market_type = instance_market_options.value["market_type"]
+        dynamic "spot_options" {
+          for_each = instance_market_options.value.spot_options
+            content {
+              instance_interruption_behavior = spot_options.value["instance_interruption_behavior"]
+              max_price                      = spot_options.value["max_price"]
+              spot_instance_type             = spot_options.value["spot_instance_type"]
+              valid_until                    = spot_options.value["valid_until"]
+            }
+        }
+      }
+  }
   dynamic "launch_template" {
     for_each = var.instance_launch_template
       content {
@@ -107,6 +124,7 @@ resource "aws_instance" "instance" {
     for_each = var.instance_metadata_options
       content {
         http_endpoint               = metadata_options.value["http_endpoint"]
+        http_protocol_ipv6          = metadata_options.value["http_protocol_ipv6"]
         http_put_response_hop_limit = metadata_options.value["http_put_response_hop_limit"]
         http_tokens                 = metadata_options.value["http_tokens"]
         instance_metadata_tags      = metadata_options.value["instance_metadata_tags"]
@@ -119,6 +137,13 @@ resource "aws_instance" "instance" {
         device_index          = network_interface.value["device_index"]
         network_card_index    = network_interface.value["network_card_index"]
         network_interface_id  = network_interface.value["network_interface_id"]
+      }
+  }
+  dynamic "primary_network_interface" {
+    for_each = var.instance_primary_network_interface
+      content {
+        delete_on_termination = primary_network_interface.value["delete_on_termination"]
+        network_interface_id  = primary_network_interface.value["network_interface_id"]
       }
   }
   dynamic "private_dns_name_options" {
@@ -142,7 +167,16 @@ resource "aws_instance" "instance" {
         volume_type           = root_block_device.value["volume_type"]
       }
   }
-  lifecycle {
-    ignore_changes = all
+  dynamic "secondary_network_interface" {
+    for_each = var.instance_secondary_network_interface
+      content {
+        delete_on_termination    = secondary_network_interface.value["delete_on_termination"]
+        device_index             = secondary_network_interface.value["device_index"]
+        interface_type           = secondary_network_interface.value["interface_type"]
+        network_card_index       = secondary_network_interface.value["network_card_index"]
+        private_ip_addresses     = secondary_network_interface.value["private_ip_addresses"]
+        private_ip_address_count = secondary_network_interface.value["private_ip_address_count"]
+        secondary_subnet_id      = secondary_network_interface.value["secondary_subnet_id"]
+      }
   }
 }
