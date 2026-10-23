@@ -13,6 +13,8 @@ resource "aws_launch_template" "launch_template" {
   name_prefix                          = var.launch_template_name_prefix
   ram_disk_id                          = var.launch_template_ram_disk_id
   security_group_names                 = var.launch_template_security_group_names
+  tags                                 = var.launch_template_tags
+  update_default_version               = var.launch_template_update_default_version
   user_data                            = var.launch_template_user_data
   vpc_security_group_ids               = var.launch_template_vpc_security_group_ids
 
@@ -26,14 +28,15 @@ resource "aws_launch_template" "launch_template" {
         dynamic "ebs" {
           for_each = block_device_mappings.value.ebs
             content {
-              delete_on_termination = ebs.value["delete_on_termination"]
-              encrypted             = ebs.value["encrypted"]
-              iops                  = ebs.value["iops"]
-              kms_key_id            = ebs.value["kms_key_id"]
-              snapshot_id           = ebs.value["snapshot_id"]
-              throughput            = ebs.value["throughput"]
-              volume_size           = ebs.value["volume_size"]
-              volume_type           = ebs.value["volume_type"]
+              delete_on_termination      = ebs.value["delete_on_termination"]
+              encrypted                  = ebs.value["encrypted"]
+              iops                       = ebs.value["iops"]
+              kms_key_id                 = ebs.value["kms_key_id"]
+              snapshot_id                = ebs.value["snapshot_id"]
+              throughput                 = ebs.value["throughput"]
+              volume_initialization_rate = ebs.value["volume_initialization_rate"]
+              volume_size                = ebs.value["volume_size"]
+              volume_type                = ebs.value["volume_type"]
             }
         }  
       } 
@@ -54,27 +57,16 @@ resource "aws_launch_template" "launch_template" {
   dynamic "cpu_options" {
     for_each = var.launch_template_cpu_options
       content {
-        #amd_sev_snp      = cpu_options.value["amd_sev_snp"]
-        core_count       = cpu_options.value["core_count"]
-        threads_per_core = cpu_options.value["threads_per_core"]
+        #amd_sev_snp          = cpu_options.value["amd_sev_snp"]
+        core_count            = cpu_options.value["core_count"]
+        nested_virtualization = cpu_options.value["nested_virtualization"]
+        threads_per_core      = cpu_options.value["threads_per_core"]
       } 
   }
   dynamic "credit_specification" {
     for_each = var.launch_template_credit_specification
       content {
         cpu_credits = credit_specification.value["cpu_credits"]
-      }
-  }
-  dynamic "elastic_gpu_specifications" {
-    for_each = var.launch_template_elastic_gpu_specifications
-      content {
-        type = elastic_gpu_specifications.value["type"]
-      }
-  }
-  dynamic "elastic_inference_accelerator" {
-    for_each = var.launch_template_elastic_inference_accelerator
-      content {
-        type = elastic_inference_accelerator.value["type"]
       }
   }
   dynamic "enclave_options" {
@@ -115,20 +107,21 @@ resource "aws_launch_template" "launch_template" {
   dynamic "instance_requirements" {
     for_each = var.launch_template_instance_requirements
       content {
-        accelerator_manufacturers                        = instance_requirements.value["accelerator_manufacturers"]
-        accelerator_names                                = instance_requirements.value["accelerator_names"]
-        accelerator_types                                = instance_requirements.value["accelerator_types"]
-        allowed_instance_types                           = instance_requirements.value["allowed_instance_types"]
-        bare_metal                                       = instance_requirements.value["bare_metal"]
-        burstable_performance                            = instance_requirements.value["burstable_performance"]
-        cpu_manufacturers                                = instance_requirements.value["cpu_manufacturers"]
-        excluded_instance_types                          = instance_requirements.value["excluded_instance_types"]
-        instance_generations                             = instance_requirements.value["instance_generations"]
-        local_storage                                    = instance_requirements.value["local_storage"]
-        local_storage_types                              = instance_requirements.value["local_storage_types"]
-        on_demand_max_price_percentage_over_lowest_price = instance_requirements.value["on_demand_max_price_percentage_over_lowest_price"]
-        require_hibernate_support                        = instance_requirements.value["require_hibernate_support"]
-        spot_max_price_percentage_over_lowest_price      = instance_requirements.value["spot_max_price_percentage_over_lowest_price"]
+        accelerator_manufacturers                               = instance_requirements.value["accelerator_manufacturers"]
+        accelerator_names                                       = instance_requirements.value["accelerator_names"]
+        accelerator_types                                       = instance_requirements.value["accelerator_types"]
+        allowed_instance_types                                  = instance_requirements.value["allowed_instance_types"]
+        bare_metal                                              = instance_requirements.value["bare_metal"]
+        burstable_performance                                   = instance_requirements.value["burstable_performance"]
+        cpu_manufacturers                                       = instance_requirements.value["cpu_manufacturers"]
+        excluded_instance_types                                 = instance_requirements.value["excluded_instance_types"]
+        instance_generations                                    = instance_requirements.value["instance_generations"]
+        local_storage                                           = instance_requirements.value["local_storage"]
+        local_storage_types                                     = instance_requirements.value["local_storage_types"]
+        max_spot_price_as_percentage_of_optimal_on_demand_price = instance_requirements.value["max_spot_price_as_percentage_of_optimal_on_demand_price"]
+        on_demand_max_price_percentage_over_lowest_price        = instance_requirements.value["on_demand_max_price_percentage_over_lowest_price"]
+        require_hibernate_support                               = instance_requirements.value["require_hibernate_support"]
+        spot_max_price_percentage_over_lowest_price             = instance_requirements.value["spot_max_price_percentage_over_lowest_price"]
         
         dynamic "accelerator_count" {
           for_each = instance_requirements.value.accelerator_count
@@ -231,6 +224,7 @@ resource "aws_launch_template" "launch_template" {
         delete_on_termination        = network_interfaces.value["delete_on_termination"]
         description                  = network_interfaces.value["description"]
         device_index                 = network_interfaces.value["device_index"]
+        ena_queue_count              = network_interfaces.value["ena_queue_count"]
         interface_type               = network_interfaces.value["interface_type"]
         ipv4_address_count           = network_interfaces.value["ipv4_address_count"]
         ipv4_addresses               = network_interfaces.value["ipv4_addresses"]
@@ -242,9 +236,30 @@ resource "aws_launch_template" "launch_template" {
         ipv6_prefixes                = network_interfaces.value["ipv6_prefixes"]
         network_card_index           = network_interfaces.value["network_card_index"]
         network_interface_id         = network_interfaces.value["network_interface_id"]
+        primary_ipv6                 = network_interfaces.value["primary_ipv6"]
         private_ip_address           = network_interfaces.value["private_ip_address"]
         security_groups              = network_interfaces.value["security_groups"]
         subnet_id                    = network_interfaces.value["subnet_id"]
+        dyanmic "connection_tracking_specification" {
+          for_each = network_interfaces.value.connection_tracking_specification
+            content {
+              tcp_established_timeout = connection_tracking_specification.value["tcp_established_timeout"]
+              udp_stream_timeout      = connection_tracking_specification.value["udp_stream_timeout"]
+              udp_timeout             = connection_tracking_specification.value["udp_timeout"]
+            }
+        }
+        dynamic "ena_srd_specification" {
+          for_each = network_interfaces.value.ena_srd_specification
+            content {
+              ena_srd_enabled = ena_srd_specification.value["ena_srd_enabled"]
+              dynamic "ena_srd_udp_specification" {
+                for_each = ena_srd_specification.value.ena_srd_udp_specification
+                  content {
+                    ena_srd_udp_enabled = ena_srd_udp_specification.value["ena_srd_udp_enabled"]
+                  }
+              }
+            }
+        }
       }
   }
   dynamic "placement" {
@@ -252,6 +267,7 @@ resource "aws_launch_template" "launch_template" {
       content {
         affinity                = placement.value["affinity"]
         availability_zone       = placement.value["availability_zone"]
+        group_id                = placement.value["group_id"]
         group_name              = placement.value["group_name"]
         host_id                 = placement.value["host_id"]
         host_resource_group_arn = placement.value["host_resource_group_arn"]
@@ -268,14 +284,23 @@ resource "aws_launch_template" "launch_template" {
         hostname_type                        = private_dns_name_options.value["hostname_type"]
       }
   }
+  dynamic "secondary_interfaces" {
+    for_each = var.launch_template_secondary_interfaces
+      content {
+        delete_on_termination    = secondary_interfaces.value["delete_on_termination"]
+        device_index             = secondary_interfaces.value["device_index"]
+        interface_type           = secondary_interfaces.value["interface_type"]
+        network_card_index       = secondary_interfaces.value["network_card_index"]
+        private_ip_address_count = secondary_interfaces.value["private_ip_address_count"]
+        private_ip_addresses     = secondary_interfaces.value["private_ip_addresses"]
+        secondary_subnet_id      = secondary_interfaces.value["secondary_subnet_id"]
+      }
+  }
   dynamic "tag_specifications" {
     for_each = var.launch_template_tag_specifications
       content {
         resource_type   = tag_specifications.value["resource_type"]
         tags            = tag_specifications.value["tags"]
       }             
-  }
-  lifecycle {
-    ignore_changes = all
   }
 }
