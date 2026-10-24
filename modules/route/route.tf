@@ -9,6 +9,7 @@ resource "aws_route" "route" {
   local_gateway_id            = var.route_local_gateway_id
   nat_gateway_id              = var.route_nat_gateway_id
   network_interface_id        = var.route_network_interface_id
+  odb_network_arn             = var.route_odb_network_arn 
   route_table_id              = var.route_route_table_id
   transit_gateway_id          = var.route_transit_gateway_id
   vpc_endpoint_id             = var.route_vpc_endpoint_id
