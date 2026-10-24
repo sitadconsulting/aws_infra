@@ -34,7 +34,4 @@ resource "aws_security_group" "security_group" {
         to_port          = egress.value["to_port"]
       }
   }
-  lifecycle {
-    ignore_changes = all
-  } 
 }
