@@ -14,3 +14,7 @@ output "private_route_table_arn" {
   description = "ARN of private route table"
   value       = element(concat(aws_route_table.route_table.*.arn, [""]), 0)
 }
+output "route_table_owner_id" {
+  description = " The ID of the AWS account that owns the route table"
+  value       = element(concat(aws_route_table.route_table.*.owner_id, [""]), 0)
+}
