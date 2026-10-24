@@ -10,6 +10,10 @@ resource "aws_subnet" "subnet" {
   enable_resource_name_dns_a_record_on_launch    = var.subnet_enable_resource_name_dns_a_record_on_launch
   ipv6_cidr_block                                = var.subnet_ipv6_cidr_block
   ipv6_native                                    = var.subnet_ipv6_native
+  ipv4_ipam_pool_id                              = var.subnet_ipv4_ipam_pool_id
+  ipv4_netmask_length                            = var.subnet_ipv4_netmask_length
+  ipv6_ipam_pool_id                              = var.subnet_ipv6_ipam_pool_id
+  ipv6_netmask_length                            = var.subnet_ipv6_netmask_length
   map_customer_owned_ip_on_launch                = var.subnet_map_customer_owned_ip_on_launch
   map_public_ip_on_launch                        = var.subnet_map_public_ip_on_launch
   outpost_arn                                    = var.subnet_outpost_arn
