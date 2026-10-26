@@ -26,6 +26,10 @@ output "vpc_endpoint_prefix_list_id" {
   description = "The prefix list ID of the exposed AWS service. Applicable for endpoints of type Gateway"
   value       = element(concat(aws_vpc_endpoint.vpc_endpoint.*.prefix_list_id, [""]), 0)
 }
+output "vpc_endpoint_requester_managed" {
+  description = "Whether or not the VPC Endpoint is being managed by its service - true or false"
+  value       = element(concat(aws_vpc_endpoint.vpc_endpoint.*.requester_managed, [""]), 0)
+}
 output "vpc_endpoint_state" {
   description = "The state of the VPC endpoint"
   value       = element(concat(aws_vpc_endpoint.vpc_endpoint.*.state, [""]), 0)
