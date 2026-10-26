@@ -5,5 +5,6 @@ resource "aws_vpc_endpoint_service" "vpc_endpoint_service" {
   network_load_balancer_arns = var.vpc_endpoint_service_network_load_balancer_arns
   private_dns_name           = var.vpc_endpoint_service_private_dns_name
   supported_ip_address_types = var.vpc_endpoint_service_supported_ip_address_types
+  supported_regions          = var.vpc_endpoint_service_supported_regions
   tags                       = var.vpc_endpoint_service_tags
 }
