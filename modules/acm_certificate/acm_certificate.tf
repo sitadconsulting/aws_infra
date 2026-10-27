@@ -4,6 +4,8 @@ resource "aws_acm_certificate" "acm_certificate" {
   validation_method         = var.acm_certificate_validation_method
   key_algorithm             = var.acm_certificate_key_algorithm
   private_key               = var.acm_certificate_private_key
+  private_key_wo            = var.acm_certificate_private_key_wo
+  private_key_wo_version    = var.acm_certificate_private_key_wo_version
   certificate_body          = var.acm_certificate_certificate_body
   certificate_chain         = var.acm_certificate_certificate_chain
   certificate_authority_arn = var.acm_certificate_certificate_authority_arn
@@ -14,6 +16,7 @@ resource "aws_acm_certificate" "acm_certificate" {
     for_each = var.acm_certificate_options
       content {
         certificate_transparency_logging_preference = options.value["certificate_transparency_logging_preference"]
+        export                                      = options.value["export"]
       }
   } 
   dynamic "validation_option" {
