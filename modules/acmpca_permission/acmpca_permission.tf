@@ -4,4 +4,3 @@ resource "aws_acmpca_permission" "acmpca_permission" {
   principal                 = var.acmpca_permission_principal
   source_account            = var.acmpca_permission_source_account
 }
-
