@@ -1,35 +1,35 @@
-variable "certificate_authority_enabled" {
-  description = "Whether the certificate authority is enabled or disabled. Defaults to true. Can only be disabled if the CA is in an ACTIVE state"
+variable "acmpca_certificate_authority_enabled" {
+  description = "(Optional) Whether the certificate authority is enabled or disabled. Defaults to true. Can only be disabled if the CA is in an ACTIVE state"
   type        = bool
   default     = true
 }
-variable "certificate_authority_usage_mode" {
-  description = "Specifies whether the CA issues general-purpose certificates that typically require a revocation mechanism, or short-lived certificates that may optionally omit revocation because they expire quickly. Short-lived certificate validity is limited to seven days. Defaults to GENERAL_PURPOSE. Valid values: GENERAL_PURPOSE and SHORT_LIVED_CERTIFICATE"
+variable "acmpca_certificate_authority_usage_mode" {
+  description = "(Optional) Specifies whether the CA issues general-purpose certificates that typically require a revocation mechanism, or short-lived certificates that may optionally omit revocation because they expire quickly. Short-lived certificate validity is limited to seven days. Defaults to GENERAL_PURPOSE. Valid values: GENERAL_PURPOSE and SHORT_LIVED_CERTIFICATE"
   type        = string
   default     = "GENERAL_PURPOSE"
 }
-variable "certificate_authority_tags" {
-  description = "Key-value map of user-defined tags that are attached to the certificate authority"
+variable "acmpca_certificate_authority_tags" {
+  description = "(Optional) Key-value map of user-defined tags that are attached to the certificate authority"
   type        = map(string)
   default     = {}
 }
-variable "certificate_authority_type" {
-  description = "Type of the certificate authority. Defaults to SUBORDINATE. Valid values: ROOT and SUBORDINATE"
+variable "acmpca_certificate_authority_type" {
+  description = "(Optional) Type of the certificate authority. Defaults to SUBORDINATE. Valid values: ROOT and SUBORDINATE"
   type        = string
   default     = "SUBORDINATE"
 }
-variable "certificate_authority_key_storage_security_standard" {
-  description = "Cryptographic key management compliance standard used for handling CA keys. Defaults to FIPS_140_2_LEVEL_3_OR_HIGHER. Valid values: FIPS_140_2_LEVEL_3_OR_HIGHER and FIPS_140_2_LEVEL_2_OR_HIGHER"
+variable "acmpca_certificate_authority_key_storage_security_standard" {
+  description = "(Optional) Cryptographic key management compliance standard used for handling CA keys. Defaults to FIPS_140_2_LEVEL_3_OR_HIGHER. Valid values: FIPS_140_2_LEVEL_3_OR_HIGHER and FIPS_140_2_LEVEL_2_OR_HIGHER"
   type        = string
   default     = "FIPS_140_2_LEVEL_3_OR_HIGHER"
 }
-variable "certificate_authority_permanent_deletion_time_in_days" {
-  description = "Number of days to make a CA restorable after it has been deleted, must be between 7 to 30 days, with default to 30 days"
+variable "acmpca_certificate_authority_permanent_deletion_time_in_days" {
+  description = "(Optional) Number of days to make a CA restorable after it has been deleted, must be between 7 to 30 days, with default to 30 days"
   type        = number
   default     = 7
 }
-variable "certificate_authority_certificate_authority_configuration" {
-  description = "Configuratin containing algorithms and certificate subject information"
+variable "acmpca_certificate_authority_certificate_authority_configuration" {
+  description = "(Required) Nested argument containing algorithms and certificate subject information."
   type        = list(object({
     key_algorithm     = string
     signing_algorithm = string
@@ -49,13 +49,13 @@ variable "certificate_authority_certificate_authority_configuration" {
       title                        = optional(string) 
     }))
   }))
-  default = []
 }
-variable "certificate_authority_revocation_configuration" {
-  description = "Configuration containing revocation information"
+variable "acmpca_certificate_authority_revocation_configuration" {
+  description = "(Optional) Nested argument containing revocation configuration"
   type        = list(object({
     crl_configuration = optional(list(object({
       custom_cname       = optional(string)
+      custom_path        = optional(string)
       enabled            = optional(bool)
       expiration_in_days = optional(number)
       s3_bucket_name     = optional(string)

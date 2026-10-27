@@ -1,14 +1,14 @@
-resource "aws_acmpca_certificate_authority" "certificate_authority" {
-  enabled                         = var.certificate_authority_enabled
-  usage_mode                      = var.certificate_authority_usage_mode
-  tags                            = var.certificate_authority_tags
-  type                            = var.certificate_authority_type
-  key_storage_security_standard   = var.certificate_authority_key_storage_security_standard
-  permanent_deletion_time_in_days = var.certificate_authority_permanent_deletion_time_in_days 
+resource "aws_acmpca_certificate_authority" "acmpca_certificate_authority" {
+  enabled                         = var.acmpca_certificate_authority_enabled
+  usage_mode                      = var.acmpca_certificate_authority_usage_mode
+  tags                            = var.acmpca_certificate_authority_tags
+  type                            = var.acmpca_certificate_authority_type
+  key_storage_security_standard   = var.acmpca_certificate_authority_key_storage_security_standard
+  permanent_deletion_time_in_days = var.acmpca_certificate_authority_permanent_deletion_time_in_days 
 
 
   dynamic "certificate_authority_configuration" {
-    for_each = var.certificate_authority_certificate_authority_configuration
+    for_each = var.acmpca_certificate_authority_certificate_authority_configuration
       content {
         key_algorithm     = certificate_authority_configuration.value["key_algorithm"]
         signing_algorithm = certificate_authority_configuration.value["signing_algorithm"]
@@ -33,12 +33,13 @@ resource "aws_acmpca_certificate_authority" "certificate_authority" {
       }
   }
   dynamic "revocation_configuration" {
-    for_each = var.certificate_authority_revocation_configuration
+    for_each = var.acmpca_certificate_authority_revocation_configuration
       content {
         dynamic "crl_configuration" {
           for_each = revocation_configuration.value.crl_configuration
             content {
               custom_cname       = crl_configuration.value["custom_cname"]
+              custom_path        = crl_configuration.value["custom_path"]
               enabled            = crl_configuration.value["enabled"]
               expiration_in_days = crl_configuration.value["expiration_in_days"]
               s3_bucket_name     = crl_configuration.value["s3_bucket_name"]
