@@ -7,10 +7,6 @@ resource "aws_vpc_security_group_egress_rule" "vpc_security_group_egress_rule" {
   prefix_list_id               = var.vpc_security_group_egress_rule_prefix_list_id
   referenced_security_group_id = var.vpc_security_group_egress_rule_referenced_security_group_id
   security_group_id            = var.vpc_security_group_egress_rule_security_group_id
-  to_port                      = var.vpc_security_group_egress_rule_to_port
   tags                         = var.vpc_security_group_egress_rule_tags
-
-  lifecycle {
-    ignore_changes = all
-  }
+  to_port                      = var.vpc_security_group_egress_rule_to_port
 }
