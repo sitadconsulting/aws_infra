@@ -6,8 +6,8 @@ resource "aws_api_gateway_integration" "api_gateway_integration" {
   content_handling        = var.api_gateway_integration_content_handling
   credentials             = var.api_gateway_integration_credentials
   http_method             = var.api_gateway_integration_http_method
-  integration_target      = var.api_gateway_integration_integration_target
   integration_http_method = var.api_gateway_integration_integration_http_method
+  integration_target      = var.api_gateway_integration_integration_target
   passthrough_behavior    = var.api_gateway_integration_passthrough_behavior
   request_parameters      = var.api_gateway_integration_request_parameters
   request_templates       = var.api_gateway_integration_request_templates
