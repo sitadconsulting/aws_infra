@@ -1,10 +1,10 @@
 variable "api_gateway_client_certificate_description" {
-  description = "Description of the client certificate"
+  description = "(Optional) Description of the client certificate"
   type        = string
   default     = null
 }
 variable "api_gateway_client_certificate_tags" {
-  description = "Key-value map of resource tags. If configured with a provider default_tags configuration block present, tags with matching keys will overwrite those defined at the provider-level"
+  description = "(Optional) Key-value map of resource tags"
   type        = map(string)
   default     = {}
 }
