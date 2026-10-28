@@ -1,12 +1,14 @@
 resource "aws_apigatewayv2_domain_name" "apigatewayv2_domain_name" {
-  domain_name = var.apigatewayv2_domain_name_domain_name
-  tags        = var.apigatewayv2_domain_name_tags
+  domain_name  = var.apigatewayv2_domain_name_domain_name
+  routing_mode = var.apigatewayv2_domain_name_routing_mode
+  tags         = var.apigatewayv2_domain_name_tags
 
   dynamic "domain_name_configuration" {
     for_each = var.apigatewayv2_domain_name_domain_name_configuration
       content {
         certificate_arn                        = domain_name_configuration.value["certificate_arn"]
         endpoint_type                          = domain_name_configuration.value["endpoint_type"]
+        ip_address_type                        = domain_name_configuration.value["ip_address_type"]
         ownership_verification_certificate_arn = domain_name_configuration.value["ownership_verification_certificate_arn"]
         security_policy                        = domain_name_configuration.value["security_policy"]
       }
