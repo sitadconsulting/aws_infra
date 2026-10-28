@@ -5,13 +5,14 @@ resource "aws_apigatewayv2_api" "apigatewayv2_api" {
   description                  = var.apigatewayv2_api_description
   disable_execute_api_endpoint = var.apigatewayv2_api_disable_execute_api_endpoint
   fail_on_warnings             = var.apigatewayv2_api_fail_on_warnings
+  ip_address_type              = var.apigatewayv2_api_ip_address_type
   name                         = var.apigatewayv2_api_name
   protocol_type                = var.apigatewayv2_api_protocol_type
   route_key                    = var.apigatewayv2_api_route_key
   route_selection_expression   = var.apigatewayv2_api_route_selection_expression
+  tags                         = var.apigatewayv2_api_tags
   target                       = var.apigatewayv2_api_target
   version                      = var.apigatewayv2_api_version
-  tags                         = var.apigatewayv2_api_tags
 
   dynamic "cors_configuration" {
     for_each = var.apigatewayv2_api_cors_configuration
