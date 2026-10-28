@@ -5,6 +5,7 @@ resource "aws_athena_database" "athena_database" {
   force_destroy         = var.athena_database_force_destroy
   name                  = var.athena_database_name
   properties            = var.athena_database_properties
+  workgroup             = var.athena_database_workgroup
 
   dynamic "acl" {
     for_each = var.athena_database_acl
