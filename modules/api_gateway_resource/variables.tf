@@ -1,12 +1,12 @@
 variable "api_gateway_resource_parent_id" {
-  description = "ID of the parent API resource"
+  description = "(Required) ID of the parent API resource"
   type        = string
 }
 variable "api_gateway_resource_path_part" {
-  description = "Last path segment of this API resource"
+  description = "(Required) Last path segment of this API resource"
   type        = string
 }
 variable "api_gateway_resource_rest_api_id" {
-  description = "ID of the associated REST API"
+  description = "(Required) ID of the associated REST API"
   type        = string
 }
