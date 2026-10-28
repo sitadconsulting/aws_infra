@@ -14,8 +14,6 @@ resource "aws_apigatewayv2_authorizer" "apigatewayv2_authorizer" {
       content {
         audience = jwt_configuration.value["audience"]
         issuer   = jwt_configuration.value["issuer"]
-
       }
   }
-  
 }
