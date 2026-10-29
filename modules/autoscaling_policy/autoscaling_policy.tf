@@ -85,7 +85,6 @@ resource "aws_autoscaling_policy" "autoscaling_policy" {
                                       }
                                     }
                                 }
-                     
                               }
                           }
                         }
@@ -121,11 +120,9 @@ resource "aws_autoscaling_policy" "autoscaling_policy" {
                                       }
                                     }
                                 }
-                     
                               }
                           }
                         }
-                      
                     } 
                   } 
               }
@@ -223,5 +220,3 @@ resource "aws_autoscaling_policy" "autoscaling_policy" {
       }
   }
 }
-
-
