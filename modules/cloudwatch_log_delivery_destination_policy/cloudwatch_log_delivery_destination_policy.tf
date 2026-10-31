@@ -1,0 +1,4 @@
+resource "aws_cloudwatch_log_delivery_destination_policy" "cloudwatch_log_delivery_destination_policy" {
+  delivery_destination_name   = var.cloudwatch_log_delivery_destination_policy_delivery_destination_name
+  delivery_destination_policy = var.cloudwatch_log_delivery_destination_policy_delivery_destination_policy
+}
