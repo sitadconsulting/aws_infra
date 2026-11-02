@@ -1,0 +1,4 @@
+resource "aws_observabilityadmin_telemetry_evaluation_for_organization" "observabilityadmin_telemetry_evaluation_for_organization" {
+  all_regions = var.observabilityadmin_telemetry_evaluation_for_organization_all_regions
+  regions     = var.observabilityadmin_telemetry_evaluation_for_organization_regions
+}
