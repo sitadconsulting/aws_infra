@@ -1,7 +1,8 @@
 resource "aws_cloudwatch_log_metric_filter" "cloudwatch_log_metric_filter" {
-  log_group_name = var.cloudwatch_log_metric_filter_log_group_name
-  name           = var.cloudwatch_log_metric_filter_name
-  pattern        = var.cloudwatch_log_metric_filter_pattern
+  apply_on_transformed_logs = var.cloudwatch_log_metric_filter_apply_on_transformed_logs
+  log_group_name            = var.cloudwatch_log_metric_filter_log_group_name
+  name                      = var.cloudwatch_log_metric_filter_name
+  pattern                   = var.cloudwatch_log_metric_filter_pattern
 
   dynamic "metric_transformation" {
     for_each = var.cloudwatch_log_metric_filter_metric_transformation
