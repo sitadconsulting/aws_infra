@@ -1,0 +1,3 @@
+resource "aws_cloudtrail_organization_delegated_admin_account" "cloudtrail_organization_delegated_admin_account" {
+  account_id = var.cloudtrail_organization_delegated_admin_account_account_id
+}
