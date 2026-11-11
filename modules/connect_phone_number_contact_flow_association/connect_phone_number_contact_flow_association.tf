@@ -1,0 +1,5 @@
+resource "aws_connect_phone_number_contact_flow_association" "connect_phone_number_contact_flow_association" {
+  contact_flow_id = var.connect_phone_number_contact_flow_association_contact_flow_id
+  instance_id     = var.connect_phone_number_contact_flow_association_instance_id
+  phone_number_id = var.connect_phone_number_contact_flow_association_phone_number_id
+}
