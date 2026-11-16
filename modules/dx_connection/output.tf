@@ -34,6 +34,30 @@ output "dx_connection_port_encryption_status" {
   description = "The MAC Security (MACsec) port link status of the connection"
   value       = element(concat(aws_dx_connection.dx_connection.*.port_encryption_status, [""]), 0)
 }
+output "dx_connection_prefix_pool_size_ipv4" {
+  description = "The total number of inbound IPv4 route prefixes that can be allocated across the virtual interfaces on the connection"
+  value       = element(concat(aws_dx_connection.dx_connection.*.prefix_pool_size_ipv4, [""]), 0)
+}
+output "dx_connection_prefix_pool_size_ipv6" {
+  description = "The total number of inbound IPv6 route prefixes that can be allocated across the virtual interfaces on the connection"
+  value       = element(concat(aws_dx_connection.dx_connection.*.prefix_pool_size_ipv6, [""]), 0)
+}
+output "dx_connection_prefix_pool_unallocated_count_ipv4" {
+  description = "The number of inbound IPv4 route prefixes in the connection prefix pool not yet allocated to a virtual interface"
+  value       = element(concat(aws_dx_connection.dx_connection.*.prefix_pool_unallocated_count_ipv4, [""]), 0)
+}
+output "dx_connection_prefix_pool_unallocated_count_ipv6" {
+  description = "The number of inbound IPv6 route prefixes in the connection prefix pool not yet allocated to a virtual interface"
+  value       = element(concat(aws_dx_connection.dx_connection.*.prefix_pool_unallocated_count_ipv6, [""]), 0)
+}
+output "dx_connection_rate_limiter_status" {
+  description = "Rate limiter status for the connection"
+  value       = element(concat(aws_dx_connection.dx_connection.*.rate_limiter_status, [""]), 0)
+}
+output "dx_connection_port_encryption_status" {
+  description = "The MAC Security (MACsec) port link status of the connection"
+  value       = element(concat(aws_dx_connection.dx_connection.*.port_encryption_status, [""]), 0)
+}
 output "dx_connection_vlan_id" {
   description = "The VLAN ID"
   value       = element(concat(aws_dx_connection.dx_connection.*.vlan_id, [""]), 0)
