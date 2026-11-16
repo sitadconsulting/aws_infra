@@ -2,11 +2,13 @@ resource "aws_dx_hosted_public_virtual_interface" "dx_hosted_public_virtual_inte
   address_family        = var.dx_hosted_public_virtual_interface_address_family
   amazon_address        = var.dx_hosted_public_virtual_interface_amazon_address
   bgp_asn               = var.dx_hosted_public_virtual_interface_bgp_asn
+  bgp_asn_long          = var.dx_hosted_public_virtual_interface_bgp_asn_long
   bgp_auth_key          = var.dx_hosted_public_virtual_interface_bgp_auth_key
   connection_id         = var.dx_hosted_public_virtual_interface_connection_id
   customer_address      = var.dx_hosted_public_virtual_interface_customer_address
   name                  = var.dx_hosted_public_virtual_interface_name
   owner_account_id      = var.dx_hosted_public_virtual_interface_owner_account_id
+  rate_limit            = var.dx_hosted_public_virtual_interface_rate_limit
   route_filter_prefixes = var.dx_hosted_public_virtual_interface_route_filter_prefixes
   vlan                  = var.dx_hosted_public_virtual_interface_vlan 
 }
