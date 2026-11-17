@@ -18,3 +18,7 @@ output "dx_lag_owner_account_id" {
   description = "The ID of the AWS account that owns the LAG"
   value       = element(concat(aws_dx_lag.dx_lag.*.owner_account_id, [""]), 0)
 }
+output "dx_lag_rate_limiter_status" {
+  description = "Rate limiter status for the LAG"
+  value       = element(concat(aws_dx_lag.dx_lag.*.rate_limiter_status, [""]), 0)
+}
