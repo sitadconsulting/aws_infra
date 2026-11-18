@@ -1,5 +1,5 @@
 variable "ecr_replication_configuration_replication_configuration" {
-  description = "Replication configuration for a registry"
+  description = "(Required) Replication configuration for a registry"
   type        = list(object({
     rule = list(object({
       destination = list(object({
@@ -12,5 +12,4 @@ variable "ecr_replication_configuration_replication_configuration" {
       })), [])
     }))
   }))
-  default     = []
 }
