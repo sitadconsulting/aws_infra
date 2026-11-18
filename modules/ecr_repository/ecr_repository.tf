@@ -17,4 +17,11 @@ resource "aws_ecr_repository" "ecr_repository" {
         scan_on_push = image_scanning_configuration.value["scan_on_push"]
       }
   }
+  dynamic "image_tag_mutability_exclusion_filter" {
+    for_each = var.ecr_repository_image_tag_mutability_exclusion_filter
+      content {
+        filter      = image_tag_mutability_exclusion_filter.value["filter"]
+        filter_type = image_tag_mutability_exclusion_filter.value["filter_type"]
+      }
+  }
 }
