@@ -138,7 +138,7 @@ resource "aws_kinesisanalyticsv2_application" "kinesisanalyticsv2_application" {
                               content {
                                 mapping  = record_column.value["mapping"]
                                 name     = record_column.value["name"]
-                                sql_type = frecord_column.value["sql_type"]
+                                sql_type = record_column.value["sql_type"]
                               }
                           }
                           dynamic "record_format" {
