@@ -1,5 +1,6 @@
 resource "aws_lambda_code_signing_config" "lambda_code_signing_config" {
   description = var.lambda_code_signing_config_description
+  tags        = var.lambda_code_signing_config_tags
 
   dynamic "allowed_publishers" {
     for_each = var.lambda_code_signing_config_allowed_publishers
@@ -7,7 +8,6 @@ resource "aws_lambda_code_signing_config" "lambda_code_signing_config" {
         signing_profile_version_arns = allowed_publishers.value["signing_profile_version_arns"]
       }
   }
-
   dynamic "policies" {
     for_each = var.lambda_code_signing_config_policies
       content {
