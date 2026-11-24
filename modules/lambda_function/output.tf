@@ -18,6 +18,10 @@ output "lambda_function_qualified_invoke_arn" {
   description = "Qualified ARN (ARN with lambda version number) to be used for invoking Lambda Function from API Gateway - to be used in aws_api_gateway_integration's uri"
   value       = element(concat(aws_lambda_function.lambda_function.*.qualified_invoke_arn, [""]), 0)
 }
+output "lambda_function_response_streaming_invoke_arn" {
+  description = "RN to be used for invoking Lambda Function from API Gateway with response streaming - to be used in aws_api_gateway_integration's uri"
+  value       = element(concat(aws_lambda_function.lambda_function.*.response_streaming_invoke_arn, [""]), 0)
+}
 output "lambda_function_signing_job_arn" {
   description = "ARN of the signing job"
   value       = element(concat(aws_lambda_function.lambda_function.*.signing_job_arn, [""]), 0)
