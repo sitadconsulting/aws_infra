@@ -3,6 +3,7 @@ resource "aws_lambda_invocation" "lambda_invocation" {
   input           = var.lambda_invocation_input
   lifecycle_scope = var.lambda_invocation_lifecycle_scope
   qualifier       = var.lambda_invocation_qualifier
+  tenant_id       = var.lambda_invocation_tenant_id
   terraform_key   = var.lambda_invocation_terraform_key
   triggers        = var.lambda_invocation_triggers
 }
