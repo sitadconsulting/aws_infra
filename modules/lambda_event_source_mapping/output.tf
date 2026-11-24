@@ -1,6 +1,10 @@
+output "lambda_event_source_mapping_arn" {
+  description = "Event source mapping ARN"
+  value       = element(concat(aws_lambda_event_source_mapping.lambda_event_source_mapping.*.arn, [""]), 0)
+}
 output "lambda_event_source_mapping_function_arn" {
   description = "ARN of the Lambda function the event source mapping is sending events to"
-  value       = element(concat(aws_lambda_event_source_mapping.lambda_event_source_mapping.*.arn, [""]), 0)
+  value       = element(concat(aws_lambda_event_source_mapping.lambda_event_source_mapping.*.function_arn, [""]), 0)
 }
 output "lambda_event_source_mapping_last_modified" {
   description = "The date this resource was last modified"

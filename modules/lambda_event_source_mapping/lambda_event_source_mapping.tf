@@ -5,6 +5,7 @@ resource "aws_lambda_event_source_mapping" "lambda_event_source_mapping" {
   event_source_arn                   = var.lambda_event_source_mapping_event_source_arn
   function_name                      = var.lambda_event_source_mapping_function_name
   function_response_types            = var.lambda_event_source_mapping_function_response_types
+  kms_key_arn                        = var.lambda_event_source_mapping_kms_key_arn
   maximum_batching_window_in_seconds = var.lambda_event_source_mapping_maximum_batching_window_in_seconds
   maximum_record_age_in_seconds      = var.lambda_event_source_mapping_maximum_record_age_in_seconds
   maximum_retry_attempts             = var.lambda_event_source_mapping_maximum_retry_attempts
@@ -12,6 +13,7 @@ resource "aws_lambda_event_source_mapping" "lambda_event_source_mapping" {
   queues                             = var.lambda_event_source_mapping_queues
   starting_position                  = var.lambda_event_source_mapping_starting_position
   starting_position_timestamp        = var.lambda_event_source_mapping_starting_position_timestamp
+  tags                               = var.lambda_event_source_mapping_tags
   topics                             = var.lambda_event_source_mapping_topics
   tumbling_window_in_seconds         = var.lambda_event_source_mapping_tumbling_window_in_seconds
  
@@ -52,6 +54,20 @@ resource "aws_lambda_event_source_mapping" "lambda_event_source_mapping" {
         }
       }
   }
+  dynamic "metrics_config" {
+    for_each = var.lambda_event_source_mapping_metrics_config
+      content {
+        metrics = metrics_config.value["metrics"]
+      }
+  }
+  dynamic "provisioned_poller_config" {
+    for_each = var.lambda_event_source_mapping_provisioned_poller_config
+      content {
+        maximum_pollers   = provisioned_poller_config.value["maximum_pollers"]
+        minimum_pollers   = provisioned_poller_config.value["minimum_pollers"]
+        poller_group_name = provisioned_poller_config.value["poller_group_name"]
+      }
+  }
   dynamic "scaling_config" {
     for_each = var.lambda_event_source_mapping_scaling_config
       content {
@@ -68,6 +84,26 @@ resource "aws_lambda_event_source_mapping" "lambda_event_source_mapping" {
     for_each = var.lambda_event_source_mapping_self_managed_kafka_event_source_config
       content {
         consumer_group_id = self_managed_kafka_event_source_config.value["consumer_group_id"]
+        dynamic "schema_registry_config" {
+          for_each = self_managed_kafka_event_source_config.value.schema_registry_config
+            content {
+              event_record_format = schema_registry_config.value["event_record_format"]
+              schema_registry_uri = schema_registry_config.value["schema_registry_uri"]
+              dynamic "access_config" {
+                for_each = schema_registry_config.value.access_config
+                  content {
+                    type = access_config.value["type"]
+                    uri  = access_config.value["uri"]
+                  }
+              }
+              dynamic "schema_validation_config" {
+                for_each = schema_registry_config.value.schema_validation_config
+                  content {
+                    attribute = schema_validation_config.value["attribute"]
+                  }
+              }
+            }
+        }
       }
   }
   dynamic "source_access_configuration" {
