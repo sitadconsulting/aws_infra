@@ -2,6 +2,10 @@ output "lambda_layer_version_arn" {
   description = "ARN of the Lambda Layer with version"
   value       = element(concat(aws_lambda_layer_version.lambda_layer_version.*.arn, [""]), 0)
 }
+output "lambda_layer_version_code_sha256" {
+  description = "Base64-encoded representation of raw SHA-256 sum of the zip file"
+  value       = element(concat(aws_lambda_layer_version.lambda_layer_version.*.code_sha256, [""]), 0)
+}
 output "lambda_layer_version_created_date" {
   description = "Date this resource was created"
   value       = element(concat(aws_lambda_layer_version.lambda_layer_version.*.created_date, [""]), 0)
