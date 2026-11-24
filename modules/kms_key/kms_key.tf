@@ -9,5 +9,7 @@ resource "aws_kms_key" "kms_key" {
   key_usage                          = var.kms_key_key_usage
   multi_region                       = var.kms_key_multi_region
   policy                             = var.kms_key_policy
+  rotation_period_in_days            = var.kms_key_rotation_period_in_days
   tags                               = var.kms_key_tags
+  xks_key_id                         = var.kms_key_xks_key_id
 }
