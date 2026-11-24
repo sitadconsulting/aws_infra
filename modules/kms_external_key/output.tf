@@ -14,7 +14,7 @@ output "kms_external_key_key_state" {
   description = "The state of the CMK"
   value       = element(concat(aws_kms_external_key.kms_external_key.*.key_state, [""]), 0)
 }
-output "kms_external_key_key_usage" {
-  description = "The cryptographic operations for which you can use the CMK"
-  value       = element(concat(aws_kms_external_key.kms_external_key.*.key_usage, [""]), 0)
-}
+#output "kms_external_key_key_usage" {
+#  description = "The cryptographic operations for which you can use the CMK"
+#  value       = element(concat(aws_kms_external_key.kms_external_key.*.key_usage, [""]), 0)
+#}

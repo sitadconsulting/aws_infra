@@ -4,6 +4,8 @@ resource "aws_kms_external_key" "kms_external_key" {
   description                        = var.kms_external_key_description
   enabled                            = var.kms_external_key_enabled
   key_material_base64                = var.kms_external_key_key_material_base64
+  key_spec                           = var.kms_external_key_key_spec
+  key_usage                          = var.kms_external_key_key_usage
   multi_region                       = var.kms_external_key_multi_region
   policy                             = var.kms_external_key_policy
   tags                               = var.kms_external_key_tags
