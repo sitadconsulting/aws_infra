@@ -1,32 +1,32 @@
 variable "msk_cluster_cluster_name" {
-  description = "Name of the MSK cluster"
+  description = "(Required) Name of the MSK cluster"
   type        = string
 }
 variable "msk_cluster_enhanced_monitoring" {
-  description = "Specify the desired enhanced MSK CloudWatch monitoring level"
+  description = "(Optional) Desired enhanced MSK CloudWatch monitoring level"
   type        = string
   default     = null
 }
 variable "msk_cluster_kafka_version" {
-  description = "Specify the desired Kafka software version"
+  description = "(Required) Desired Kafka software version"
   type        = string
 }
 variable "msk_cluster_number_of_broker_nodes" {
-  description = "The desired total number of broker nodes in the kafka cluster. It must be a multiple of the number of specified client subnets"
+  description = "(Required) Desired total number of broker nodes in the kafka cluster. It must be a multiple of the number of specified client subnets"
   type        = number
 }
 variable "msk_cluster_storage_mode" {
-  description = "Controls storage mode for supported storage tiers. Valid values are: LOCAL or TIERED"
+  description = "(Optional) Controls storage mode for supported storage tiers. Valid values are: LOCAL or TIERED"
   type        = string
   default     = null
 }
 variable "msk_cluster_tags" {
-  description = "A map of tags to assign to the resource"
+  description = "(Optional) Map of tags to assign to the resource"
   type        = map(string)
   default     = {}
 }
 variable "msk_cluster_broker_node_group_info" {
-  description = "Configuration block for the broker nodes of the Kafka cluster"
+  description = "(Required) Configuration block for the broker nodes of the Kafka cluster"
   type        = list(object({
     az_distribution   = optional(string)
     client_subnets    = list(string)
@@ -59,7 +59,7 @@ variable "msk_cluster_broker_node_group_info" {
   }))
 }
 variable "msk_cluster_client_authentication" {
-  description = "Configuration block for specifying a client authentication"
+  description = "(Optional) Configuration block for specifying a client authentication"
   type        = list(object({
     unauthenticated = optional(bool)
     sasl      = optional(list(object({
@@ -73,7 +73,7 @@ variable "msk_cluster_client_authentication" {
   default     = []
 }
 variable "msk_cluster_configuration_info" {
-  description = "Configuration block for specifying a MSK Configuration to attach to Kafka brokers"
+  description = "(Optional) Configuration block for specifying an MSK Configuration to attach to Kafka brokers"
   type        = list(object({
     arn       = string
     revision  = number
@@ -81,7 +81,7 @@ variable "msk_cluster_configuration_info" {
   default     = []
 }
 variable "msk_cluster_encryption_info" {
-  description = "Configuration block for specifying encryption"
+  description = "(Optional) Configuration block for specifying encryption"
   type        = list(object({
     encryption_at_rest_kms_key_arn = optional(string)
     encryption_in_transit          = optional(list(object({
@@ -92,7 +92,7 @@ variable "msk_cluster_encryption_info" {
   default     = []
 }
 variable "msk_cluster_logging_info" {
-  description = "Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose"
+  description = "(Optional) Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose"
   type        = list(object({
     broker_logs = list(object({
       cloudwatch_logs = optional(list(object({
@@ -113,7 +113,7 @@ variable "msk_cluster_logging_info" {
   default     = []
 }
 variable "msk_cluster_open_monitoring" {
-  description = "Configuration block for JMX and Node monitoring for the MSK cluster"
+  description = "(Optional) Configuration block for JMX and Node monitoring for the MSK cluster"
   type        = list(object({
     prometheus = list(object({
       jmx_exporter = optional(list(object({
