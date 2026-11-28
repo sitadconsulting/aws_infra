@@ -1,14 +1,14 @@
 variable "mskconnect_custom_plugin_content_type" {
-  description = "The type of the plugin file. Allowed values are ZIP and JAR"
+  description = "(Required, Forces new resource) Type of the plugin file. Allowed values are ZIP and JAR"
   type        = string
 }
 variable "mskconnect_custom_plugin_description" {
-  description = "A summary description of the custom plugin"
+  description = "(Optional, Forces new resource) Summary description of the custom plugin"
   type        = string
   default     = null
 }
 variable "mskconnect_custom_plugin_name" {
-  description = "The name of the custom plugin"
+  description = "(Required, Forces new resource) Name of the custom plugin"
   type        = string
 }
 variable "mskconnect_custom_plugin_tags" {
@@ -17,7 +17,7 @@ variable "mskconnect_custom_plugin_tags" {
   default     = {}
 }
 variable "mskconnect_custom_plugin_location" {
-  description = "Information about the location of a custom plugin"
+  description = "(Required, Forces new resource) Information about the location of a custom plugin"
   type        = list(object({
     s3  = list(object({
      bucket_arn     = string
