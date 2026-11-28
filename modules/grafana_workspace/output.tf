@@ -14,3 +14,7 @@ output "grafana_workspace_grafana_version" {
   description = "The version of Grafana running on the workspace"
   value       = element(concat(aws_grafana_workspace.grafana_workspace.*.grafana_version, [""]), 0)
 }
+output "grafana_workspace_saml_configuration_status" {
+  description = "Status of the SAML configuration"
+  value       = element(concat(aws_grafana_workspace.grafana_workspace.*.saml_configuration_status, [""]), 0)
+}
