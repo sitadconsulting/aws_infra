@@ -1,5 +1,5 @@
 variable "msk_vpc_connection_authentication" {
-  description = "Required) The authentication type for the client VPC connection. Specify one of these auth type strings: SASL_IAM, SASL_SCRAM, or TLS"
+  description = "(Required) The authentication type for the client VPC connection. Specify one of these auth type strings: SASL_IAM, SASL_SCRAM, or TLS"
   type        = string
 }
 variable "msk_vpc_connection_client_subnets" {
@@ -7,7 +7,7 @@ variable "msk_vpc_connection_client_subnets" {
   type        = list(string)
 }
 variable "msk_vpc_connection_security_groups" {
-  description = " (Required) The security groups to attach to the ENIs for the broker nodes"
+  description = "(Required) The security groups to attach to the ENIs for the broker nodes"
   type        = list(string)
 }
 variable "msk_vpc_connection_tags" {
