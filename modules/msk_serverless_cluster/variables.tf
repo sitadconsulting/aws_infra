@@ -1,14 +1,14 @@
 variable "msk_serverless_cluster_cluster_name" {
-  description = "The name of the serverless cluster"
+  description = "(Required) Name of the serverless cluster"
   type        = string
 }
 variable "msk_serverless_cluster_tags" {
-  description = "A map of tags to assign to the resource"
+  description = "(Optional) Map of tags to assign to the resource"
   type        = map(string)
   default     = {}
 }
 variable "msk_serverless_cluster_client_authentication" {
-  description = "Specifies client authentication information for the serverless cluster"
+  description = "(Required) Client authentication information for the serverless cluster"
   type        = list(object({
     sasl  = list(object({
       iam = list(object({
@@ -18,7 +18,7 @@ variable "msk_serverless_cluster_client_authentication" {
   }))
 }
 variable "msk_serverless_cluster_vpc_config" {
-  description = "VPC configuration information"
+  description = "(Required) VPC configuration information"
   type        = list(object({
     security_group_ids = optional(list(string))
     subnet_ids         = list(string)
